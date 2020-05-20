@@ -24,6 +24,7 @@ public class Talkmanager : MonoBehaviour
                                          "하지만 남은 2일이 모두 주말이고 심지어 부모님까지 출장으로 집에 없다.",
                                          "이 일기는 나의 지난 12일간의 노력을 순간의 욕망으로 헛되지 않기위해 쓰는 것이다 부디 내가이 혼란한 주말을 견디고 평안히 금딸하길 ", "-현재 금딸 13일차-",
                                          "가슴이 웅장해진다."});
+        talkdata.Add(500, new string[] { "지금은 집에 들어갈 수 없다." });
     }
 
     public string GetTalk(int id, int talkindex)
