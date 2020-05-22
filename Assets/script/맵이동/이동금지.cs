@@ -4,5 +4,19 @@ using UnityEngine;
 
 public class 이동금지 : MonoBehaviour
 {
-   
+    public Gamemanager gamemanager;
+    GameObject scan;
+
+    void Awake()
+    {
+        scan = GetComponent<GameObject>();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "player")
+        {
+            gamemanager.Action(scan);
+        }
+    }
 }

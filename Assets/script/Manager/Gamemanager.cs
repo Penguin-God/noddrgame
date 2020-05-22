@@ -14,18 +14,18 @@ public class Gamemanager : MonoBehaviour
     public bool isaction;
     public Text 대화;
 
-    private void Start()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-    }
+    //private void Start()
+    //{
+    //    if (instance == null)
+    //    {
+    //        instance = this;
+    //        DontDestroyOnLoad(this.gameObject);
+    //    }
+    //    else
+    //    {
+    //        Destroy(this.gameObject);
+    //    }
+    //}
 
     public void Action(GameObject scanob)
     {
