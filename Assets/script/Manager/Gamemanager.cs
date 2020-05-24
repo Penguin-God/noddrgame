@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Gamemanager : MonoBehaviour
 {
     static public Gamemanager instance;
+    public GameObject crash;
     public GameObject scan;
     public GameObject talkwindow;
     public Talkmanager talkmanager;
@@ -35,9 +36,11 @@ public class Gamemanager : MonoBehaviour
         talkwindow.SetActive(isaction);
     }
 
-    public void Action()
+    public void 충돌시대화(GameObject crashob)
     {
-        Talk(500, false);
+        crash = crashob;
+        Objectdata obdata = crash.GetComponent<Objectdata>();
+        Talk(obdata.id, obdata.isnpc);
         talkwindow.SetActive(isaction);
     }
 

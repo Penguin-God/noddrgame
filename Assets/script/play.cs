@@ -13,6 +13,7 @@ public class play : MonoBehaviour
     bool XMove;
 
     GameObject scan;
+    GameObject crash;
     Rigidbody2D Rigid;
     Vector3 dirvec;
 
@@ -68,5 +69,19 @@ public class play : MonoBehaviour
         else
             scan = null;
     }
+
+    //충돌시 대화
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name != null)
+        {
+            //게임 오브젝트와 충돌했을 시 crash에 충돌한 게임오브젝트를 가져옴
+            crash = collision.gameObject;
+            gamemanager.충돌시대화(crash);
+        }
+        else
+            crash = null;
+    }
 }
+
 
