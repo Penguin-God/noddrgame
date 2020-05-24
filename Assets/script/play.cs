@@ -11,28 +11,14 @@ public class play : MonoBehaviour
     float h;
     float v;
     bool XMove;
-    
+
     GameObject scan;
     Rigidbody2D Rigid;
     Vector3 dirvec;
 
-    private void Start()
-    {
-        if(instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-    }
-
     private void Awake()
     {
         Rigid = GetComponent<Rigidbody2D>();
-        scan = GetComponent<GameObject>();
     }
 
     void Update()

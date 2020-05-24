@@ -32,7 +32,12 @@ public class Gamemanager : MonoBehaviour
         scan = scanob;
         Objectdata obdata = scan.GetComponent<Objectdata>();
         Talk(obdata.id, obdata.isnpc);
+        talkwindow.SetActive(isaction);
+    }
 
+    public void Action()
+    {
+        Talk(500, false);
         talkwindow.SetActive(isaction);
     }
 
