@@ -10,8 +10,8 @@ public class Scenechange : MonoBehaviour
 
     private void Start()
     {
-        Theplayer = FindObjectOfType<play>();
         //FindObjectOfType : 유니티 계층에 있는 모든 객체를 참조해서 가져옴 Getcomponent와 검색 범위가 다름
+        Theplayer = FindObjectOfType<play>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

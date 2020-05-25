@@ -52,6 +52,14 @@ public class play : MonoBehaviour
         //object scan
         if (Input.GetButtonDown("Jump") && scan != null)
             gamemanager.Action(scan);
+
+        //에러난 코드(첫번째 충돌 후 다시 가면 대사가 안뜨고 다시 충돌해야 대사가 뜸)
+        //else if (gamemanager.isaction = true && Input.GetButtonDown("Jump"))
+        //{
+        //    gamemanager.isaction = false;
+        //    gamemanager.talkwindow.SetActive(gamemanager.isaction);
+        //    Debug.Log("asfg");
+        //}
     }
 
     private void FixedUpdate()
@@ -70,14 +78,14 @@ public class play : MonoBehaviour
             scan = null;
     }
 
-    //충돌시 대화
+    //트리거와 충돌시 충돌 오브젝트 가져오기
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name != null)
         {
             //게임 오브젝트와 충돌했을 시 crash에 충돌한 게임오브젝트를 가져옴
             crash = collision.gameObject;
-            gamemanager.충돌시대화(crash);
+            gamemanager.이동금지영역(crash);
         }
         else
             crash = null;

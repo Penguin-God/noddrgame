@@ -13,8 +13,8 @@ public class Scenechangeposition : MonoBehaviour
 
         if (mapstartpoint == Theplayer.currentmapname)//씬이 바뀔때마다 mapchangepoint의 mapstartpoint와 currentmapname가 같을시 
         {
-            Theplayer.transform.position = this.transform.position;
             //플레이어의 위치를 이 스크립트를 가지고 있는 빈오브젝트의 위치로 바꿈
+            Theplayer.transform.position = this.transform.position;
         }
     }
 }
