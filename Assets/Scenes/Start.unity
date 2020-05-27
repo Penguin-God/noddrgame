@@ -2215,7 +2215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 480954422}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.12, y: -0.57, z: 0.79589844}
+  m_LocalPosition: {x: 1.8, y: -0.57, z: 0.79589844}
   m_LocalScale: {x: 1, y: 1, z: 2}
   m_Children:
   - {fileID: 519420032}
@@ -6149,7 +6149,7 @@ MonoBehaviour:
   talkmanager: {fileID: 34894808}
   talkindex: 0
   isaction: 0
-  "\uB300\uD654": {fileID: 2057906862}
+  "\uB300\uD654\uCC3D\uD14D\uC2A4\uD2B8": {fileID: 0}
 --- !u!4 &1325342201
 Transform:
   m_ObjectHideFlags: 0
