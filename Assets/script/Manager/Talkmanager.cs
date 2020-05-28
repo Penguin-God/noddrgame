@@ -16,7 +16,7 @@ public class Talkmanager : MonoBehaviour
     {
         //대화 내용
         talkdata.Add(100, new string[] { "내가자는 곳이다." });
-        talkdata.Add(200, new string[] { "옷장이다.", "여러옷이 있지만 보기만 해도 역겨운 교복이 유독 눈에 들어온다." });
+        talkdata.Add(200, new string[] { "." });
         talkdata.Add(300, new string[] { "공부할 때 쓰는 책상이다.", "여기에 앉은지는 꽤 오래 된 것 갔다." });
         talkdata.Add(400, new string[] { "나는 히토미를 보고 딸친다고 아빠한테 집에서 쫒껴났다.",
                                          "일주일동안 금딸을 하고 돌아오란다.",
