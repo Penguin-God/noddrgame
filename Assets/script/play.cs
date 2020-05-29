@@ -81,7 +81,7 @@ public class play : MonoBehaviour
     //트리거와 충돌시 충돌 오브젝트 가져오기
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name != null)
+        if (collision.gameObject.name != null && collision.gameObject.tag == "notmapchange")
         {
             //게임 오브젝트와 충돌했을 시 crash에 충돌한 게임오브젝트를 가져옴
             crash = collision.gameObject;

@@ -156,7 +156,7 @@ MonoBehaviour:
   talkmanager: {fileID: 1069951207}
   talkindex: 0
   isaction: 0
-  "\uB300\uD654": {fileID: 27628885}
+  "\uB300\uD654\uCC3D\uD14D\uC2A4\uD2B8": {fileID: 27628885}
 --- !u!4 &1027950
 Transform:
   m_ObjectHideFlags: 0
