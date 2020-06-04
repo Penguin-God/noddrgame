@@ -40,6 +40,7 @@ public class play : MonoBehaviour
         else if (hUp || vUp)
             XMove = h != 0;
 
+        //ray 생성
         if (vDown && v == 1)
             dirvec = Vector3.up;
         if (vDown && v == -1)

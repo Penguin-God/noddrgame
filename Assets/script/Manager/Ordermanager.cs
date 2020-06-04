@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class Ordermanager : MonoBehaviour
 {
+    Rigidbody2D rigid;
+    public float speed;
 
-
-    void Start()
+    private void Awake()
     {
-        
-    }
-
-    void Update()
-    {
-        
+        rigid = GetComponent<Rigidbody2D>();
+        rigid.velocity = Vector2.up * speed;
     }
 }
