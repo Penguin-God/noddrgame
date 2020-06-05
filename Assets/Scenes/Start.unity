@@ -615,12 +615,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 480954422}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ce086f84f29a814ea9ebd6fab2ac01b, type: 3}
+  m_Script: {fileID: 11500000, guid: 7124dfa328366fa4c9f7f1aff2e51894, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentmapname: 
   gamemanager: {fileID: 1325342200}
   speed: 5
-  currentmapname: 
+  CharacterName: 
 --- !u!212 &480954424
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12496,7 +12497,6 @@ GameObject:
   - component: {fileID: 1811733112}
   - component: {fileID: 1811733111}
   - component: {fileID: 1811733110}
-  - component: {fileID: 1811733114}
   - component: {fileID: 1811733113}
   m_Layer: 0
   m_Name: "\uC544\uBE60"
@@ -12607,19 +12607,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1811733114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1811733109}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7124dfa328366fa4c9f7f1aff2e51894, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
 --- !u!1 &1883224060
 GameObject:
   m_ObjectHideFlags: 0

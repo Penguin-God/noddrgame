@@ -2,55 +2,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//케이디 쯔꾸르 강좌 11강 진행중에 NPC이동 구현 자체는 10강에 있다는 사실을 알고 10강으로 튀어버리고 이코드는 의미없이 남음
+
 public class MovingObject : MonoBehaviour
 {
-    public Gamemanager gamemanager;
-    public float speed;
-    float h;
-    float v;
-    bool XMove;
+    //[]은 넣은값을 수정할 수 없지만 <>는 .Add(), .Remove(), .Clear() 등의 메소드로 안의 값을 조절할 수 있음 .Claer()는 <>를 삭제하는 메소드
+    //<>는 크기를 셀 때 .Count로 셈
+    private List<play> CharacterMove;
 
-    Rigidbody2D Rigid;
-    Vector3 dirvec;
-
-    private void Awake()
+    public void MoveCharacter()
     {
-        Rigid = GetComponent<Rigidbody2D>();
+        CharacterMove = ToList();
     }
 
-    void Update()
+    public List<play> ToList()
     {
-        h = gamemanager.isaction ? 0 : Input.GetAxisRaw("Horizontal");
-        v = gamemanager.isaction ? 0 : Input.GetAxisRaw("Vertical");
+        //retuen값이 있는 함수이기 때문에 배열이 삭제되서 배열을 써도 상관이 없음
+        //FindObjectsOfType는 FindObjectsOfType와 다르게 <>안에 값이 달린 모든 객체(오브젝트)를 반환시켜줌
+        List<play> TempList = new List<play>();
+        play[] temp = FindObjectsOfType<play>();
 
-        bool hDown = gamemanager.isaction ? false : Input.GetButtonDown("Horizontal");
-        bool vDown = gamemanager.isaction ? false : Input.GetButtonDown("Vertical");
-        bool hUp = gamemanager.isaction ? true : Input.GetButtonUp("Horizontal");
-        bool vUp = gamemanager.isaction ? true : Input.GetButtonUp("Vertical");
+        for (int i = 0; i < temp.Length; i++)
+        {
+            //TempList에 play가 있는 모든 오브젝트를 넣어줌 
+            TempList.Add(temp[i]);
+        }
 
-        //대각선 이동 차단
-        if (hDown)
-            XMove = true;
-        else if (vDown)
-            XMove = false;
-        else if (hUp || vUp)
-            XMove = h != 0;
-
-        if (vDown && v == 1)
-            dirvec = Vector3.up;
-        if (vDown && v == -1)
-            dirvec = Vector3.down;
-        if (hDown && h == 1)
-            dirvec = Vector3.right;
-        if (hDown && h == -1)
-            dirvec = Vector3.left;
+        //함수가 List형식이므로 반환값을 List값으로 해주어야 함
+        return TempList;
     }
 
-    private void FixedUpdate()
-    {
-        Vector2 moveVec = XMove ? new Vector2(h, 0) : new Vector2(0, v);
-        Rigid.velocity = moveVec * speed;
-    }
+    //public void Move(string _name, string _dir)
+    //{
+    //    for(int i = 0; i < CharacterMove.Count; i++)
+    //    {
+    //        if(_name == CharacterMove[i].CharacterName)
+    //        {
+    //            //CharacterMove[i].Move(_dir);
+    //            Debug.Log("stxfa");
+    //        }
+    //    }
+    //}
 }
 
 
