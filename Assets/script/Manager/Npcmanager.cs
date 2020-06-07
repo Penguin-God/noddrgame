@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//커스텀 class가 인스펙터 창에 나오게 하기위한 명령어
+//커스텀class가 인스펙터 창에 나오게 하기위한 명령어
 [System.Serializable]
 public class NPCMove
 {
@@ -20,6 +20,10 @@ public class Npcmanager : play
     //커스텀 class가 인스펙터 창에 나오게 하기위한 명령어
     [SerializeField]
     public NPCMove npc;
+
+    public LayerMask layermask;
+    public bool dontmove;
+    public RaycastHit2D hit;
 
     private void Start()
     {
@@ -73,11 +77,77 @@ public class Npcmanager : play
                 //캐릭터는 딜레이없이 움직이면서 유니티도 안튕김
                 yield return new WaitUntil(() => NpcCanMove);
                 // base : 자식이 상속받는 부모가 있을 시 부모의 메서드를 사용할 때 사용하는 접근자 ex) base.부모매서드명()
-                base.Move(npc.direction[i]);
+                Move(npc.direction[i]);
 
-                if (i == npc.direction.Length - 1)
-                    i = -1;
+                //if (i == npc.direction.Length - 1)
+                  //  i = -1;
             }
         }
+    }
+
+    private void FixedUpdate()
+    {
+        Vector2 start;
+        Vector2 end;
+        start = transform.position;
+        end = start + new Vector2(dirvec.x * speed * walkcount, dirvec.y * speed * walkcount);
+
+        RaycastHit2D rayhit = Physics2D.Linecast(start, end, layermask);
+        if (rayhit.transform != null)
+        {
+            dontmove = true;
+        }
+    }
+
+    protected void Move(string _dir)
+    {
+        StartCoroutine(MoveCoroutine(_dir));
+    }
+
+    IEnumerator MoveCoroutine(string _dir)
+    {
+        NpcCanMove = false;
+        dirvec.Set(0, 0, dirvec.z);
+
+        //switch 문에는 string값이 와도 상관이 없음
+        switch (_dir)
+        {
+            case ("UP"):
+                dirvec.y = 1f;
+                break;
+            case ("DOWN"):
+                dirvec.y = -1f;
+                break;
+            case ("RIGHT"):
+                dirvec.x = 1f;
+                break;
+            case ("LEFT"):
+                dirvec.x = -1f;
+                break;
+            case ("NONE"):
+                dirvec.x = 0;
+                dirvec.y = 0;
+                break;
+        }
+
+        while (true)
+        {
+            
+            if (dontmove)
+            {
+                yield return new WaitForSeconds(1f);
+            }
+            else
+                break;
+        }
+
+        while (count < walkcount)
+        {
+            transform.Translate(dirvec.x * speed, dirvec.y * speed, 0);
+            count++;
+            yield return new WaitForSeconds(0.01f);
+        }
+        count = 0;
+        NpcCanMove = true;
     }
 }

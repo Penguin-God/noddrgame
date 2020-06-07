@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //MonoBehaviour 대신에 상속받고 싶은 script의 이름을 쓰면 상속이 됨
-public class Playermanager : play
+public class Playermanager : play //play한테 여러 변수를 상속받고 있음
 {
     public string CharacterName;
 
@@ -46,7 +46,6 @@ public class Playermanager : play
         //object scan
         if (Input.GetButtonDown("Jump") && scan != null)
             gamemanager.Action(scan);
-
         //에러난 코드(첫번째 충돌 후 다시 가면 대사가 안뜨고 다시 충돌해야 대사가 뜸)
         //else if (gamemanager.isaction = true && Input.GetButtonDown("Jump"))
         //{
@@ -54,6 +53,11 @@ public class Playermanager : play
         //    gamemanager.talkwindow.SetActive(gamemanager.isaction);
         //    Debug.Log("asfg");
         //}
+
+        if (Input.GetButtonDown("Jump") && gamemanager.isaction)
+        {
+            gamemanager.이동금지영역(crash);
+        }
     }
 
     private void FixedUpdate()
