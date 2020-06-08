@@ -7,8 +7,7 @@ public class Playermanager : play //play한테 여러 변수를 상속받고 있
 {
     public string CharacterName;
 
-    GameObject scan;
-    GameObject crash;
+    GameObject TalkObject;
     
     private void Awake()
     {
@@ -43,9 +42,8 @@ public class Playermanager : play //play한테 여러 변수를 상속받고 있
         if (hDown && h == -1)
             dirvec = Vector3.left;
 
-        //object scan
-        if (Input.GetButtonDown("Jump") && scan != null)
-            gamemanager.Action(scan);
+        if (Input.GetButtonDown("Jump") && TalkObject != null)
+            gamemanager.Action(TalkObject);
         //에러난 코드(첫번째 충돌 후 다시 가면 대사가 안뜨고 다시 충돌해야 대사가 뜸)
         //else if (gamemanager.isaction = true && Input.GetButtonDown("Jump"))
         //{
@@ -53,11 +51,6 @@ public class Playermanager : play //play한테 여러 변수를 상속받고 있
         //    gamemanager.talkwindow.SetActive(gamemanager.isaction);
         //    Debug.Log("asfg");
         //}
-
-        if (Input.GetButtonDown("Jump") && gamemanager.isaction)
-        {
-            gamemanager.이동금지영역(crash);
-        }
     }
 
     private void FixedUpdate()
@@ -66,27 +59,25 @@ public class Playermanager : play //play한테 여러 변수를 상속받고 있
         Rigid.velocity = moveVec * speed;
 
         Debug.DrawRay(Rigid.position, dirvec * 0.7f, new Color(0, 1, 0));
-        RaycastHit2D rayhit = Physics2D.Raycast(Rigid.position, dirvec, 0.7f, LayerMask.GetMask("object"));
+        RaycastHit2D rayhit = Physics2D.Raycast(Rigid.position, dirvec, 0.7f, LayerMask.GetMask("Object"));
 
-        if (rayhit.collider != null)
-        {
-            scan = rayhit.collider.gameObject;
-        }
-        else
-            scan = null;
+        //GameObject 변수는 null이 되면 인스펙터에서 None표시 안뜨고 그냥 전에 가져온 오브젝트가 빈 껍데기처럼 남아있는듯 함.
+        if (rayhit.collider != null && !gamemanager.isaction)//대화중이 아닐때만 rayhit에 걸린 오브젝트 가져오기(NPC와 대화중에 다른 오브젝트를 가져오는 것을 방지하기 위함) 
+            TalkObject = rayhit.collider.gameObject;
+        else if(!gamemanager.isaction)
+            TalkObject = null;
     }
 
     //트리거와 충돌시 충돌 오브젝트 가져오기
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name != null && collision.gameObject.tag == "notmapchange")
+        if (collision.gameObject.name != null && collision.gameObject.tag == "NpcTalk")
         {
-            //게임 오브젝트와 충돌했을 시 crash에 충돌한 게임오브젝트를 가져옴
-            crash = collision.gameObject;
-            gamemanager.이동금지영역(crash);
+            TalkObject = collision.gameObject;
+            gamemanager.Action(TalkObject);
         }
         else
-            crash = null;
+            TalkObject = null;
     }
 }
 

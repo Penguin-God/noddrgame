@@ -7,8 +7,7 @@ using UnityEngine.UI;
 public class Gamemanager : MonoBehaviour
 {
     static public Gamemanager instance;
-    public GameObject crash;
-    public GameObject scan;
+    public GameObject TalkObject;
     public GameObject talkwindow;
     public Talkmanager talkmanager;
     public int talkindex;
@@ -29,18 +28,10 @@ public class Gamemanager : MonoBehaviour
     //    }
     //}
 
-    public void Action(GameObject scanob)
+    public void Action(GameObject TalkObjectData)
     {
-        scan = scanob;
-        Objectdata obdata = scan.GetComponent<Objectdata>();
-        Talk(obdata.id, obdata.isnpc);
-        talkwindow.SetActive(isaction);
-    }
-
-    public void 이동금지영역(GameObject crashob)
-    {
-        crash = crashob;
-        Objectdata obdata = crash.GetComponent<Objectdata>();
+        TalkObject = TalkObjectData;
+        Objectdata obdata = TalkObject.GetComponent<Objectdata>();
         Talk(obdata.id, obdata.isnpc);
         talkwindow.SetActive(isaction);
     }
