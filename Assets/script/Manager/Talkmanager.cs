@@ -22,7 +22,8 @@ public class Talkmanager : MonoBehaviour
         talkdata.Add(300, new string[] { "지금은 집에 들어갈 수 없다." });
         talkdata.Add(400, new string[] { "아니씨발 실험하는데.",
                                          "대사를 같게 쳐 적으면.",
-                                         "그게 실험이냐 씨빨?"}); 
+                                         "그게 실험이냐 씨빨?"});
+        talkdata.Add(500, new string[] { "헉.. 헉.....", "아 이제 슬슬 간다." });
     }
 
     public string GetTalk(int id, int talkindex)

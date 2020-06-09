@@ -79,8 +79,9 @@ public class Npcmanager : play
                 // base : 자식이 상속받는 부모가 있을 시 부모의 메서드를 사용할 때 사용하는 접근자 ex) base.부모매서드명()
                 Move(npc.direction[i]);
 
+                // NPC가 무한반복하여 움직이게 하는 code
                 //if (i == npc.direction.Length - 1)
-                  //  i = -1;
+                //    i = -1;
             }
         }
     }

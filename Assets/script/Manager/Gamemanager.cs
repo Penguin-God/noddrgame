@@ -27,12 +27,18 @@ public class Gamemanager : MonoBehaviour
     //        Destroy(this.gameObject);
     //    }
     //}
-
+    
     public void Action(GameObject TalkObjectData)
     {
         TalkObject = TalkObjectData;
         Objectdata obdata = TalkObject.GetComponent<Objectdata>();
         Talk(obdata.id, obdata.isnpc);
+        talkwindow.SetActive(isaction);
+    }
+
+    public void Action()
+    {
+        Talk(500, false);
         talkwindow.SetActive(isaction);
     }
 
