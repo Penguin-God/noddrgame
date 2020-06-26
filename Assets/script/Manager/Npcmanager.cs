@@ -88,6 +88,7 @@ public class Npcmanager : play
 
     private void FixedUpdate()
     {
+        //Ray에 콜라이더가 걸리면 안움직임
         Vector2 start;
         Vector2 end;
         start = transform.position;
@@ -95,9 +96,7 @@ public class Npcmanager : play
 
         RaycastHit2D rayhit = Physics2D.Linecast(start, end, layermask);
         if (rayhit.transform != null)
-        {
             dontmove = true;
-        }
     }
 
     protected void Move(string _dir)
@@ -135,9 +134,7 @@ public class Npcmanager : play
         {
             
             if (dontmove)
-            {
                 yield return new WaitForSeconds(1f);
-            }
             else
                 break;
         }
