@@ -10,9 +10,11 @@ public class Gamemanager : MonoBehaviour
     public GameObject TalkObject;
     public GameObject talkwindow;
     public Talkmanager talkmanager;
+    public Npcmanager npcmanager;
     public int talkindex;
     public bool isaction;
     public Text 대화창텍스트;
+    public int QusetId;
 
     //씬 이동시 이 코드를 가진 스크립트를 가진 오브텍트는 파괴되지 않음
     //private void Start()
@@ -50,6 +52,7 @@ public class Gamemanager : MonoBehaviour
             //이야기 끝났을 시 대화창끄고 talkindex초기화 
             talkindex = 0;
             isaction = false;
+            QusetId = 10;
             //대화가 끝날 때 talkindex와 isaction이 변동이 없어야 하므로 return으로 함수 강제종료 
             return;
         }

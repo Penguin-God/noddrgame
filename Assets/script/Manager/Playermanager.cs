@@ -46,6 +46,8 @@ public class Playermanager : play //play script를 상속받고 있음
         {
             if (TalkObject != null)
                 gamemanager.Action(TalkObject);
+            if (gamemanager.isaction)
+                gamemanager.Action();
         }
 
         //에러난 코드(첫번째 충돌 후 다시 가면 대사가 안뜨고 다시 충돌해야 대사가 뜸)
@@ -61,8 +63,8 @@ public class Playermanager : play //play script를 상속받고 있음
     {
         //Time.time : 이번프레임이 시작된 시간 즉 게임이 시작된 시간으로부터 경과한 시간을 초 단위로 나타냄(경과한 시간을 나타내므로 지속적으로 업데이트되는 FixedUpdate함수에 사용해야함)
         //아래 if문은 게임시작 2초후 gamemanager.Action();을 실행하는 함수
-        //if (Time.time == 2)
-        //    gamemanager.Action();
+        if (Time.time == 2)
+            gamemanager.Action();
         
         Vector2 moveVec = XMove ? new Vector2(h, 0) : new Vector2(0, v);
         Rigid.velocity = moveVec * speed;

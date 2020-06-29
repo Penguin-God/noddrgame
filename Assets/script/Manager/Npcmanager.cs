@@ -40,7 +40,6 @@ public class Npcmanager : play
 
     }
 
-
     //IEnumerator은 코루틴(Coroutine) 중에 하나로 yield return 구문을 어디엔가 포함하고 있는 함수이다.
     //yield return 구문을 포함하지 않으면 에러가 난다.
     //yield return : 실행을 중지하고 다음 프레임에서 실행을 재개할 수 있는 지점
@@ -49,9 +48,9 @@ public class Npcmanager : play
     //코루틴 사용코드 StartCoroutine(코루틴함수명());
     IEnumerator MoveCoroutine()
     {
-        if(npc.direction.Length != 0)
+        if (npc.direction.Length != 0)
         {
-            for(int i = 0; i < npc.direction.Length; i++)
+            for (int i = 0; i < npc.direction.Length; i++)
             {
                 switch (npc.frequency)
                 {
@@ -79,7 +78,7 @@ public class Npcmanager : play
                 // base : 자식이 상속받는 부모가 있을 시 부모의 메서드를 사용할 때 사용하는 접근자 ex) base.부모매서드명()
                 Move(npc.direction[i]);
 
-                // NPC가 무한반복하여 움직이게 하는 code
+                //NPC가 무한반복하여 움직이게 하는 code
                 //if (i == npc.direction.Length - 1)
                 //    i = -1;
             }
