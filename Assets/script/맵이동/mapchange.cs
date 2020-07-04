@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 public class mapchange : MonoBehaviour
 {
     public Transform door;
-    private play Theplayer;
+    private 변수저장소 Theplayer;
 
     private void Start()
     {
         //FindObjectOfType : 유니티 계층에 있는 모든 객체를 참조해서 가져옴 Getcomponent와 검색 범위가 다름
-        Theplayer = FindObjectOfType<play>();
+        Theplayer = FindObjectOfType<변수저장소>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

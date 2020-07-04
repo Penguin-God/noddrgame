@@ -6,15 +6,18 @@ using UnityEngine.UI;
 
 public class Gamemanager : MonoBehaviour
 {
-    static public Gamemanager instance;
+    //static public Gamemanager instance;
     public GameObject TalkObject;
     public GameObject talkwindow;
+    public Text 대화창텍스트;
     public Talkmanager talkmanager;
     public Npcmanager npcmanager;
+
     public int talkindex;
-    public bool isaction;
-    public Text 대화창텍스트;
     public int QusetId;
+
+    public bool isaction;
+    public bool 컷씬;
 
     //씬 이동시 이 코드를 가진 스크립트를 가진 오브텍트는 파괴되지 않음
     //private void Start()
@@ -30,7 +33,7 @@ public class Gamemanager : MonoBehaviour
     //    }
     //}
     
-    public void Action(GameObject TalkObjectData)
+    public void 대화(GameObject TalkObjectData)
     {
         TalkObject = TalkObjectData;
         Objectdata obdata = TalkObject.GetComponent<Objectdata>();
@@ -38,10 +41,13 @@ public class Gamemanager : MonoBehaviour
         talkwindow.SetActive(isaction);
     }
 
-    public void Action()
+    public void 컷씬대화()
     {
-        Talk(500, false);
-        talkwindow.SetActive(isaction);
+        if (컷씬)
+        {
+            Talk(500, false);
+            talkwindow.SetActive(isaction);
+        }
     }
 
     void Talk(int id, bool isnpc)
@@ -53,6 +59,7 @@ public class Gamemanager : MonoBehaviour
             talkindex = 0;
             isaction = false;
             QusetId = 10;
+            컷씬 = false;
             //대화가 끝날 때 talkindex와 isaction이 변동이 없어야 하므로 return으로 함수 강제종료 
             return;
         }

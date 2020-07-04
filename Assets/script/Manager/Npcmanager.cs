@@ -15,15 +15,15 @@ public class NPCMove
     public int frequency; //npc가 얼마나 지정된 방향으로 빈번하게 움직일 것인가
 }
 
-public class Npcmanager : play
+public class Npcmanager : 변수저장소
 {
     //커스텀 class가 인스펙터 창에 나오게 하기위한 명령어
     [SerializeField]
     public NPCMove npc;
 
     public LayerMask layermask;
-    public bool dontmove;
-    public RaycastHit2D hit;
+    public RaycastHit2D raycasthit;
+    public bool NPCdontmove;
 
     private void Start()
     {
@@ -91,11 +91,11 @@ public class Npcmanager : play
         Vector2 start;
         Vector2 end;
         start = transform.position;
-        end = start + new Vector2(dirvec.x * speed * walkcount, dirvec.y * speed * walkcount);
+        end = start + new Vector2(방향.x * speed * walkcount, 방향.y * speed * walkcount);
 
         RaycastHit2D rayhit = Physics2D.Linecast(start, end, layermask);
         if (rayhit.transform != null)
-            dontmove = true;
+            NPCdontmove = true;
     }
 
     protected void Move(string _dir)
@@ -106,33 +106,33 @@ public class Npcmanager : play
     IEnumerator MoveCoroutine(string _dir)
     {
         NpcCanMove = false;
-        dirvec.Set(0, 0, dirvec.z);
+        방향.Set(0, 0, 방향.z);
 
         //switch 문에는 string값이 와도 상관이 없음
         switch (_dir)
         {
             case ("UP"):
-                dirvec.y = 1f;
+                방향.y = 1f;
                 break;
             case ("DOWN"):
-                dirvec.y = -1f;
+                방향.y = -1f;
                 break;
             case ("RIGHT"):
-                dirvec.x = 1f;
+                방향.x = 1f;
                 break;
             case ("LEFT"):
-                dirvec.x = -1f;
+                방향.x = -1f;
                 break;
             case ("NONE"):
-                dirvec.x = 0;
-                dirvec.y = 0;
+                방향.x = 0;
+                방향.y = 0;
                 break;
         }
 
         while (true)
         {
             
-            if (dontmove)
+            if (NPCdontmove)
                 yield return new WaitForSeconds(1f);
             else
                 break;
@@ -140,7 +140,7 @@ public class Npcmanager : play
 
         while (count < walkcount)
         {
-            transform.Translate(dirvec.x * speed, dirvec.y * speed, 0);
+            transform.Translate(방향.x * speed, 방향.y * speed, 0);
             count++;
             yield return new WaitForSeconds(0.01f);
         }

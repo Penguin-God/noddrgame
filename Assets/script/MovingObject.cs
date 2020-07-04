@@ -8,19 +8,19 @@ public class MovingObject : MonoBehaviour
 {
     //[]은 넣은값을 수정할 수 없지만 <>는 .Add(), .Remove(), .Clear() 등의 메소드로 안의 값을 조절할 수 있음 .Claer()는 <>를 삭제하는 메소드
     //<>는 크기를 셀 때 .Count로 셈
-    private List<play> CharacterMove;
+    private List<변수저장소> CharacterMove;
 
     public void MoveCharacter()
     {
         CharacterMove = ToList();
     }
 
-    public List<play> ToList()
+    public List<변수저장소> ToList()
     {
         //retuen값이 있는 함수이기 때문에 배열이 삭제되서 배열을 써도 상관이 없음
         //FindObjectsOfType는 FindObjectsOfType와 다르게 <>안에 값이 달린 모든 객체(오브젝트)를 반환시켜줌
-        List<play> TempList = new List<play>();
-        play[] temp = FindObjectsOfType<play>();
+        List<변수저장소> TempList = new List<변수저장소>();
+        변수저장소[] temp = FindObjectsOfType<변수저장소>();
 
         for (int i = 0; i < temp.Length; i++)
         {
