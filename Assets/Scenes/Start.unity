@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b29d056fab9e844a9220f7970d7741d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 894174772}
+  MapChangePoint: {fileID: 894174772}
 --- !u!61 &98480770
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11511,7 +11511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b29d056fab9e844a9220f7970d7741d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 517159958}
+  MapChangePoint: {fileID: 517159958}
 --- !u!1 &859368131
 GameObject:
   m_ObjectHideFlags: 0
@@ -11722,7 +11722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b29d056fab9e844a9220f7970d7741d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 673834860}
+  MapChangePoint: {fileID: 673834860}
 --- !u!1 &1179704614
 GameObject:
   m_ObjectHideFlags: 0

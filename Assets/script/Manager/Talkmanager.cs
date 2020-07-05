@@ -26,7 +26,7 @@ public class Talkmanager : MonoBehaviour
         talkdata.Add(500, new string[] { "헉.. 헉.....", "아 이제 슬슬 간다." });
     }
 
-    public string GetTalk(int id, int talkindex)
+    public string 대화창띄우기(int id, int talkindex)
     {
         //모든 대화를 보여주면 끝
         if (talkindex == talkdata[id].Length)

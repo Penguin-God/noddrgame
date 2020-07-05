@@ -33,7 +33,7 @@ public class Gamemanager : MonoBehaviour
     //    }
     //}
     
-    public void 대화(GameObject TalkObjectData)
+    public void 대화오브젝트정보보내기(GameObject TalkObjectData)
     {
         TalkObject = TalkObjectData;
         Objectdata obdata = TalkObject.GetComponent<Objectdata>();
@@ -52,7 +52,7 @@ public class Gamemanager : MonoBehaviour
 
     void Talk(int id, bool isnpc)
     {
-        string talkdata = talkmanager.GetTalk(id, talkindex);
+        string talkdata = talkmanager.대화창띄우기(id, talkindex);
         if (talkdata == null)
         {
             //이야기 끝났을 시 대화창끄고 talkindex초기화 

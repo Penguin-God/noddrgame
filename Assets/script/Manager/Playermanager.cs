@@ -45,7 +45,7 @@ public class Playermanager : 변수저장소 //play script를 상속받고 있�
         if (Input.GetButtonDown("Jump"))
         {
             if (TalkObject != null)
-                gamemanager.대화(TalkObject);
+                gamemanager.대화오브젝트정보보내기(TalkObject);
             if (gamemanager.isaction )
                 gamemanager.컷씬대화();
         }
@@ -88,7 +88,7 @@ public class Playermanager : 변수저장소 //play script를 상속받고 있�
         if (collision.gameObject.name != null && collision.gameObject.tag == "NpcTalk")
         {
             TalkObject = collision.gameObject;
-            gamemanager.대화(TalkObject);
+            gamemanager.대화오브젝트정보보내기(TalkObject);
         }
         else
             TalkObject = null;
