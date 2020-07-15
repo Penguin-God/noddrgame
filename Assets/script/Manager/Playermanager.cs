@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //MonoBehaviour 대신에 상속받고 싶은 script의 이름을 쓰면 상속이 됨
-public class Playermanager : 변수저장소 //play script를 상속받고 있음
+public class Playermanager : 변수저장소 //변수저장소 script를 상속받고 있음
 {
     public string CharacterName;
 
@@ -63,11 +63,11 @@ public class Playermanager : 변수저장소 //play script를 상속받고 있�
     {
         //Time.time : 이번프레임이 시작된 시간 즉 게임이 시작된 시간으로부터 경과한 시간을 초 단위로 나타냄(경과한 시간을 나타내므로 지속적으로 업데이트되는 FixedUpdate함수에 사용해야함)
         //아래 if문은 게임시작 2초후 gamemanager.대화();을 실행하는 함수
-        if (Time.time == 2 && !gamemanager.컷씬)
-        {
-            gamemanager.컷씬 = true;
-            gamemanager.컷씬대화();
-        }
+        //if (Time.time == 2 && !gamemanager.컷씬)
+        //{
+        //    gamemanager.컷씬 = true;
+        //    gamemanager.컷씬대화();
+        //}
 
         Vector2 moveVec = XMove ? new Vector2(h, 0) : new Vector2(0, v);
         Rigidbody.velocity = moveVec * speed;

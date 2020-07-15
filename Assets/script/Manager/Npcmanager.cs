@@ -24,6 +24,7 @@ public class Npcmanager : 변수저장소
     public LayerMask layermask;
     public RaycastHit2D raycasthit;
     public bool NPCdontmove;
+    public int walkcount;
 
     private void Start()
     {

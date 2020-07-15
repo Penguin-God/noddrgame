@@ -12,7 +12,6 @@ public class 변수저장소 : MonoBehaviour
     protected bool XMove;
     protected bool NpcCanMove = true;
 
-    public int walkcount;
     protected int count;
 
     //protected : 부모자식간의 상속은 가능하지만 인스펙터 창에서 노출은 되지않는 보호수준
