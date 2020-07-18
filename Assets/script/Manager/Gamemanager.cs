@@ -32,7 +32,7 @@ public class Gamemanager : MonoBehaviour
     //        Destroy(this.gameObject);
     //    }
     //}
-    
+
     public void 대화오브젝트정보보내기(GameObject TalkObjectData)
     {
         TalkObject = TalkObjectData;

@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5023d0bb3c340b34ab7510a67e1306e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapstartpoint: Start
+  mapstartpoint: asd
 --- !u!1 &98480768
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,7 +355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9358efd4631c4f347b4456affbed826b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scenename: "\uAC70\uB9AC"
+  Scenename: 
 --- !u!61 &365526209
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -611,10 +611,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7124dfa328366fa4c9f7f1aff2e51894, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamemanager: {fileID: 1325342200}
+  gamemanager: {fileID: 1325342199}
   currentmapname: 
   speed: 5
-  walkcount: 0
   CharacterName: 
 --- !u!212 &480954424
 SpriteRenderer:
@@ -675,7 +674,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 480954422}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.77, y: 2.93, z: 0.79589844}
+  m_LocalPosition: {x: 0.77, y: -1.86, z: 0.79589844}
   m_LocalScale: {x: 1, y: 1, z: 2}
   m_Children:
   - {fileID: 519420032}
@@ -11250,7 +11249,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1325342199}
+      - m_Target: {fileID: 1325342200}
         m_MethodName: "\uC2DC\uC791\uCC3D\uB6F0\uC6B0\uAE30"
         m_Mode: 1
         m_Arguments:
@@ -11901,10 +11900,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8e8a250ceca6264fa5955ea46ab918c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamemanager: {fileID: 1325342200}
+  gamemanager: {fileID: 0}
   currentmapname: 
   speed: 0
-  walkcount: 0
   npc:
     Npcmove: 0
     direction: []
@@ -11913,6 +11911,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   NPCdontmove: 0
+  walkcount: 0
 --- !u!4 &1319606510
 Transform:
   m_ObjectHideFlags: 0
@@ -11936,8 +11935,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1325342201}
-  - component: {fileID: 1325342200}
   - component: {fileID: 1325342199}
+  - component: {fileID: 1325342200}
   m_Layer: 0
   m_Name: Gamemanager
   m_TagString: Untagged
@@ -11954,21 +11953,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1325342198}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a064cdfb4de4c7349ab9f954c471f0b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  "\uC2DC\uC791\uCC3D": {fileID: 2115504459}
-  "\uD0C0\uC774\uD2C0": {fileID: 1179704614}
---- !u!114 &1325342200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1325342198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 533105cf0949e1c429f103e229e974b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 25daa2bfc37d03c47985eca9370c9a09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   TalkObject: {fileID: 0}
@@ -11980,6 +11965,20 @@ MonoBehaviour:
   QusetId: 0
   isaction: 0
   "\uCEF7\uC52C": 0
+--- !u!114 &1325342200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325342198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a064cdfb4de4c7349ab9f954c471f0b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  "\uC2DC\uC791\uCC3D": {fileID: 2115504459}
+  "\uD0C0\uC774\uD2C0": {fileID: 1179704614}
 --- !u!4 &1325342201
 Transform:
   m_ObjectHideFlags: 0
@@ -12271,7 +12270,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1325342199}
+      - m_Target: {fileID: 1325342200}
         m_MethodName: StartCancel
         m_Mode: 1
         m_Arguments:
@@ -12545,8 +12544,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1325342199}
-        m_MethodName: StartCancel
+      - m_Target: {fileID: 1325342200}
+        m_MethodName: GameStart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12776,10 +12775,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8e8a250ceca6264fa5955ea46ab918c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamemanager: {fileID: 1325342200}
+  gamemanager: {fileID: 1325342199}
   currentmapname: 
   speed: 0.1
-  walkcount: 10
   npc:
     Npcmove: 1
     direction:
@@ -12802,6 +12800,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   NPCdontmove: 0
+  walkcount: 10
 --- !u!1 &1883224060
 GameObject:
   m_ObjectHideFlags: 0
@@ -13115,7 +13114,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1325342199}
+      - m_Target: {fileID: 1325342200}
         m_MethodName: GameExit
         m_Mode: 1
         m_Arguments:

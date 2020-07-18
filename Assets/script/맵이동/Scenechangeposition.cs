@@ -5,7 +5,7 @@ using UnityEngine;
 public class Scenechangeposition : MonoBehaviour
 {
     public string mapstartpoint; // 맵의 이동시 플레이어가 시작할 위치
-    private 변수저장소 Theplayer; 
+    private 변수저장소 Theplayer;
 
     private void Start()
     {
