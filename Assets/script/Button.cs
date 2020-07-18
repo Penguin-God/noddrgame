@@ -14,7 +14,7 @@ public class Button : MonoBehaviour
         Application.Quit();
     }
 
-    public void Startwindow()
+    public void 시작창뛰우기()
     {
         시작창.SetActive(true);
     }
