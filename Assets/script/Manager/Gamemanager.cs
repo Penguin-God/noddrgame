@@ -17,7 +17,6 @@ public class Gamemanager : MonoBehaviour
     public int QusetId;
 
     public bool isaction;
-    public bool 컷씬;
 
     //씬 이동시 이 코드를 가진 스크립트를 가진 오브텍트는 파괴되지 않음
     //private void Start()
@@ -33,7 +32,7 @@ public class Gamemanager : MonoBehaviour
     //    }
     //}
 
-    public void 대화오브젝트정보보내기(GameObject TalkObjectData)
+    public void 오브젝트정보확인(GameObject TalkObjectData)
     {
         TalkObject = TalkObjectData;
         Objectdata obdata = TalkObject.GetComponent<Objectdata>();
@@ -41,16 +40,7 @@ public class Gamemanager : MonoBehaviour
         talkwindow.SetActive(isaction);
     }
 
-    public void 컷씬대화()
-    {
-        if (컷씬)
-        {
-            Talk(500, false);
-            talkwindow.SetActive(isaction);
-        }
-    }
-
-    void Talk(int id, bool isnpc)
+    public void Talk(int id, bool isnpc)
     {
         string talkdata = talkmanager.대화창띄우기(id, talkindex);
         if (talkdata == null)
@@ -59,7 +49,6 @@ public class Gamemanager : MonoBehaviour
             talkindex = 0;
             isaction = false;
             QusetId = 10;
-            컷씬 = false;
             //대화가 끝날 때 talkindex와 isaction이 변동이 없어야 하므로 return으로 함수 강제종료 
             return;
         }

@@ -6,6 +6,8 @@ using UnityEngine;
 public class Playermanager : 변수저장소 //변수저장소 script를 상속받고 있음
 {
     public string CharacterName;
+    public Button button;
+    public Event1 Eventone;
 
     GameObject TalkObject;
     
@@ -45,9 +47,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
         if (Input.GetButtonDown("Jump"))
         {
             if (TalkObject != null)
-                gamemanager.대화오브젝트정보보내기(TalkObject);
-            if (gamemanager.isaction )
-                gamemanager.컷씬대화();
+                gamemanager.오브젝트정보확인(TalkObject);
         }
 
         //에러난 코드(첫번째 충돌 후 다시 가면 대사가 안뜨고 다시 충돌해야 대사가 뜸)
@@ -88,7 +88,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
         if (collision.gameObject.name != null && collision.gameObject.tag == "NpcTalk")
         {
             TalkObject = collision.gameObject;
-            gamemanager.대화오브젝트정보보내기(TalkObject);
+            gamemanager.오브젝트정보확인(TalkObject);
         }
         else
             TalkObject = null;

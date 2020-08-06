@@ -733,6 +733,8 @@ MonoBehaviour:
   currentmapname: 
   speed: 5
   CharacterName: 
+  button: {fileID: 1325342200}
+  Eventone: {fileID: 0}
 --- !u!212 &480954424
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -792,7 +794,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 480954422}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.77, y: -1, z: 0.79589844}
+  m_LocalPosition: {x: 0.59, y: -1, z: 0.79589844}
   m_LocalScale: {x: 1, y: 1, z: 2}
   m_Children:
   - {fileID: 519420032}
@@ -11858,7 +11860,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1179704615
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12019,7 +12021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8e8a250ceca6264fa5955ea46ab918c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamemanager: {fileID: 0}
+  gamemanager: {fileID: 1325342199}
   currentmapname: 
   speed: 0
   npc:
@@ -12083,7 +12085,6 @@ MonoBehaviour:
   talkindex: 0
   QusetId: 0
   isaction: 0
-  "\uCEF7\uC52C": 0
 --- !u!114 &1325342200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12098,6 +12099,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   "\uC2DC\uC791\uCC3D": {fileID: 2115504459}
   "\uD0C0\uC774\uD2C0": {fileID: 1179704614}
+  GameOn: 0
 --- !u!4 &1325342201
 Transform:
   m_ObjectHideFlags: 0
@@ -12862,7 +12864,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1811733109}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.49, y: -6.62, z: 0}
+  m_LocalPosition: {x: 4.49, y: -4.82, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

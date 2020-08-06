@@ -7,7 +7,7 @@ public class Button : MonoBehaviour
 {
     public GameObject 시작창;
     public GameObject 타이틀;
-
+    public bool GameOn;
 
     public void GameExit()
     {
@@ -23,6 +23,7 @@ public class Button : MonoBehaviour
     {
         타이틀.SetActive(false);
         시작창.SetActive(false);
+        GameOn = true;
     }
 
     public void StartCancel()
