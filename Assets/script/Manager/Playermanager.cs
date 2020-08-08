@@ -9,6 +9,9 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
     public Button button;
     public Event1 Eventone;
 
+    private int CutTalkindex;
+    private bool Cutisnpe;
+
     GameObject TalkObject;
     
     private void Awake()
@@ -48,6 +51,8 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
         {
             if (TalkObject != null)
                 gamemanager.오브젝트정보확인(TalkObject);
+            if (TalkObject == null && gamemanager.isaction)
+                gamemanager.컷씬대화(400, false);
         }
 
         //에러난 코드(첫번째 충돌 후 다시 가면 대사가 안뜨고 다시 충돌해야 대사가 뜸)
@@ -62,11 +67,11 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
     private void FixedUpdate()
     {
         //Time.time : 이번프레임이 시작된 시간 즉 게임이 시작된 시간으로부터 경과한 시간을 초 단위로 나타냄(경과한 시간을 나타내므로 지속적으로 업데이트되는 FixedUpdate함수에 사용해야함)
-        //아래 if문은 게임시작 2초후 gamemanager.대화();을 실행하는 함수
-        //if (Time.time == 2 && !gamemanager.컷씬)
+        //아래 if문은 게임시작 2초후 gamemanager.대화(); 을 실행하는 함수
+        //if (Time.time == 2)
         //{
-        //    gamemanager.컷씬 = true;
-        //    gamemanager.컷씬대화();
+        //    gamemanager.컷씬대화(400, false);
+        //    Debug.Log("asda");
         //}
 
         Vector2 moveVec = XMove ? new Vector2(h, 0) : new Vector2(0, v);

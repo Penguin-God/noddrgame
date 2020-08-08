@@ -9,6 +9,7 @@ public class mapchange : MonoBehaviour
     private 변수저장소 Theplayer;
     private Fademanager fademanager;
     private Gamemanager gamemanager;
+    private Playermanager playermanager;
 
     private void Start()
     {
@@ -16,6 +17,7 @@ public class mapchange : MonoBehaviour
         Theplayer = FindObjectOfType<변수저장소>();
         fademanager = FindObjectOfType<Fademanager>();
         gamemanager = FindObjectOfType<Gamemanager>();
+        playermanager = FindObjectOfType<Playermanager>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -32,7 +34,7 @@ public class mapchange : MonoBehaviour
         fademanager.FadeOut();
         yield return new WaitForSeconds(1f);
         //Transform 변수에 게임 오브젝트를 넣어 충돌 시 그 오브젝트 위치로 이동하게 함 
-        Theplayer.transform.position = MapChangePoint.transform.position;
+        playermanager.transform.position = MapChangePoint.transform.position;
         fademanager.FadeIn();
         yield return new WaitForSeconds(0.5f);
         gamemanager.isaction = false;

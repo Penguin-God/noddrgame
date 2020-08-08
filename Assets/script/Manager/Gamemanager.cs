@@ -40,6 +40,12 @@ public class Gamemanager : MonoBehaviour
         talkwindow.SetActive(isaction);
     }
 
+    public void 컷씬대화(int id, bool isnpc)
+    {
+        Talk(id, isnpc);
+        talkwindow.SetActive(isaction);
+    }
+
     public void Talk(int id, bool isnpc)
     {
         string talkdata = talkmanager.대화창띄우기(id, talkindex);
