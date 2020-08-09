@@ -25,7 +25,7 @@ public class Button : MonoBehaviour
     {
         타이틀.SetActive(false);
         시작창.SetActive(false);
-        StartCoroutine(CutCoroutine());
+        npcmanager.NpcMove();
     }
 
     IEnumerator CutCoroutine()
@@ -35,6 +35,7 @@ public class Button : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
         npcmanager.NpcMove();
+        Debug.Log("awsfgsaf");
     }
  
     public void StartCancel()

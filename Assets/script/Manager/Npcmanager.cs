@@ -18,17 +18,16 @@ public class NPCMove
 
 public class Npcmanager : 변수저장소
 {
-    //커스텀 class가 인스펙터 창에 나오게 하기위한 명령어
-    [SerializeField]
-    public NPCMove npc;
-    //커스텀class를 변수로 초기화(스크립트 초기화와 사용방법이 같음)
+    [SerializeField] //커스텀 class가 인스펙터 창에 나오게 하기위한 명령어
+    public NPCMove npc;//커스텀class를 변수로 초기화(스크립트 초기화와 사용방법이 같음)
 
     public LayerMask layermask;
     public RaycastHit2D raycasthit;
 
     private void Start()
     {
-        StartCoroutine(MoveCoroutine());
+        queue = new Queue<string>();
+        //NpcMove();
     }
 
     public void NpcMove()
@@ -77,7 +76,7 @@ public class Npcmanager : 변수저장소
                         break;
                 }
 
-                yield return new WaitUntil(() => NpcCanMove);
+                yield return new WaitUntil(() => queue.Count < 2);
                 //NpcCanMove가 true가 될 때까지 무한대기
                 //case5의 경우 대기시간이 없어 무한반복되어 렉걸리는데 코르틴이 끝날때마다 NpcCanMove를 true로 만들고 끝날때마다 
                 //실행시키기 때문에 캐릭터는 딜레이없이 움직이면서 유니티도 안튕김

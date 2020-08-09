@@ -5,7 +5,6 @@ using UnityEngine;
 //MonoBehaviour 대신에 상속받고 싶은 script의 이름을 쓰면 상속이 됨
 public class Playermanager : 변수저장소 //변수저장소 script를 상속받고 있음
 {
-    public string CharacterName;
     public Button button;
     public Event1 Eventone;
 
@@ -17,6 +16,11 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
     private void Awake()
     {
         Rigidbody = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        queue = new Queue<string>();
     }
 
     void Update()
