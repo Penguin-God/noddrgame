@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class Eventmanager : MonoBehaviour
 {
-    private Gamemanager gamemanager;
     private List<변수저장소> 변수저장소;
     //마을마다 수가 다른 Npc특성상 한번넣으면 값을 바꿀 수 없는 []보다는 값을 유동적으로 바꿀 수 있는 <>가 적절하다.
-
-    private void Start()
-    {
-        gamemanager = FindObjectOfType<Gamemanager>();
-    }
 
     public void NpcLode()
     {

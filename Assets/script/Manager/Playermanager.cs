@@ -6,10 +6,6 @@ using UnityEngine;
 public class Playermanager : 변수저장소 //변수저장소 script를 상속받고 있음
 {
     public Button button;
-    public Event1 Eventone;
-
-    private int CutTalkindex;
-    private bool Cutisnpe;
 
     GameObject TalkObject;
     
@@ -18,10 +14,10 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
         Rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    private void Start()
-    {
-        queue = new Queue<string>();
-    }
+    //private void Start()
+    //{
+    //    queue = new Queue<string>();
+    //}
 
     void Update()
     {
@@ -55,8 +51,6 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
         {
             if (TalkObject != null)
                 gamemanager.오브젝트정보확인(TalkObject);
-            if (TalkObject == null && gamemanager.isaction)
-                gamemanager.컷씬대화(400, false);
         }
 
         //에러난 코드(첫번째 충돌 후 다시 가면 대사가 안뜨고 다시 충돌해야 대사가 뜸)
