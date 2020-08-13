@@ -22,6 +22,7 @@ public class Talkmanager : MonoBehaviour
                                          "대사를 같게 쳐 적으면.",
                                          "그게 실험이냐 씨빨?"});
         talkdata.Add(500, new string[] { "헉.. 헉....." });
+        talkdata.Add(600, new string[] { "이것은 컷씬대화 실험으로", "대사가 끊기지않으면서", "대사가 잘 나오면 성공입니다." });
     }
 
     public string 대화창띄우기(int id, int talkindex)

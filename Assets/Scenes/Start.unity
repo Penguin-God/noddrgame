@@ -735,7 +735,7 @@ MonoBehaviour:
   NPCdontmove: 0
   walkcount: 0
   CharactreName: player
-  button: {fileID: 0}
+  button: {fileID: 1779485844}
 --- !u!212 &480954424
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13030,10 +13030,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a064cdfb4de4c7349ab9f954c471f0b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "\uC2DC\uC791\uCC3D": {fileID: 423959123}
+  "\uC2DC\uC791\uCC3D": {fileID: 2115504459}
   "\uD0C0\uC774\uD2C0": {fileID: 1179704614}
   gamemanager: {fileID: 1325342199}
+  eventmanager: {fileID: 1494933329}
+  testmove:
+  - name: "\uC544\uBE60"
+    direction: UP
+  - name: "\uC544\uBE60"
+    direction: UP
+  - name: "\uC544\uBE60"
+    direction: UP
   cuthome: 0
+  cutnumber: 600
 --- !u!1 &1811733109
 GameObject:
   m_ObjectHideFlags: 0
@@ -13045,7 +13054,6 @@ GameObject:
   - component: {fileID: 1811733112}
   - component: {fileID: 1811733111}
   - component: {fileID: 1811733114}
-  - component: {fileID: 1811733115}
   - component: {fileID: 1811733113}
   - component: {fileID: 1811733110}
   m_Layer: 0
@@ -13180,41 +13188,11 @@ MonoBehaviour:
   CharactreName: "\uC544\uBE60"
   npc:
     Npcmove: 1
-    direction:
-    - UP
-    - UP
-    - UP
-    - UP
-    - UP
-    - UP
-    - UP
-    - UP
-    - UP
-    - UP
-    - LEFT
-    - LEFT
-    - LEFT
-    - LEFT
+    direction: []
     frequency: 5
   layermask:
     serializedVersion: 2
     m_Bits: 512
---- !u!114 &1811733115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1811733109}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a064cdfb4de4c7349ab9f954c471f0b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  "\uC2DC\uC791\uCC3D": {fileID: 423959123}
-  "\uD0C0\uC774\uD2C0": {fileID: 1179704614}
-  gamemanager: {fileID: 1325342199}
-  cuthome: 0
 --- !u!1 &1883224060
 GameObject:
   m_ObjectHideFlags: 0

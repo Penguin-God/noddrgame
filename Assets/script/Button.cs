@@ -13,7 +13,8 @@ public class Button : MonoBehaviour
     public Testmove[] testmove;
     
     public bool cuthome;
-
+    public int cutnumber;
+    
     public void GameExit()
     {
         Application.Quit();
@@ -36,13 +37,10 @@ public class Button : MonoBehaviour
     IEnumerator HomeCoroutine()
     {
         yield return new WaitForSeconds(1f);
-        while (!gamemanager.isaction)
-        {
-            if(Input.GetButtonDown("Jump"))
-                gamemanager.컷씬대화(200, false);
-        }
+        gamemanager.컷씬대화(cutnumber, false);
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitUntil(() => !gamemanager.isaction);
+        yield return new WaitForSeconds(1.5f);
         CutHome();
     }
 
