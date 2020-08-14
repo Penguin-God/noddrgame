@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class Button : MonoBehaviour
 {
+    public Mapchange mapchange;
     public GameObject 시작창;
     public GameObject 타이틀;
 
     public Gamemanager gamemanager;
     public Eventmanager eventmanager;
     public Testmove[] testmove;
-    
+
     public bool cuthome;
     public int cutnumber;
     
@@ -29,32 +30,36 @@ public class Button : MonoBehaviour
     {
         타이틀.SetActive(false);
         시작창.SetActive(false);
-        cuthome = true;
 
         StartCoroutine(HomeCoroutine());
     }
 
     IEnumerator HomeCoroutine()
     {
+        cuthome = true;
         yield return new WaitForSeconds(1f);
         gamemanager.컷씬대화(cutnumber, false);
 
         yield return new WaitUntil(() => !gamemanager.isaction);
-        yield return new WaitForSeconds(1.5f);
         CutHome();
+        gamemanager.isaction = true;
+        cuthome = false;
+        yield return new WaitUntil(() => !gamemanager.isaction);
+        mapchange.EventMove();
     }
 
     public void CutHome()
     {
-        if (cuthome)
+        eventmanager.NpcLode();
+        for (int i = 0; i < testmove.Length; i++)
         {
-            eventmanager.NpcLode();
-            for (int i = 0; i < testmove.Length; i++)
-            {
-                eventmanager.EventMove(testmove[i].name, testmove[i].direction);
-            }
-            cuthome = false;
+            eventmanager.EventMove(testmove[i].name, testmove[i].direction);
         }
+    }
+
+    public void CutMove()
+    {
+
     }
 
     public void StartCancel()

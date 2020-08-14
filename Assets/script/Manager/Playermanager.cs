@@ -51,7 +51,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
         {
             if (TalkObject != null)
                 gamemanager.오브젝트정보확인(TalkObject);
-            if (gamemanager.isaction)
+            if (gamemanager.isaction && button.cuthome)
                 gamemanager.컷씬대화(button.cutnumber, false);
         }
 
