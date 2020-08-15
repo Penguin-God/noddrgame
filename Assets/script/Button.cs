@@ -41,25 +41,20 @@ public class Button : MonoBehaviour
         gamemanager.컷씬대화(cutnumber, false);
 
         yield return new WaitUntil(() => !gamemanager.isaction);
-        CutHome();
+        HomeCutScene();
         gamemanager.isaction = true;
         cuthome = false;
         yield return new WaitUntil(() => !gamemanager.isaction);
-        mapchange.EventMove();
+        mapchange.CutMapChange();
     }
 
-    public void CutHome()
+    public void HomeCutScene()
     {
         eventmanager.NpcLode();
         for (int i = 0; i < testmove.Length; i++)
         {
             eventmanager.EventMove(testmove[i].name, testmove[i].direction);
         }
-    }
-
-    public void CutMove()
-    {
-
     }
 
     public void StartCancel()
