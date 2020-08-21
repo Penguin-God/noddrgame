@@ -51,9 +51,9 @@ public class MovingPlayer : MonoBehaviour
 
             while (Currentwalkcount < Walkcount)
             {
-                if (vector.x != 0)
+                if (vector.x == 1 || vector.x == -1)
                     transform.Translate(vector.x * (Speed + ApplyRunspeed), 0, 0);
-                else if (vector.y != 0)
+                else if (vector.y == 1 || vector.y == -1)
                     transform.Translate(0, vector.y * (Speed + ApplyRunspeed), 0);
                 //Translate() : 현재 있는 값에서 ()안에 값만큼 더하는 함수
                 if (CanRun)

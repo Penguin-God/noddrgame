@@ -8,9 +8,12 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
     public Button button;
 
     GameObject TalkObject;
+    Vector3 vector;
+    private Animator animator;
 
     private void Awake()
     {
+        animator = GetComponent<Animator>();
         Rigidbody = GetComponent<Rigidbody2D>();
     }
 
@@ -31,6 +34,23 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
             XMove = false;
         else if (hUp || vUp)
             XMove = h != 0;
+
+        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+        {
+            if (gamemanager.isaction)
+                animator.SetBool("Walking", false);
+            else
+            {
+                vector.Set(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), transform.position.z);//방향에 따라 각각 -1,1을리턴
+                if (vector.x != 0)
+                    vector.y = 0;
+                animator.SetFloat("DirX", vector.x); //DirX에 vector.x의 값을 받겠다.
+                animator.SetFloat("DirY", vector.y);
+                animator.SetBool("Walking", true);
+            }
+        }
+        else
+            animator.SetBool("Walking", false);
 
         //ray 생성
         if (vDown && v == 1)
