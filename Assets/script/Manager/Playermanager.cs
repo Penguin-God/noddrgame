@@ -11,6 +11,9 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
     Vector3 vector;
     private Animator animator;
 
+    private int Xani;
+    private int Yani;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -42,23 +45,35 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
             else
             {
                 vector.Set(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), transform.position.z);//방향에 따라 각각 -1,1을리턴
-                if(vector.y != 0)
-                {
-                    if (Input.GetAxisRaw("Horizontal") != 0 && Input.GetAxisRaw("Vertical") != 0)
-                        vector.y = 0;
-                }
-                else if(vector.x != 0)
-                {
-                    if (Input.GetAxisRaw("Horizontal") != 0 && Input.GetAxisRaw("Vertical") != 0)
-                        vector.x = 0;
-                }
+                if (Input.GetAxisRaw("Vertical") != 0)  
+                    Yani++;
+                if (Input.GetAxisRaw("Horizontal") != 0)
+                    Xani++;
+
+                Debug.Log("x갑은" + Xani + "입니다");
+                Debug.Log("y값은" + Yani + "입니다");
+
+                if (Xani > Yani && Input.GetAxisRaw("Vertical") != 0)
+                    vector.x = 0;
+                else if (Xani < Yani && Input.GetAxisRaw("Horizontal") != 0)
+                    vector.y = 0;
+                //if (Xani > Yani && Input.GetAxisRaw("Horizontal") != 0 && vector.x == 0 && vector.y != 0)
+                //    Xani = 0;
+                //else if (Xani < Yani && Input.GetAxisRaw("Vertical") != 0 && vector.y == 0 && vector.x != 0)
+                //    Yani = 0;
+                
+
                 animator.SetFloat("DirX", vector.x); //DirX에 vector.x의 값을 받겠다.
                 animator.SetFloat("DirY", vector.y);
                 animator.SetBool("Walking", true);
             }
         }
         else
+        {
             animator.SetBool("Walking", false);
+            Xani = 0;
+            Yani = 0;
+        }
 
         //ray 생성
         if (vDown && v == 1)
