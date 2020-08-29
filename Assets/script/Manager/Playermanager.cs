@@ -50,18 +50,24 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
                 if (Input.GetAxisRaw("Horizontal") != 0)
                     Xani++;
 
-                Debug.Log("x갑은" + Xani + "입니다");
-                Debug.Log("y값은" + Yani + "입니다");
+                if (Input.GetAxisRaw("Vertical") != 0 && Input.GetAxisRaw("Horizontal") != 0) // XAni, YAni값이 축적되지 않게 하기위한 코드
+                {
+                    if (Xani > Yani)
+                    {
+                        Xani = 6;
+                        Yani = 0;
+                    }
+                    else if (Yani > Xani)
+                    {
+                        Yani = 6;
+                        Xani = 0;
+                    }
+                }
 
-                if (Xani > Yani && Input.GetAxisRaw("Vertical") != 0)
+                if (Xani > Yani + 5 && Input.GetAxisRaw("Vertical") != 0) // X축으로 움직이고 있다가 Y축 버튼을 누르면 vector.x값은 0
                     vector.x = 0;
-                else if (Xani < Yani && Input.GetAxisRaw("Horizontal") != 0)
+                else if (Xani + 5 < Yani && Input.GetAxisRaw("Horizontal") != 0)
                     vector.y = 0;
-                //if (Xani > Yani && Input.GetAxisRaw("Horizontal") != 0 && vector.x == 0 && vector.y != 0)
-                //    Xani = 0;
-                //else if (Xani < Yani && Input.GetAxisRaw("Vertical") != 0 && vector.y == 0 && vector.x != 0)
-                //    Yani = 0;
-                
 
                 animator.SetFloat("DirX", vector.x); //DirX에 vector.x의 값을 받겠다.
                 animator.SetFloat("DirY", vector.y);
