@@ -82,13 +82,13 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
         }
 
         //ray 생성
-        if (vDown && v == 1)
+        if (vector.y == 1)
             방향 = Vector3.up;
-        if (vDown && v == -1)
+        if (vector.y == -1)
             방향 = Vector3.down;
-        if (hDown && h == 1)
+        if (vector.x == 1)
             방향 = Vector3.right;
-        if (hDown && h == -1)
+        if (vector.x == -1)
             방향 = Vector3.left;
 
         if (Input.GetButtonDown("Jump"))
