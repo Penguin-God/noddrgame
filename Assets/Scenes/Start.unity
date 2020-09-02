@@ -731,12 +731,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gamemanager: {fileID: 1325342199}
-  currentmapname: 
   speed: 5
-  NPCdontmove: 0
-  walkcount: 0
   CharactreName: player
   button: {fileID: 1779485844}
+  currentmapname: 
 --- !u!212 &480954424
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -796,7 +794,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 480954422}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.53, y: -1.45, z: 0.79589844}
+  m_LocalPosition: {x: 0.59, y: -1.45, z: 0.79589844}
   m_LocalScale: {x: 1, y: 1, z: 2}
   m_Children:
   - {fileID: 519420032}
@@ -886,7 +884,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 514754295}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 1684561208}
@@ -12128,10 +12126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gamemanager: {fileID: 1325342199}
-  currentmapname: 
   speed: 0.2
-  NPCdontmove: 0
-  walkcount: 10
   CharactreName: "\uC2E4\uD5D8\uCCB4"
   npc:
     Npcmove: 0
@@ -12140,6 +12135,8 @@ MonoBehaviour:
   layermask:
     serializedVersion: 2
     m_Bits: 512
+  NPCdontmove: 0
+  walkcount: 10
 --- !u!1 &1197521729
 GameObject:
   m_ObjectHideFlags: 0
@@ -12242,10 +12239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gamemanager: {fileID: 1325342199}
-  currentmapname: 
   speed: 0
-  NPCdontmove: 0
-  walkcount: 0
   CharactreName: 
   npc:
     Npcmove: 0
@@ -12254,6 +12248,8 @@ MonoBehaviour:
   layermask:
     serializedVersion: 2
     m_Bits: 0
+  NPCdontmove: 0
+  walkcount: 0
 --- !u!4 &1319606510
 Transform:
   m_ObjectHideFlags: 0
@@ -13240,10 +13236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gamemanager: {fileID: 1325342199}
-  currentmapname: 
   speed: 0.1
-  NPCdontmove: 0
-  walkcount: 10
   CharactreName: "\uC544\uBE60"
   npc:
     Npcmove: 1
@@ -13252,6 +13245,8 @@ MonoBehaviour:
   layermask:
     serializedVersion: 2
     m_Bits: 512
+  NPCdontmove: 0
+  walkcount: 10
 --- !u!1 &1856912278
 GameObject:
   m_ObjectHideFlags: 0

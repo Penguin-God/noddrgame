@@ -13,6 +13,10 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
 
     private int Xani;
     private int Yani;
+    private float h;
+    private float v;
+    private bool XMove;
+    public string currentmapname; //Scenechange script에 있는 mapname변수를 저장
 
     private void Awake()
     {

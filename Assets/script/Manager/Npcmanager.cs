@@ -24,6 +24,12 @@ public class Npcmanager : 변수저장소
     public LayerMask layermask;
     public RaycastHit2D raycasthit;
 
+    public bool NPCdontmove;
+    private bool NotCortoutine;
+    
+    public int walkcount;
+    protected int count;
+
     private void Start()
     {
         queue = new Queue<string>();
@@ -43,6 +49,72 @@ public class Npcmanager : 변수저장소
     public void SetNotMove()
     {
 
+    }
+
+    public Queue<string> queue;
+    //Queue : 선입선출 자료구조(먼저넣은값이 가장 앞에있고 값을 뺄 때 가장 앞에 있는게 먼저 빼지는 자료구조)
+    //Queue자료구조에 a,b,c 값을 넣으면 a,b,c 순서대로 값이 들어가고 값을 뻬려고 하면 a,b,c순서대로 값이 나온다.
+    //Enqueue() : Queue의 끝 부분에 값을 넣는 것, Dequeue : Queue 의 시작 부분에서 개체를 제거하고 반환함. 
+
+    //protected : 부모자식간의 상속은 가능하지만 인스펙터 창에서 노출은 되지않는 보호수준
+
+    public void Move(string dir, int frequencey = 5)
+    {
+        queue.Enqueue(dir); //queue에 dir을 넣음
+        if (!NotCortoutine)
+        {
+            //지정한 방향값이 다수일 경우 코루틴이 다중반복실행되어 오브젝트가 개빨리 움직이는 에러가 나서 코루틴 시작 조건을 만듬
+            StartCoroutine(MoveCoroutine(dir, frequencey));
+            NotCortoutine = true;
+        }
+    }
+
+    IEnumerator MoveCoroutine(string dir, int frequencey)
+    {
+        while (queue.Count != 0) //queue의 값이 모두 제거되면 멈춤
+        {
+            string direction = queue.Dequeue(); //queue에서 제거되는 값이 switch문의 값이됨
+            방향.Set(0, 0, 방향.z);//코루틴을 한번 돌고나면 백터값을 초기화(x,y가 동시에 1을가지면 안되기 때문)
+
+            //switch 문에는 string값이 와도 상관이 없음
+            switch (direction)
+            {
+                case ("UP"):
+                    방향.y = 1f;
+                    break;
+                case ("DOWN"):
+                    방향.y = -1f;
+                    break;
+                case ("RIGHT"):
+                    방향.x = 1f;
+                    break;
+                case ("LEFT"):
+                    방향.x = -1f;
+                    break;
+                case ("NONE"):
+                    방향.x = 0;
+                    방향.y = 0;
+                    break;
+            }
+
+            while (true)
+            {
+                if (NPCdontmove)
+                    yield return new WaitForSeconds(1f);
+                else
+                    break;
+            }
+
+            while (count < walkcount)
+            {
+                transform.Translate(방향.x * speed, 방향.y * speed, 0);
+                //코루틴에서 백터값을 초기화하기 때문에 x,y를 동시에 움직여도 대각선 이동은 일어나지 않음
+                count++;
+                yield return new WaitForSeconds(0.01f);
+            }
+            count = 0;
+        }
+        NotCortoutine = false;//while문이 끝난후 다시 false로 바꿔 코루틴이 돌아가게함
     }
 
     //IEnumerator은 코루틴(Coroutine) 중에 하나로 yield return 구문을 어디엔가 포함하고 있는 함수이다.
@@ -80,7 +152,7 @@ public class Npcmanager : 변수저장소
                 //NpcCanMove가 true가 될 때까지 무한대기
                 //case5의 경우 대기시간이 없어 무한반복되어 렉걸리는데 코르틴이 끝날때마다 NpcCanMove를 true로 만들고 끝날때마다 
                 //실행시키기 때문에 캐릭터는 딜레이없이 움직이면서 유니티도 안튕김
-                base.Move(npc.direction[i], npc.frequency);
+                Move(npc.direction[i], npc.frequency);
                 // base : 자식이 상속받는 부모가 있을 시 부모의 메서드를 사용할 때 사용하는 접근자 ex) base.부모매서드명()
                 // base는 앞에 붙이든 말든 상관없음 하지만 문제가 생길 때 보기편함
 
