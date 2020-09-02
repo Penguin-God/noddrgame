@@ -11557,7 +11557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606b72d921c408e41a58e8c980a817be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 0}
+  button: {fileID: 1779485844}
   gamemanager: {fileID: 1325342199}
   npcmanager: {fileID: 1319606509}
 --- !u!1 &811157400
