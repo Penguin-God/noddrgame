@@ -734,6 +734,7 @@ MonoBehaviour:
   speed: 5
   CharactreName: player
   button: {fileID: 1779485844}
+  isaction: 0
   currentmapname: 
 --- !u!212 &480954424
 SpriteRenderer:
@@ -794,7 +795,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 480954422}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.59, y: -1.45, z: 0.79589844}
+  m_LocalPosition: {x: 0.33, y: -0.49, z: 0.79589844}
   m_LocalScale: {x: 1, y: 1, z: 2}
   m_Children:
   - {fileID: 519420032}
@@ -12129,7 +12130,6 @@ MonoBehaviour:
   speed: 0.2
   CharactreName: "\uC2E4\uD5D8\uCCB4"
   npc:
-    Npcmove: 0
     direction: []
     frequency: 5
   layermask:
@@ -12242,7 +12242,6 @@ MonoBehaviour:
   speed: 0
   CharactreName: 
   npc:
-    Npcmove: 0
     direction: []
     frequency: 0
   layermask:
@@ -12298,9 +12297,9 @@ MonoBehaviour:
   "\uB300\uD654\uCC3D\uD14D\uC2A4\uD2B8": {fileID: 2057906862}
   talkmanager: {fileID: 34894808}
   npcmanager: {fileID: 1319606509}
+  playermanager: {fileID: 480954423}
   talkindex: 0
   QusetId: 0
-  isaction: 0
 --- !u!4 &1325342201
 Transform:
   m_ObjectHideFlags: 0
@@ -13081,6 +13080,7 @@ MonoBehaviour:
   mapchange: {fileID: 1856912280}
   "\uC2DC\uC791\uCC3D": {fileID: 2115504459}
   "\uD0C0\uC774\uD2C0": {fileID: 1179704614}
+  playermanager: {fileID: 480954423}
   gamemanager: {fileID: 1325342199}
   eventmanager: {fileID: 1494933329}
   testmove:
@@ -13236,17 +13236,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gamemanager: {fileID: 1325342199}
-  speed: 0.1
+  speed: 0.35
   CharactreName: "\uC544\uBE60"
   npc:
-    Npcmove: 1
     direction: []
     frequency: 5
   layermask:
     serializedVersion: 2
     m_Bits: 512
   NPCdontmove: 0
-  walkcount: 10
+  walkcount: 4
 --- !u!1 &1856912278
 GameObject:
   m_ObjectHideFlags: 0
