@@ -29,6 +29,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
         h = gamemanager.isaction ? 0 : Input.GetAxisRaw("Horizontal");
         v = gamemanager.isaction ? 0 : Input.GetAxisRaw("Vertical");
 
+        // 사망 연산자 변수 = bool변수 : ? A : B의 형식으로 작성하며 bool변수가 true일 때 A false일 때 B를 출력함 
         bool hDown = gamemanager.isaction ? false : Input.GetButtonDown("Horizontal");
         bool vDown = gamemanager.isaction ? false : Input.GetButtonDown("Vertical");
         bool hUp = gamemanager.isaction ? true : Input.GetButtonUp("Horizontal");
@@ -42,6 +43,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
         else if (hUp || vUp)
             XMove = h != 0;
 
+        // 애니메이션
         if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
         {
             if (gamemanager.isaction)
@@ -95,6 +97,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
         if (vector.x == -1)
             방향 = Vector3.left;
 
+        // 대화
         if (Input.GetButtonDown("Jump"))
         {
             if (TalkObject != null)
@@ -106,20 +109,20 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
 
     private void FixedUpdate()
     {
-        Vector2 moveVec = XMove ? new Vector2(h, 0) : new Vector2(0, v);
-        Rigidbody.velocity = moveVec * speed;
+        vector = XMove ? new Vector2(h, 0) : new Vector2(0, v);
+        Rigidbody.velocity = vector * speed;
 
         Debug.DrawRay(Rigidbody.position, 방향 * 0.7f, new Color(0, 1, 0));
         RaycastHit2D rayhit = Physics2D.Raycast(Rigidbody.position, 방향, 0.7f, LayerMask.GetMask("Object"));
 
-        //GameObject 변수는 null이 되면 인스펙터에서 None표시 안뜨고 그냥 전에 가져온 오브젝트가 빈 껍데기처럼 남아있는듯 함.
-        if (rayhit.collider != null && !gamemanager.isaction)//대화중이 아닐때만 rayhit에 걸린 오브젝트 가져오기(NPC와 대화중에 다른 오브젝트를 가져오는 것을 방지하기 위함) 
+        // GameObject 변수는 null이 되면 인스펙터에서 None표시 안뜨고 그냥 전에 가져온 오브젝트가 빈 껍데기처럼 남아있는듯 함.
+        if (rayhit.collider != null && !gamemanager.isaction)// 대화중이 아닐때만 rayhit에 걸린 오브젝트 가져오기(NPC와 대화중에 다른 오브젝트를 가져오는 것을 방지하기 위함) 
             TalkObject = rayhit.collider.gameObject;
         else if(!gamemanager.isaction)
             TalkObject = null;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) //트리거와 충돌시 충돌 오브젝트 가져오기
+    private void OnTriggerEnter2D(Collider2D collision) // 트리거와 충돌시 충돌 오브젝트 정보 가져오기
     {
         if (collision.gameObject.name != null && collision.gameObject.tag == "NpcTalk")
         {

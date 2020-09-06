@@ -7,8 +7,8 @@ using UnityEngine;
 public class NPCMove
 {
     //Tooltip은 인스펙터 창에서 마우스오버 시 나오는 부가설명
-    [Tooltip("NPCmove가 true일시 NPC가 움직임")]
-    public bool Npcmove;
+    //[Tooltip("NPCmove가 true일시 NPC가 움직임")]
+    //public bool Npcmove;
     public string[] direction; // npc가 움직일 방향 설정
 
     [Range(1, 5)] [Tooltip("1 = 천천히, 2 = 조금천천히, 3 = 보통, 4 = 빠르게, 5 = 연속적으로")]
@@ -55,8 +55,6 @@ public class Npcmanager : 변수저장소
     //Queue : 선입선출 자료구조(먼저넣은값이 가장 앞에있고 값을 뺄 때 가장 앞에 있는게 먼저 빼지는 자료구조)
     //Queue자료구조에 a,b,c 값을 넣으면 a,b,c 순서대로 값이 들어가고 값을 뻬려고 하면 a,b,c순서대로 값이 나온다.
     //Enqueue() : Queue의 끝 부분에 값을 넣는 것, Dequeue : Queue 의 시작 부분에서 개체를 제거하고 반환함. 
-
-    //protected : 부모자식간의 상속은 가능하지만 인스펙터 창에서 노출은 되지않는 보호수준
 
     public void Move(string dir, int frequencey = 5)
     {
