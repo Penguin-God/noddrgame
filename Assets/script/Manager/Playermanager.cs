@@ -13,9 +13,9 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
 
     private int Xani;
     private int Yani;
-    private float h;
-    private float v;
     private bool XMove;
+
+    public bool isaction;
     public string currentmapname; //Scenechange script에 있는 mapname변수를 저장
 
     private void Awake()
@@ -26,27 +26,29 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
 
     void Update()
     {
-        h = gamemanager.isaction ? 0 : Input.GetAxisRaw("Horizontal");
-        v = gamemanager.isaction ? 0 : Input.GetAxisRaw("Vertical");
+        if (isaction)
+        {
+            vector.x = 0;
+            vector.y = 0;
+        }
+        else
+        {
+            bool hUp = Input.GetButtonUp("Horizontal");
+            bool vUp = Input.GetButtonUp("Vertical");
 
-        // 사망 연산자 변수 = bool변수 : ? A : B의 형식으로 작성하며 bool변수가 true일 때 A false일 때 B를 출력함 
-        bool hDown = gamemanager.isaction ? false : Input.GetButtonDown("Horizontal");
-        bool vDown = gamemanager.isaction ? false : Input.GetButtonDown("Vertical");
-        bool hUp = gamemanager.isaction ? true : Input.GetButtonUp("Horizontal");
-        bool vUp = gamemanager.isaction ? true : Input.GetButtonUp("Vertical");
-
-        //대각선 이동 차단
-        if (hDown)
-            XMove = true;
-        else if (vDown)
-            XMove = false;
-        else if (hUp || vUp)
-            XMove = h != 0;
+            //대각선 이동 차단
+            if (vector.x != 0)
+                XMove = true;
+            else if (vector.y != 0)
+                XMove = false;
+            else if (hUp || vUp)
+                XMove = vector.x != 0;
+        }
 
         // 애니메이션
         if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
         {
-            if (gamemanager.isaction)
+            if (isaction)
                 animator.SetBool("Walking", false);
             else
             {
@@ -85,9 +87,11 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
             animator.SetBool("Walking", false);
             Xani = 0;
             Yani = 0;
+            vector.x = 0;
+            vector.y = 0;
         }
 
-        //ray 생성
+        //ray 방향
         if (vector.y == 1)
             방향 = Vector3.up;
         if (vector.y == -1)
@@ -102,23 +106,26 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
         {
             if (TalkObject != null)
                 gamemanager.오브젝트정보확인(TalkObject);
-            if (gamemanager.isaction && button.cuthome)
+            if (isaction && button.cuthome)
                 gamemanager.컷씬대화(button.cutnumber, false);
         }
     }
 
     private void FixedUpdate()
     {
-        vector = XMove ? new Vector2(h, 0) : new Vector2(0, v);
+        // 이동
+        // 사망 연산자 변수 = bool변수 : ? A : B의 형식으로 작성하며 bool변수가 true일 때 A false일 때 B를 출력함 
+        vector = XMove ? new Vector2(vector.x, 0) : new Vector2(0, vector.y);
         Rigidbody.velocity = vector * speed;
 
+        // ray 생성
         Debug.DrawRay(Rigidbody.position, 방향 * 0.7f, new Color(0, 1, 0));
         RaycastHit2D rayhit = Physics2D.Raycast(Rigidbody.position, 방향, 0.7f, LayerMask.GetMask("Object"));
 
         // GameObject 변수는 null이 되면 인스펙터에서 None표시 안뜨고 그냥 전에 가져온 오브젝트가 빈 껍데기처럼 남아있는듯 함.
-        if (rayhit.collider != null && !gamemanager.isaction)// 대화중이 아닐때만 rayhit에 걸린 오브젝트 가져오기(NPC와 대화중에 다른 오브젝트를 가져오는 것을 방지하기 위함) 
+        if (rayhit.collider != null && !isaction)// 대화중이 아닐때만 rayhit에 걸린 오브젝트 가져오기(NPC와 대화중에 다른 오브젝트를 가져오는 것을 방지하기 위함) 
             TalkObject = rayhit.collider.gameObject;
-        else if(!gamemanager.isaction)
+        else if(!isaction)
             TalkObject = null;
     }
 

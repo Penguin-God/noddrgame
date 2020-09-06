@@ -8,14 +8,12 @@ public class Mapchange : MonoBehaviour
     public Transform MapChangePoint;
     //private 변수저장소 Theplayer;
     private Fademanager fademanager;
-    private Gamemanager gamemanager;
     private Playermanager playermanager;
 
     private void Start()
     {
         //FindObjectOfType : 유니티 계층에 있는 모든 객체를 참조해서 가져옴 Getcomponent와 검색 범위가 다름
         fademanager = FindObjectOfType<Fademanager>();
-        gamemanager = FindObjectOfType<Gamemanager>();
         playermanager = FindObjectOfType<Playermanager>();
     }
 
@@ -35,7 +33,7 @@ public class Mapchange : MonoBehaviour
 
     IEnumerator MapTransCoroutine() //맵이 어두워지고 이동한 후 다시밝아지는 코루틴
     {
-        gamemanager.isaction = true;
+        playermanager.isaction = true;
         fademanager.FadeOut();
         yield return new WaitForSeconds(1f);
 
@@ -44,6 +42,6 @@ public class Mapchange : MonoBehaviour
 
         fademanager.FadeIn();
         yield return new WaitForSeconds(0.5f);
-        gamemanager.isaction = false;
+        playermanager.isaction = false;
     }
 }

@@ -9,6 +9,7 @@ public class Button : MonoBehaviour
     public GameObject 시작창;
     public GameObject 타이틀;
 
+    public Playermanager playermanager;
     public Gamemanager gamemanager;
     public Eventmanager eventmanager;
     public Testmove[] testmove;
@@ -40,11 +41,11 @@ public class Button : MonoBehaviour
         yield return new WaitForSeconds(1f);
         gamemanager.컷씬대화(cutnumber, false);
 
-        yield return new WaitUntil(() => !gamemanager.isaction);
+        yield return new WaitUntil(() => !playermanager.isaction);
         HomeCutScene();
-        gamemanager.isaction = true;
+        playermanager.isaction = true;
         cuthome = false;
-        yield return new WaitUntil(() => !gamemanager.isaction);
+        yield return new WaitUntil(() => !playermanager.isaction);
         mapchange.CutMapChange();
     }
 

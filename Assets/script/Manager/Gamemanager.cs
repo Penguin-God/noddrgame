@@ -12,11 +12,10 @@ public class Gamemanager : MonoBehaviour
     public Text 대화창텍스트;
     public Talkmanager talkmanager;
     public Npcmanager npcmanager;
+    public Playermanager playermanager;
 
     public int talkindex;
     public int QusetId;
-
-    public bool isaction;
 
     //씬 이동시 이 코드를 가진 스크립트를 가진 오브텍트는 파괴되지 않음
     //private void Start()
@@ -37,13 +36,13 @@ public class Gamemanager : MonoBehaviour
         TalkObject = TalkObjectData;
         Objectdata obdata = TalkObject.GetComponent<Objectdata>();
         Talk(obdata.id, obdata.isnpc);
-        talkwindow.SetActive(isaction);
+        talkwindow.SetActive(playermanager.isaction);
     }
 
     public void 컷씬대화(int id, bool isnpc)
     {
         Talk(id, isnpc);
-        talkwindow.SetActive(isaction);
+        talkwindow.SetActive(playermanager.isaction);
     }
 
     public void Talk(int id, bool isnpc)
@@ -53,9 +52,9 @@ public class Gamemanager : MonoBehaviour
         {
             //이야기 끝났을 시 대화창끄고 talkindex초기화 
             talkindex = 0;
-            isaction = false;
+            playermanager.isaction = false;
             QusetId = 10;
-            //대화가 끝날 때 talkindex와 isaction이 변동이 없어야 하므로 return으로 함수 강제종료 
+            //대화가 끝날 때 talkindex와 playermanager.isaction이 변동이 없어야 하므로 return으로 함수 강제종료 
             return;
         }
 
@@ -69,6 +68,6 @@ public class Gamemanager : MonoBehaviour
             대화창텍스트.text = talkdata;
         }
         talkindex++;
-        isaction = true;
+        playermanager.isaction = true;
     }
 }
