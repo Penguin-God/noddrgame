@@ -13,8 +13,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
 
     private int Xani;
     private int Yani;
-    private bool XMove;
-
+    
     public bool isaction;
     public string currentmapname; //Scenechange script에 있는 mapname변수를 저장
 
