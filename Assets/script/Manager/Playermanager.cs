@@ -30,57 +30,41 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
         {
             vector.x = 0;
             vector.y = 0;
+            animator.SetBool("Walking", false);
         }
-        else
+        else if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
         {
-            bool hUp = Input.GetButtonUp("Horizontal");
-            bool vUp = Input.GetButtonUp("Vertical");
+            // 애니메이션
+            vector.Set(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), transform.position.z);//방향에 따라 각각 -1,1을리턴
+            if (Input.GetAxisRaw("Vertical") != 0)
+                Yani++;
+            if (Input.GetAxisRaw("Horizontal") != 0)
+                Xani++;
 
-            //대각선 이동 차단
-            if (vector.x != 0)
-                XMove = true;
-            else if (vector.y != 0)
-                XMove = false;
-            else if (hUp || vUp)
-                XMove = vector.x != 0;
-        }
-
-        // 애니메이션
-        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
-        {
-            if (isaction)
-                animator.SetBool("Walking", false);
-            else
+            // Xani를 오랫동안 눌러서 값을 올라가면 수직이동중에 방향전환이 되지않는 버그때문에 XAni, YAni값이 축적되지 않게 하기위한 코드
+            if (Input.GetAxisRaw("Vertical") != 0 && Input.GetAxisRaw("Horizontal") != 0)
             {
-                vector.Set(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), transform.position.z);//방향에 따라 각각 -1,1을리턴
-                if (Input.GetAxisRaw("Vertical") != 0)  
-                    Yani++;
-                if (Input.GetAxisRaw("Horizontal") != 0)
-                    Xani++;
-
-                if (Input.GetAxisRaw("Vertical") != 0 && Input.GetAxisRaw("Horizontal") != 0) // XAni, YAni값이 축적되지 않게 하기위한 코드
+                // X축과 Y축을 동시에 이동 시 전에 이동하던 방향의 ani변수가 더 높도록 조정하여 방향전환이 일어나게 함
+                if (Xani > Yani) 
                 {
-                    if (Xani > Yani)
-                    {
-                        Xani = 6;
-                        Yani = 0;
-                    }
-                    else if (Yani > Xani)
-                    {
-                        Yani = 6;
-                        Xani = 0;
-                    }
+                    Xani = 5;
+                    Yani = 0;
                 }
-
-                if (Xani > Yani + 5 && Input.GetAxisRaw("Vertical") != 0) // X축으로 움직이고 있다가 Y축 버튼을 누르면 vector.x값은 0
-                    vector.x = 0;
-                else if (Xani + 5 < Yani && Input.GetAxisRaw("Horizontal") != 0)
-                    vector.y = 0;
-
-                animator.SetFloat("DirX", vector.x); //DirX에 vector.x의 값을 받겠다.
-                animator.SetFloat("DirY", vector.y);
-                animator.SetBool("Walking", true);
+                else if (Yani > Xani)
+                {
+                    Yani = 5;
+                    Xani = 0;
+                }
             }
+
+            if (Xani > Yani && Input.GetAxisRaw("Vertical") != 0) // X축으로 움직이고 있다가 Y축 버튼을 누르면 vector.x값은 0 즉 수평이동중에 수직으로 방향전환 
+                vector.x = 0;
+            else if (Xani < Yani && Input.GetAxisRaw("Horizontal") != 0)
+                vector.y = 0;
+
+            animator.SetFloat("DirX", vector.x); //DirX에 vector.x의 값을 받겠다.
+            animator.SetFloat("DirY", vector.y);
+            animator.SetBool("Walking", true);
         }
         else
         {
@@ -114,8 +98,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
     private void FixedUpdate()
     {
         // 이동
-        // 사망 연산자 변수 = bool변수 : ? A : B의 형식으로 작성하며 bool변수가 true일 때 A false일 때 B를 출력함 
-        vector = XMove ? new Vector2(vector.x, 0) : new Vector2(0, vector.y);
+        vector = new Vector2(vector.x, vector.y); // 애니메이션 작업 때 x, y갑이 같이 나올 수 없도록 조정해서 대각선 이동이 차단됨 
         Rigidbody.velocity = vector * speed;
 
         // ray 생성
