@@ -15,6 +15,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
     private int Yani;
     
     public bool isaction;
+
     public string currentmapname; //Scenechange script에 있는 mapname변수를 저장
 
     private void Awake()
@@ -54,12 +55,12 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
                     Yani = 5;
                     Xani = 0;
                 }
-            }
 
-            if (Xani > Yani && Input.GetAxisRaw("Vertical") != 0) // X축으로 움직이고 있다가 Y축 버튼을 누르면 vector.x값은 0 즉 수평이동중에 수직으로 방향전환 
-                vector.x = 0;
-            else if (Xani < Yani && Input.GetAxisRaw("Horizontal") != 0)
-                vector.y = 0;
+                if (Xani > Yani && Input.GetAxisRaw("Vertical") != 0) // X축으로 움직이고 있다가 Y축 버튼을 누르면 vector.x값은 0 즉 수평이동중에 수직으로 방향전환 
+                    vector.x = 0;
+                else if (Xani < Yani && Input.GetAxisRaw("Horizontal") != 0)
+                    vector.y = 0;
+            }
 
             animator.SetFloat("DirX", vector.x); //DirX에 vector.x의 값을 받겠다.
             animator.SetFloat("DirY", vector.y);
