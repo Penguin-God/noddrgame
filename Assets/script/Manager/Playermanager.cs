@@ -8,7 +8,6 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
     public Button button;
 
     GameObject TalkObject;
-    Vector3 vector;
     private Animator animator;
 
     private int Xani;
@@ -28,14 +27,14 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
     {
         if (isaction)
         {
-            vector.x = 0;
-            vector.y = 0;
+            방향.x = 0;
+            방향.y = 0;
             animator.SetBool("Walking", false);
         }
         else if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
         {
             // 애니메이션
-            vector.Set(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), transform.position.z);//방향에 따라 각각 -1,1을리턴
+            방향.Set(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), transform.position.z); // Vector에 따라 각각 -1,1을리턴
             if (Input.GetAxisRaw("Vertical") != 0)
                 Yani++;
             if (Input.GetAxisRaw("Horizontal") != 0)
@@ -56,14 +55,14 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
                     Xani = 0;
                 }
 
-                if (Xani > Yani && Input.GetAxisRaw("Vertical") != 0) // X축으로 움직이고 있다가 Y축 버튼을 누르면 vector.x값은 0 즉 수평이동중에 수직으로 방향전환 
-                    vector.x = 0;
+                if (Xani > Yani && Input.GetAxisRaw("Vertical") != 0) // X축으로 움직이고 있다가 Y축 버튼을 누르면 방향.x값은 0 즉 수평이동중에 수직으로 방향전환 
+                    방향.x = 0;
                 else if (Xani < Yani && Input.GetAxisRaw("Horizontal") != 0)
-                    vector.y = 0;
+                    방향.y = 0;
             }
 
-            animator.SetFloat("DirX", vector.x); //DirX에 vector.x의 값을 받겠다.
-            animator.SetFloat("DirY", vector.y);
+            animator.SetFloat("DirX", 방향.x); //DirX에 방향.x의 값을 받겠다.
+            animator.SetFloat("DirY", 방향.y);
             animator.SetBool("Walking", true);
         }
         else
@@ -71,18 +70,18 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
             animator.SetBool("Walking", false);
             Xani = 0;
             Yani = 0;
-            vector.x = 0;
-            vector.y = 0;
+            방향.x = 0;
+            방향.y = 0;
         }
 
         //ray 방향
-        if (vector.y == 1)
+        if (방향.y == 1)
             방향 = Vector3.up;
-        if (vector.y == -1)
+        if (방향.y == -1)
             방향 = Vector3.down;
-        if (vector.x == 1)
+        if (방향.x == 1)
             방향 = Vector3.right;
-        if (vector.x == -1)
+        if (방향.x == -1)
             방향 = Vector3.left;
 
         // 대화
@@ -98,8 +97,8 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
     private void FixedUpdate()
     {
         // 이동
-        vector = new Vector2(vector.x, vector.y); // 애니메이션 작업 때 x, y갑이 같이 나올 수 없도록 조정해서 대각선 이동이 차단됨 
-        Rigidbody.velocity = vector * speed;
+        방향 = new Vector2(방향.x, 방향.y); // 애니메이션 작업 때 x, y갑이 같이 나올 수 없도록 조정해서 대각선 이동이 차단됨 
+        Rigidbody.velocity = 방향 * speed;
 
         // ray 생성
         Debug.DrawRay(Rigidbody.position, 방향 * 0.7f, new Color(0, 1, 0));
