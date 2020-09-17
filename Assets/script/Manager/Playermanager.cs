@@ -12,8 +12,9 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
 
     private int Xani;
     private int Yani;
-    
+
     public bool isaction;
+    bool Run;
 
     public string currentmapname; //Scenechange script에 있는 mapname변수를 저장
 
@@ -25,16 +26,29 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
 
     void Update()
     {
+        GetInput();
+        Animation();
+        RayDirection();
+        대화();
+    }
+
+    void GetInput()
+    {
+        Run = Input.GetButton("Run");
+    }
+
+    void Animation()
+    {
         if (isaction)
         {
-            방향.x = 0;
-            방향.y = 0;
+            MainVector.x = 0;
+            MainVector.y = 0;
             animator.SetBool("Walking", false);
         }
         else if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
         {
             // 애니메이션
-            방향.Set(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), transform.position.z); // Vector에 따라 각각 -1,1을리턴
+            MainVector.Set(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), transform.position.z); // Vector에 따라 각각 -1,1을리턴
             if (Input.GetAxisRaw("Vertical") != 0)
                 Yani++;
             if (Input.GetAxisRaw("Horizontal") != 0)
@@ -44,7 +58,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
             if (Input.GetAxisRaw("Vertical") != 0 && Input.GetAxisRaw("Horizontal") != 0)
             {
                 // X축과 Y축을 동시에 이동 시 전에 이동하던 방향의 ani변수가 더 높도록 조정하여 방향전환이 일어나게 함
-                if (Xani > Yani) 
+                if (Xani > Yani)
                 {
                     Xani = 5;
                     Yani = 0;
@@ -56,13 +70,13 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
                 }
 
                 if (Xani > Yani && Input.GetAxisRaw("Vertical") != 0) // X축으로 움직이고 있다가 Y축 버튼을 누르면 방향.x값은 0 즉 수평이동중에 수직으로 방향전환 
-                    방향.x = 0;
+                    MainVector.x = 0;
                 else if (Xani < Yani && Input.GetAxisRaw("Horizontal") != 0)
-                    방향.y = 0;
+                    MainVector.y = 0;
             }
 
-            animator.SetFloat("DirX", 방향.x); //DirX에 방향.x의 값을 받겠다.
-            animator.SetFloat("DirY", 방향.y);
+            animator.SetFloat("DirX", MainVector.x); //DirX에 MainVector.x의 값을 받겠다.
+            animator.SetFloat("DirY", MainVector.y);
             animator.SetBool("Walking", true);
         }
         else
@@ -70,21 +84,25 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
             animator.SetBool("Walking", false);
             Xani = 0;
             Yani = 0;
-            방향.x = 0;
-            방향.y = 0;
+            MainVector.x = 0;
+            MainVector.y = 0;
         }
+    }
 
-        //ray 방향
-        if (방향.y == 1)
-            방향 = Vector3.up;
-        if (방향.y == -1)
-            방향 = Vector3.down;
-        if (방향.x == 1)
-            방향 = Vector3.right;
-        if (방향.x == -1)
-            방향 = Vector3.left;
+    void RayDirection() // Ray방향
+    {
+        if (MainVector.y == 1)
+            MainVector = Vector3.up;
+        if (MainVector.y == -1)
+            MainVector = Vector3.down;
+        if (MainVector.x == 1)
+            MainVector = Vector3.right;
+        if (MainVector.x == -1)
+            MainVector = Vector3.left;
+    }
 
-        // 대화
+    void 대화()
+    {
         if (Input.GetButtonDown("Jump"))
         {
             if (TalkObject != null)
@@ -97,12 +115,15 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
     private void FixedUpdate()
     {
         // 이동
-        방향 = new Vector2(방향.x, 방향.y); // 애니메이션 작업 때 x, y갑이 같이 나올 수 없도록 조정해서 대각선 이동이 차단됨 
-        Rigidbody.velocity = 방향 * speed;
+        MainVector = new Vector2(MainVector.x, MainVector.y); // 애니메이션 작업 때 x, y갑이 같이 나올 수 없도록 조정해서 대각선 이동이 차단됨 
+        if(Run)
+            Rigidbody.velocity = MainVector * (speed + 5);
+        else
+            Rigidbody.velocity = MainVector * speed;
 
         // ray 생성
-        Debug.DrawRay(Rigidbody.position, 방향 * 0.7f, new Color(0, 1, 0));
-        RaycastHit2D rayhit = Physics2D.Raycast(Rigidbody.position, 방향, 0.7f, LayerMask.GetMask("Object"));
+        Debug.DrawRay(Rigidbody.position, MainVector * 0.7f, new Color(0, 1, 0));
+        RaycastHit2D rayhit = Physics2D.Raycast(Rigidbody.position, MainVector, 0.7f, LayerMask.GetMask("Object"));
 
         // GameObject 변수는 null이 되면 인스펙터에서 None표시 안뜨고 그냥 전에 가져온 오브젝트가 빈 껍데기처럼 남아있는듯 함.
         if (rayhit.collider != null && !isaction)// 대화중이 아닐때만 rayhit에 걸린 오브젝트 가져오기(NPC와 대화중에 다른 오브젝트를 가져오는 것을 방지하기 위함) 
