@@ -18,7 +18,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
 
     public string currentmapname; //Scenechange script에 있는 mapname변수를 저장
 
-    private void Awake()
+    private void Awake() // Awake() : Start()함수와 다르게 script가 비활성화 상태여도 실해됨 즉 Start()함수는 비활성화 상태일시 script가 활성화되어야 실행됨
     {
         animator = GetComponent<Animator>();
         Rigidbody = GetComponent<Rigidbody2D>();
@@ -48,7 +48,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
         else if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
         {
             // 애니메이션
-            MainVector.Set(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), transform.position.z); // Vector에 따라 각각 -1,1을리턴
+            MainVector.Set(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")); // Vector에 따라 각각 -1,1을리턴
             if (Input.GetAxisRaw("Vertical") != 0)
                 Yani++;
             if (Input.GetAxisRaw("Horizontal") != 0)
@@ -117,7 +117,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
         // 이동
         MainVector = new Vector2(MainVector.x, MainVector.y); // 애니메이션 작업 때 x, y갑이 같이 나올 수 없도록 조정해서 대각선 이동이 차단됨 
         if(Run)
-            Rigidbody.velocity = MainVector * (speed + 5);
+            Rigidbody.velocity = MainVector * (speed + 5); // velocity(속도) : 리지드바디의 속도 벡터로 Rigidbody 위치의 변화율을 나타냄.
         else
             Rigidbody.velocity = MainVector * speed;
 
