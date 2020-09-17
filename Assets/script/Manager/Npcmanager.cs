@@ -72,26 +72,26 @@ public class Npcmanager : 변수저장소
         while (queue.Count != 0) //queue의 값이 모두 제거되면 멈춤
         {
             string direction = queue.Dequeue(); //queue에서 제거되는 값이 switch문의 값이됨
-            방향.Set(0, 0, 방향.z);//코루틴을 한번 돌고나면 백터값을 초기화(x,y가 동시에 1을가지면 안되기 때문)
+            MainVector.Set(0, 0, MainVector.z);//코루틴을 한번 돌고나면 백터값을 초기화(x,y가 동시에 1을가지면 안되기 때문)
 
             //switch 문에는 string값이 와도 상관이 없음
             switch (direction)
             {
                 case ("UP"):
-                    방향.y = 1f;
+                    MainVector.y = 1f;
                     break;
                 case ("DOWN"):
-                    방향.y = -1f;
+                    MainVector.y = -1f;
                     break;
                 case ("RIGHT"):
-                    방향.x = 1f;
+                    MainVector.x = 1f;
                     break;
                 case ("LEFT"):
-                    방향.x = -1f;
+                    MainVector.x = -1f;
                     break;
                 case ("NONE"):
-                    방향.x = 0;
-                    방향.y = 0;
+                    MainVector.x = 0;
+                    MainVector.y = 0;
                     break;
             }
 
@@ -105,7 +105,7 @@ public class Npcmanager : 변수저장소
 
             while (count < walkcount)
             {
-                transform.Translate(방향.x * speed, 방향.y * speed, 0);
+                transform.Translate(MainVector.x * speed, MainVector.y * speed, 0);
                 //코루틴에서 백터값을 초기화하기 때문에 x,y를 동시에 움직여도 대각선 이동은 일어나지 않음
                 count++;
                 yield return new WaitForSeconds(0.01f);
@@ -167,7 +167,7 @@ public class Npcmanager : 변수저장소
         Vector2 start;
         Vector2 end;
         start = transform.position;
-        end = start + new Vector2(방향.x * speed * walkcount, 방향.y * speed * walkcount);
+        end = start + new Vector2(MainVector.x * speed * walkcount , MainVector.y * speed * walkcount);
 
         RaycastHit2D rayhit = Physics2D.Linecast(start, end, layermask);
         if (rayhit.transform != null)
