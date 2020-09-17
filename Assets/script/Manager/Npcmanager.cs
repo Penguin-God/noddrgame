@@ -72,7 +72,7 @@ public class Npcmanager : 변수저장소
         while (queue.Count != 0) //queue의 값이 모두 제거되면 멈춤
         {
             string direction = queue.Dequeue(); //queue에서 제거되는 값이 switch문의 값이됨
-            MainVector.Set(0, 0, MainVector.z);//코루틴을 한번 돌고나면 백터값을 초기화(x,y가 동시에 1을가지면 안되기 때문)
+            MainVector.Set(0, 0);//코루틴을 한번 돌고나면 백터값을 초기화(x,y가 동시에 1을가지면 안되기 때문)
 
             //switch 문에는 string값이 와도 상관이 없음
             switch (direction)
