@@ -7,11 +7,14 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
 {
     public Button button;
 
+    Vector2 RayVector;
     GameObject TalkObject;
     private Animator animator;
 
     private int Xani;
     private int Yani;
+    private float RayX;
+    private float RayY;
 
     public bool isaction;
     bool Run;
@@ -75,6 +78,8 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
                     MainVector.y = 0;
             }
 
+            RayX = MainVector.x; // Ray가 안움직일때는 0이되서 여기서 Ray값을 받음
+            RayY = MainVector.y;
             animator.SetFloat("DirX", MainVector.x); //DirX에 MainVector.x의 값을 받겠다.
             animator.SetFloat("DirY", MainVector.y);
             animator.SetBool("Walking", true);
@@ -91,14 +96,14 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
 
     void RayDirection() // Ray방향
     {
-        if (MainVector.y == 1)
-            MainVector = Vector3.up;
-        if (MainVector.y == -1)
-            MainVector = Vector3.down;
-        if (MainVector.x == 1)
-            MainVector = Vector3.right;
-        if (MainVector.x == -1)
-            MainVector = Vector3.left;
+        if (RayY == 1f)
+            RayVector = Vector2.up;
+        if (RayY == -1f)
+            RayVector = Vector2.down;
+        if (RayX == 1f)
+            RayVector = Vector2.right;
+        if (RayX == -1f)
+            RayVector = Vector2.left;
     }
 
     void 대화()
@@ -122,8 +127,8 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
             Rigidbody.velocity = MainVector * speed;
 
         // ray 생성
-        Debug.DrawRay(Rigidbody.position, MainVector * 0.7f, new Color(0, 1, 0));
-        RaycastHit2D rayhit = Physics2D.Raycast(Rigidbody.position, MainVector, 0.7f, LayerMask.GetMask("Object"));
+        Debug.DrawRay(Rigidbody.position, RayVector * 0.7f, new Color(0, 1, 0));
+        RaycastHit2D rayhit = Physics2D.Raycast(Rigidbody.position, RayVector, 0.7f, LayerMask.GetMask("Object"));
 
         // GameObject 변수는 null이 되면 인스펙터에서 None표시 안뜨고 그냥 전에 가져온 오브젝트가 빈 껍데기처럼 남아있는듯 함.
         if (rayhit.collider != null && !isaction)// 대화중이 아닐때만 rayhit에 걸린 오브젝트 가져오기(NPC와 대화중에 다른 오브젝트를 가져오는 것을 방지하기 위함) 
