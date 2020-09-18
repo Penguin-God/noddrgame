@@ -31,7 +31,8 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
     {
         GetInput();
         Animation();
-        RayDirection();
+        Ray();
+        이동();
         대화();
     }
 
@@ -40,6 +41,12 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
         Run = Input.GetButton("Run");
     }
 
+    void 이동()
+    {
+        // 이동
+        MainVector = new Vector2(MainVector.x, MainVector.y); // 애니메이션 작업 때 x, y갑이 같이 나올 수 없도록 조정해서 대각선 이동이 차단됨 
+        Rigidbody.velocity = MainVector * speed * (Run ? 2f : 1f); // velocity(속도) : 리지드바디의 속도 벡터로 Rigidbody 위치의 변화율을 나타냄.
+    }
     void Animation()
     {
         if (isaction)
@@ -94,7 +101,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
         }
     }
 
-    void RayDirection() // Ray방향
+    void Ray() 
     {
         if (RayY == 1f)
             RayVector = Vector2.up;
@@ -104,6 +111,16 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
             RayVector = Vector2.right;
         if (RayX == -1f)
             RayVector = Vector2.left;
+
+        // ray 생성
+        Debug.DrawRay(Rigidbody.position, RayVector * 0.7f, new Color(0, 1, 0));
+        RaycastHit2D rayhit = Physics2D.Raycast(Rigidbody.position, RayVector, 0.7f, LayerMask.GetMask("Object"));
+
+        // GameObject 변수는 null이 되면 인스펙터에서 None표시 안뜨고 그냥 전에 가져온 오브젝트가 빈 껍데기처럼 남아있는듯 함.
+        if (rayhit.collider != null && !isaction)// 대화중이 아닐때만 rayhit에 걸린 오브젝트 가져오기(NPC와 대화중에 다른 오브젝트를 가져오는 것을 방지하기 위함) 
+            TalkObject = rayhit.collider.gameObject;
+        else if (!isaction)
+            TalkObject = null;
     }
 
     void 대화()
@@ -115,26 +132,6 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
             if (isaction && button.cuthome)
                 gamemanager.컷씬대화(button.cutnumber, false);
         }
-    }
-
-    private void FixedUpdate()
-    {
-        // 이동
-        MainVector = new Vector2(MainVector.x, MainVector.y); // 애니메이션 작업 때 x, y갑이 같이 나올 수 없도록 조정해서 대각선 이동이 차단됨 
-        if(Run)
-            Rigidbody.velocity = MainVector * (speed + 5); // velocity(속도) : 리지드바디의 속도 벡터로 Rigidbody 위치의 변화율을 나타냄.
-        else
-            Rigidbody.velocity = MainVector * speed;
-
-        // ray 생성
-        Debug.DrawRay(Rigidbody.position, RayVector * 0.7f, new Color(0, 1, 0));
-        RaycastHit2D rayhit = Physics2D.Raycast(Rigidbody.position, RayVector, 0.7f, LayerMask.GetMask("Object"));
-
-        // GameObject 변수는 null이 되면 인스펙터에서 None표시 안뜨고 그냥 전에 가져온 오브젝트가 빈 껍데기처럼 남아있는듯 함.
-        if (rayhit.collider != null && !isaction)// 대화중이 아닐때만 rayhit에 걸린 오브젝트 가져오기(NPC와 대화중에 다른 오브젝트를 가져오는 것을 방지하기 위함) 
-            TalkObject = rayhit.collider.gameObject;
-        else if(!isaction)
-            TalkObject = null;
     }
 
     private void OnTriggerEnter2D(Collider2D collision) // 트리거와 충돌시 충돌 오브젝트 정보 가져오기
