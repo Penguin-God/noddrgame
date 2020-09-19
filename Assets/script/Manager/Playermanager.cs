@@ -101,7 +101,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
         }
     }
 
-    void Ray() 
+    void Ray()
     {
         if (RayY == 1f)
             RayVector = Vector2.up;
