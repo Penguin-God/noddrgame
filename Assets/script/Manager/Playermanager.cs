@@ -136,7 +136,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
 
     private void OnTriggerEnter2D(Collider2D collision) // 트리거와 충돌시 충돌 오브젝트 정보 가져오기
     {
-        if (collision.gameObject.name != null && collision.gameObject.tag == "NpcTalk")
+        if (collision.gameObject.tag == "NpcTalk")
         {
             TalkObject = collision.gameObject;
             gamemanager.오브젝트정보확인(TalkObject);

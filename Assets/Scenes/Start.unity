@@ -736,7 +736,7 @@ MonoBehaviour:
   CharactreName: player
   button: {fileID: 1779485844}
   isaction: 0
-  currentmapname: 
+  currentmapname: asdasd
 --- !u!212 &480954424
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -796,7 +796,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 480954422}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.05, y: -0.45, z: 0.79589844}
+  m_LocalPosition: {x: -1.01, y: 0.04, z: 0.79589844}
   m_LocalScale: {x: 1, y: 1, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1146,7 +1146,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.05, y: -0.45, z: -9.204102}
+  m_LocalPosition: {x: -1.0099995, y: 0.04, z: -9.204102}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2040983547}
@@ -11631,7 +11631,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 728754742}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.05, y: -0.45, z: -9.204102}
+  m_LocalPosition: {x: -1.0099995, y: 0.04, z: -9.204102}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2062412561}
@@ -13453,7 +13453,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1811733109}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.2125664, y: -3.4333808, z: 2.4921973}
+  m_LocalPosition: {x: -5.2125664, y: 2.64, z: 2.4921973}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2051154278}
@@ -13899,8 +13899,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad980451443d70438faac0bc6c235a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LookaheadTime: 0.1
-  m_LookaheadSmoothing: 10
+  m_LookaheadTime: 0
+  m_LookaheadSmoothing: 3
   m_LookaheadIgnoreY: 0
   m_XDamping: 0.7
   m_YDamping: 0.7
