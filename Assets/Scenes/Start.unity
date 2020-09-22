@@ -11725,8 +11725,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 1779485844}
-  gamemanager: {fileID: 1325342199}
-  npcmanager: {fileID: 1319606509}
+  talkmanager: {fileID: 0}
+  gamemanager: {fileID: 0}
 --- !u!1 &811157400
 GameObject:
   m_ObjectHideFlags: 0
@@ -12462,10 +12462,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TalkObject: {fileID: 0}
   talkwindow: {fileID: 1953387524}
-  "\uB300\uD654\uCC3D\uD14D\uC2A4\uD2B8": {fileID: 2057906862}
   talkmanager: {fileID: 34894808}
-  npcmanager: {fileID: 1319606509}
   playermanager: {fileID: 480954423}
+  "\uB300\uC0AC": {fileID: 2057906862}
   talkindex: 0
   QusetId: 0
 --- !u!4 &1325342201

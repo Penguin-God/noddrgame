@@ -43,7 +43,6 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
 
     void 이동()
     {
-        // 이동
         MainVector = new Vector2(MainVector.x, MainVector.y); // 애니메이션 작업 때 x, y갑이 같이 나올 수 없도록 조정해서 대각선 이동이 차단됨 
         Rigidbody.velocity = MainVector * speed * (Run ? 2f : 1f); // velocity(속도) : 리지드바디의 속도 벡터로 Rigidbody 위치의 변화율을 나타냄.
     }

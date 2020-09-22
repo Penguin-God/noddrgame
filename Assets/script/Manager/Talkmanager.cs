@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Talkmanager : MonoBehaviour
 {
     Dictionary<int, string[]> talkdata;
@@ -25,13 +26,11 @@ public class Talkmanager : MonoBehaviour
         talkdata.Add(600, new string[] { "이것은 컷씬대화 실험으로", "대사가 끊기지않으면서", "대사가 잘 나오면 성공입니다." });
     }
 
-    public string 대화창띄우기(int id, int talkindex)
+    public string GetText(int id, int talkindex) // 대화 진행도에 따라 대사, null을 리턴함
     {
-        //모든 대화를 보여주면 끝
-        if (talkindex == talkdata[id].Length)
+        if (talkindex == talkdata[id].Length) // 모든 대사를 보여주면 null을 리턴함 
             return null;
-        //대화가 안끝났으면 다음 대화를 보여줌
         else
-            return talkdata[id][talkindex];
+            return talkdata[id][talkindex]; // 대화가 안끝났으면 다음 대사를 리턴함
     }
 }
