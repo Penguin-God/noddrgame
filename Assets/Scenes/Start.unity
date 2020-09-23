@@ -796,7 +796,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 480954422}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.01, y: 0.04, z: 0.79589844}
+  m_LocalPosition: {x: -0.64, y: 0.54, z: 0.79589844}
   m_LocalScale: {x: 1, y: 1, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1146,7 +1146,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0099995, y: 0.04, z: -9.204102}
+  m_LocalPosition: {x: -0.63999957, y: 0.54, z: -9.204102}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2040983547}
@@ -11631,7 +11631,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 728754742}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0099995, y: 0.04, z: -9.204102}
+  m_LocalPosition: {x: -0.63999957, y: 0.54, z: -9.204102}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2062412561}
@@ -12461,9 +12461,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TalkObject: {fileID: 0}
-  talkwindow: {fileID: 1953387524}
   talkmanager: {fileID: 34894808}
   playermanager: {fileID: 480954423}
+  talkwindow: {fileID: 1953387524}
   "\uB300\uC0AC": {fileID: 2057906862}
   talkindex: 0
   QusetId: 0

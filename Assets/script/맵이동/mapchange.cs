@@ -35,10 +35,9 @@ public class Mapchange : MonoBehaviour
     {
         playermanager.isaction = true;
         fademanager.FadeOut();
-        yield return new WaitForSeconds(0.8f);
-        playermanager.transform.position = MapChangePoint.transform.position;
-        //Transform 변수에 게임 오브젝트를 넣어 충돌 시 그 오브젝트 위치로 이동하게 함 
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(1f);
+        playermanager.transform.position = MapChangePoint.transform.position;  // Transform 변수에 게임 오브젝트를 넣어 충돌 시 그 오브젝트 위치로 이동하게 함 
+        yield return new WaitForSeconds(0.5f);
         fademanager.FadeIn();
         yield return new WaitForSeconds(0.5f);
         playermanager.isaction = false;
