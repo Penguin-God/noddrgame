@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿using Cinemachine;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Mapchange : MonoBehaviour
 {
+    public PolygonCollider2D polygon;
+    public Cameramanager cameramanager;
     public Transform MapChangePoint;
     //private 변수저장소 Theplayer;
     private Fademanager fademanager;
@@ -36,6 +39,7 @@ public class Mapchange : MonoBehaviour
         playermanager.isaction = true;
         fademanager.FadeOut();
         yield return new WaitForSeconds(1f);
+        cameramanager.CollderChange(polygon); 
         playermanager.transform.position = MapChangePoint.transform.position;  // Transform 변수에 게임 오브젝트를 넣어 충돌 시 그 오브젝트 위치로 이동하게 함 
         yield return new WaitForSeconds(0.5f);
         fademanager.FadeIn();

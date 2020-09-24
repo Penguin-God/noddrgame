@@ -1,18 +1,20 @@
-﻿using System.Collections;
+﻿using Cinemachine;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Cameramanager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public PolygonCollider2D polygon;
+    CinemachineConfiner Confiner;
+
+    private void Awake()
     {
-        
+        Confiner = GetComponent<CinemachineConfiner>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CollderChange(PolygonCollider2D newBox)
     {
-        
+        Confiner.m_BoundingShape2D = newBox; // 제한 콜라이더를 MpaChange스크립트가 가지고 있는 콜라이더로 변경
     }
 }
