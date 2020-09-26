@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class aa : MonoBehaviour
+public class MovingPlayer : MonoBehaviour
 {
     //안쓰는 스크립트
     public float Speed;
@@ -17,7 +17,7 @@ public class aa : MonoBehaviour
     private bool Canmove = true;
 
     Vector3 vector;
-    private Animator animator;
+    private Animator animator; 
 
     private void Start()
     {
@@ -27,7 +27,7 @@ public class aa : MonoBehaviour
     IEnumerator PlayerCoroutine()
     {
         //Update에서만 입력받으면 프레임에 따라 애니메이션이 입력했다가 마지막에 끊기기 때문에 코루틴 내에서 while문을 넣어 자연스럽게 만듬
-        while (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+        while (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0) 
         {
             if (Input.GetKey(KeyCode.LeftShift))
             {
