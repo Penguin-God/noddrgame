@@ -1,43 +1,37 @@
 fileFormatVersion: 2
-guid: 460d20c957d56964b9aaf3458cb2bb92
+guid: 01226042383c2804abda8f7e942fd2d5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 21300000
-    second: $Main_Character_1_0
+      213: -1212579227134203616
+    second: HPbar_0
   - first:
-      213: 21300002
-    second: $Main_Character_1_1
+      213: 1647303248616649345
+    second: HPbar_1
   - first:
-      213: 21300004
-    second: $Main_Character_1_2
+      213: -1746679920095482711
+    second: HPbar_2
   - first:
-      213: 21300006
-    second: $Main_Character_1_3
+      213: 4024289804092916010
+    second: HPbar_3
   - first:
-      213: 21300008
-    second: $Main_Character_1_4
+      213: -7487156215779400156
+    second: HPbar_4
   - first:
-      213: 21300010
-    second: $Main_Character_1_5
+      213: -4344600159397161369
+    second: HPbar_5
   - first:
-      213: 21300012
-    second: $Main_Character_1_6
+      213: -6218744646135668037
+    second: HPbar_6
   - first:
-      213: 21300014
-    second: $Main_Character_1_7
+      213: 5185801832859231859
+    second: HPbar_7
   - first:
-      213: 21300016
-    second: $Main_Character_1_8
+      213: -2718517547362820103
+    second: HPbar_8
   - first:
-      213: 21300018
-    second: $Main_Character_1_9
-  - first:
-      213: 21300020
-    second: $Main_Character_1_10
-  - first:
-      213: 21300022
-    second: $Main_Character_1_11
+      213: 6095430065592929562
+    second: HPbar_9
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -67,7 +61,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -79,9 +73,9 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 9
-  spritePivot: {x: 0.5, y: 0.05}
-  spritePixelsToUnits: 48
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -93,11 +87,11 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
-  applyGammaDecoding: 1
+  applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 512
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -109,7 +103,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 512
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -121,7 +115,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 512
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -135,253 +129,211 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: $Main_Character_1_0
+      name: HPbar_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 255
-        width: 48
-        height: 85
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+        y: 270
+        width: 400
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02305410000000000800000000000000
-      internalID: 21300000
+      spriteID: 029e5a01e9d0c2fe0800000000000000
+      internalID: -1212579227134203616
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: $Main_Character_1_1
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 255
-        width: 48
-        height: 85
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 22305410000000000800000000000000
-      internalID: 21300002
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: $Main_Character_1_2
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 255
-        width: 48
-        height: 85
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 42305410000000000800000000000000
-      internalID: 21300004
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: $Main_Character_1_3
+      name: HPbar_1
       rect:
         serializedVersion: 2
         x: 0
-        y: 170
-        width: 48
-        height: 85
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+        y: 240
+        width: 400
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62305410000000000800000000000000
-      internalID: 21300006
+      spriteID: 182742ba3956cd610800000000000000
+      internalID: 1647303248616649345
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: $Main_Character_1_4
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 170
-        width: 48
-        height: 85
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 82305410000000000800000000000000
-      internalID: 21300008
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: $Main_Character_1_5
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 170
-        width: 48
-        height: 85
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a2305410000000000800000000000000
-      internalID: 21300010
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: $Main_Character_1_6
+      name: HPbar_2
       rect:
         serializedVersion: 2
         x: 0
-        y: 85
-        width: 48
-        height: 85
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+        y: 210
+        width: 400
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2305410000000000800000000000000
-      internalID: 21300012
+      spriteID: 9aca662fddb82c7e0800000000000000
+      internalID: -1746679920095482711
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: $Main_Character_1_7
+      name: HPbar_3
       rect:
         serializedVersion: 2
-        x: 48
-        y: 85
-        width: 48
-        height: 85
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+        x: 0
+        y: 180
+        width: 400
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e2305410000000000800000000000000
-      internalID: 21300014
+      spriteID: a214f26514629d730800000000000000
+      internalID: 4024289804092916010
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: $Main_Character_1_8
+      name: HPbar_4
       rect:
         serializedVersion: 2
-        x: 96
-        y: 85
-        width: 48
-        height: 85
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+        x: 0
+        y: 150
+        width: 400
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 03305410000000000800000000000000
-      internalID: 21300016
+      spriteID: 4266c942717481890800000000000000
+      internalID: -7487156215779400156
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: $Main_Character_1_9
+      name: HPbar_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 120
+        width: 400
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 766d6087c21e4b3c0800000000000000
+      internalID: -4344600159397161369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HPbar_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 90
+        width: 400
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb2a83251b492b9a0800000000000000
+      internalID: -6218744646135668037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HPbar_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 60
+        width: 400
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 376e42b9a4ba7f740800000000000000
+      internalID: 5185801832859231859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HPbar_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 30
+        width: 400
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ffd5c9a1b2e54ad0800000000000000
+      internalID: -2718517547362820103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HPbar_9
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 48
-        height: 85
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+        width: 400
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 23305410000000000800000000000000
-      internalID: 21300018
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: $Main_Character_1_10
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 48
-        height: 85
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 43305410000000000800000000000000
-      internalID: 21300020
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: $Main_Character_1_11
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 48
-        height: 85
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 63305410000000000800000000000000
-      internalID: 21300022
+      spriteID: a1d07e48951579450800000000000000
+      internalID: 6095430065592929562
       vertices: []
       indices: 
       edges: []
@@ -389,7 +341,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
