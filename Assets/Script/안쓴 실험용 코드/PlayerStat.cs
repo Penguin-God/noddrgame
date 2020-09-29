@@ -1,24 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerStat : MonoBehaviour
 {
     public static PlayerStat playerStat;
 
-    public int MaxHp;
-    public int CurrentHp;
-    public int MaxMp;
-    public int CurrentMp;
+    public int maxHp;
+    public int HP;
+    public int maxMp;
+    public int MP;
+
+    public Slider hpSilder;
 
     void Start()
     {
         playerStat = this;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        hpSilder.maxValue = maxHp;
+        hpSilder.value = HP;
     }
 }
