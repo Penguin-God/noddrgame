@@ -32,7 +32,6 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
         GetInput();
         Animation();
         Ray();
-        이동();
         대화();
     }
 
@@ -41,11 +40,6 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
         Run = Input.GetButton("Run");
     }
 
-    void 이동()
-    {
-        MainVector = new Vector2(MainVector.x, MainVector.y); // 애니메이션 작업 때 x, y갑이 같이 나올 수 없도록 조정해서 대각선 이동이 차단됨 
-        Rigidbody.velocity = MainVector * speed * (Run ? 2f : 1f); // velocity(속도) : 리지드바디의 속도 벡터로 Rigidbody 위치의 변화율을 나타냄.
-    }
     void Animation()
     {
         if (isaction)
@@ -62,6 +56,8 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
                 Yani++;
             if (Input.GetAxisRaw("Horizontal") != 0)
                 Xani++;
+            if (Xani == Yani)
+                return;
 
             // Xani를 오랫동안 눌러서 값을 올라가면 수직이동중에 방향전환이 되지않는 버그때문에 XAni, YAni값이 축적되지 않게 하기위한 코드
             if (Input.GetAxisRaw("Vertical") != 0 && Input.GetAxisRaw("Horizontal") != 0)
@@ -83,20 +79,25 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
                 else if (Xani < Yani && Input.GetAxisRaw("Horizontal") != 0)
                     MainVector.y = 0;
             }
-
-            RayX = MainVector.x; // Ray가 안움직일때는 0이되서 여기서 Ray값을 받음
+            // Move
+            MainVector = new Vector2(MainVector.x, MainVector.y); // 애니메이션 작업 때 x, y갑이 같이 나올 수 없도록 조정해서 대각선 이동이 차단됨 
+            Rigidbody.velocity = MainVector * speed * (Run ? 2f : 1f); // velocity(속도) : 리지드바디의 속도 벡터로 Rigidbody 위치의 변화율을 나타냄.
+            // Ray
+            RayX = MainVector.x;
             RayY = MainVector.y;
-            animator.SetFloat("DirX", MainVector.x); //DirX에 MainVector.x의 값을 받겠다.
+            // Animation
+            animator.SetFloat("DirX", MainVector.x); 
             animator.SetFloat("DirY", MainVector.y);
             animator.SetBool("Walking", true);
         }
-        else
+        else // 가만히 있을 때 
         {
             animator.SetBool("Walking", false);
             Xani = 0;
             Yani = 0;
             MainVector.x = 0;
             MainVector.y = 0;
+            Rigidbody.velocity = MainVector * 0;
         }
     }
 
