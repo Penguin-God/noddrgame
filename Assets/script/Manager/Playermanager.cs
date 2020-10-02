@@ -30,7 +30,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
     void Update()
     {
         GetInput();
-        Animation();
+        Move();
         Ray();
         대화();
     }
@@ -40,7 +40,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
         Run = Input.GetButton("Run");
     }
 
-    void Animation()
+    void Move()
     {
         if (isaction)
         {
@@ -50,7 +50,6 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
         }
         else if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
         {
-            // 애니메이션
             MainVector.Set(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")); // Vector에 따라 각각 -1,1을리턴
             if (Input.GetAxisRaw("Vertical") != 0)
                 Yani++;
@@ -79,9 +78,6 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
                 else if (Xani < Yani && Input.GetAxisRaw("Horizontal") != 0)
                     MainVector.y = 0;
             }
-            // Move
-            MainVector = new Vector2(MainVector.x, MainVector.y); // 애니메이션 작업 때 x, y갑이 같이 나올 수 없도록 조정해서 대각선 이동이 차단됨 
-            Rigidbody.velocity = MainVector * speed * (Run ? 2f : 1f); // velocity(속도) : 리지드바디의 속도 벡터로 Rigidbody 위치의 변화율을 나타냄.
             // Ray
             RayX = MainVector.x;
             RayY = MainVector.y;
@@ -97,8 +93,9 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
             Yani = 0;
             MainVector.x = 0;
             MainVector.y = 0;
-            Rigidbody.velocity = MainVector * 0;
         }
+        // Move : 위에서 적용한 백터값을 이용해 이동
+        Rigidbody.velocity = MainVector * speed * (Run ? 2f : 1f); // velocity(속도) : 리지드바디의 속도 벡터로 Rigidbody 위치의 변화율을 나타냄.
     }
 
     void Ray()
@@ -134,7 +131,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) // 트리거와 충돌시 충돌 오브젝트 정보 가져오기
+    private void OnTriggerEnter2D(Collider2D collision) // 트리거와 충돌시 충돌 오브젝트 정보 가져오기 : Npc충돌 시 대화에 사용
     {
         if (collision.gameObject.tag == "NpcTalk")
         {
