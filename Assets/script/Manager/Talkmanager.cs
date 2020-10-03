@@ -24,6 +24,7 @@ public class Talkmanager : MonoBehaviour
                                          "그게 실험이냐 씨빨?"});
         talkdata.Add(500, new string[] { "헉.. 헉....." });
         talkdata.Add(600, new string[] { "이것은 컷씬대화 실험으로", "대사가 끊기지않으면서", "대사가 잘 나오면 성공입니다." });
+        talkdata.Add(700, new string[] { "1단계", "2단계", "마무리" });
     }
 
     public string GetText(int id, int talkindex) // 대화 진행도에 따라 대사, null을 리턴함

@@ -799,6 +799,7 @@ MonoBehaviour:
   speed: 5
   CharactreName: player
   button: {fileID: 1779485844}
+  CutNumber: 0
   isaction: 0
   currentmapname: asdasd
 --- !u!212 &480954424

@@ -5,8 +5,6 @@ using UnityEngine;
 //MonoBehaviour 대신에 상속받고 싶은 script의 이름을 쓰면 상속이 됨
 public class Playermanager : 변수저장소 //변수저장소 script를 상속받고 있음
 {
-    public Button button;
-
     Vector2 RayVector;
     GameObject TalkObject;
     private Animator animator;
@@ -16,7 +14,9 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
     private float RayX;
     private float RayY;
 
+    public int CutNumber;
     public bool isaction;
+    public bool isCut;
     bool Run;
 
     public string currentmapname; //Scenechange script에 있는 mapname변수를 저장
@@ -126,8 +126,8 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
         {
             if (TalkObject != null)
                 gamemanager.오브젝트정보확인(TalkObject);
-            if (isaction && button.cuthome)
-                gamemanager.컷씬대화(button.cutnumber, false);
+            if (isaction && isCut)
+                gamemanager.컷씬대화(CutNumber, false);
         }
     }
 
