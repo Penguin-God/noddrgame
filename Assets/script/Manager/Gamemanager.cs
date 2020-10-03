@@ -29,8 +29,6 @@ public class Gamemanager : MonoBehaviour
         talkwindow.SetActive(playermanager.isaction);
     }
 
-
-
     public void Talk(int id, bool isnpc)
     {
         string talkdata = talkmanager.GetText(id, talkindex); 
