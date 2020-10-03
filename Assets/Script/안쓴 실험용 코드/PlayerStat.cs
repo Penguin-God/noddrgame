@@ -13,6 +13,8 @@ public class PlayerStat : MonoBehaviour
     void Update()
     {
         hpSilder.maxValue = maxHp; 
-        hpSilder.value = CurrentHp; 
+        hpSilder.value = CurrentHp;
+        //if (CurrentHp > maxHp)
+        //    Destroy(gameObject, 1);
     }
 }

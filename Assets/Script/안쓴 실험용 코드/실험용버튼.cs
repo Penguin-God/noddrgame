@@ -37,12 +37,17 @@ public class 실험용버튼 : MonoBehaviour
 
     IEnumerator HpAdd()
     {
+        playermanager.isCut = true;
+        gamemanager.컷씬대화(700, false);
+        playermanager.CutNumber = 700;
         playermanager.isaction = true;
         while(stat.CurrentHp < stat.maxHp)
         {
-            stat.CurrentHp += 5;
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => Input.GetButtonDown("Jump"));
+            stat.CurrentHp += 17;
+            yield return new WaitForSeconds(0.05f);
         }
         playermanager.isaction = false;
+        playermanager.isCut = false;
     }
 }
