@@ -534,6 +534,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   "\uC2DC\uC791\uCC3D": {fileID: 847267926}
   "\uD0C0\uC774\uD2C0": {fileID: 1492928398}
+  virtualCamera: {fileID: 1819853891}
+  Camera: {fileID: 257356635}
   stat: {fileID: 324695933}
   playermanager: {fileID: 324695930}
   gamemanager: {fileID: 1027948}
@@ -630,6 +632,7 @@ GameObject:
   - component: {fileID: 257356632}
   - component: {fileID: 257356631}
   - component: {fileID: 257356630}
+  - component: {fileID: 257356637}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -798,6 +801,20 @@ Transform:
   m_Father: {fileID: 1699505569}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &257356637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257356629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dd8c6b0281debc4dab2643dee09cc4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 324695932}
+  offset: {x: 0, y: 11, z: 25}
 --- !u!1 &261045042
 GameObject:
   m_ObjectHideFlags: 0
@@ -4853,7 +4870,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1819853892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4921,7 +4938,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1897621549
 RectTransform:
   m_ObjectHideFlags: 0

@@ -798,9 +798,9 @@ MonoBehaviour:
   gamemanager: {fileID: 1325342199}
   speed: 5
   CharactreName: player
-  button: {fileID: 1779485844}
   CutNumber: 0
   isaction: 0
+  isCut: 0
   currentmapname: asdasd
 --- !u!212 &480954424
 SpriteRenderer:

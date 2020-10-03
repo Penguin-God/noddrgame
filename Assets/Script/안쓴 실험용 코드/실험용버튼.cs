@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Cinemachine;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,12 +8,14 @@ public class 실험용버튼 : MonoBehaviour
 {
     public GameObject 시작창;
     public GameObject 타이틀;
+    public GameObject virtualCamera;
 
+    public Camera Camera;
     public PlayerStat stat;
     public Playermanager playermanager;
     public Gamemanager gamemanager;
 
-    public void GameExit()
+    public void GameExit() // 게임종료
     {
         Application.Quit();
     }
@@ -37,17 +40,14 @@ public class 실험용버튼 : MonoBehaviour
 
     IEnumerator HpAdd()
     {
-        playermanager.isCut = true;
         gamemanager.컷씬대화(700, false);
-        playermanager.CutNumber = 700;
-        playermanager.isaction = true;
-        while(stat.CurrentHp < stat.maxHp)
+        while (stat.CurrentHp < stat.maxHp)
         {
             yield return new WaitUntil(() => Input.GetButtonDown("Jump"));
             stat.CurrentHp += 17;
+            Camera.transform.position += new Vector3(0, 3, 0);
             yield return new WaitForSeconds(0.05f);
         }
-        playermanager.isaction = false;
-        playermanager.isCut = false;
+        virtualCamera.SetActive(true);
     }
 }
