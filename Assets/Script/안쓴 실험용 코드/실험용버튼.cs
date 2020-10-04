@@ -30,7 +30,7 @@ public class 실험용버튼 : MonoBehaviour
         타이틀.SetActive(false);
         시작창.SetActive(false);
 
-        StartCoroutine(HpAdd());
+        StartCoroutine(GameStartCut());
     }
 
     public void StartCancel()
@@ -38,7 +38,7 @@ public class 실험용버튼 : MonoBehaviour
         시작창.SetActive(false);
     }
 
-    IEnumerator HpAdd()
+    IEnumerator GameStartCut()
     {
         gamemanager.컷씬대화(700, false);
         while (stat.CurrentHp < stat.maxHp)
@@ -48,6 +48,7 @@ public class 실험용버튼 : MonoBehaviour
             Camera.transform.position += new Vector3(0, 3, 0);
             yield return new WaitForSeconds(0.05f);
         }
-        virtualCamera.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        gamemanager.컷씬대화(800, false);
     }
 }

@@ -19,12 +19,11 @@ public class Talkmanager : MonoBehaviour
         talkdata.Add(100, new string[] { "공부할 때 쓰는 책상이다.", "여기에 앉은지는 꽤 오래 된 것 갔다." });
         talkdata.Add(200, new string[] { "12355555"});
         talkdata.Add(300, new string[] { "지금은 집에 들어갈 수 없다." });
-        talkdata.Add(400, new string[] { "아니씨발 실험하는데.",
-                                         "대사를 같게 쳐 적으면.",
-                                         "그게 실험이냐 씨빨?"});
-        talkdata.Add(500, new string[] { "헉.. 헉....." });
+        talkdata.Add(400, new string[] { "아니씨발 실험하는데.", "대사를 같게 쳐 적으면.", "그게 실험이냐 씨빨?"});
+        talkdata.Add(500, new string[] { "ggg" });
         talkdata.Add(600, new string[] { "이것은 컷씬대화 실험으로", "대사가 끊기지않으면서", "대사가 잘 나오면 성공입니다." });
-        talkdata.Add(700, new string[] { "1단계", "2단계", "마무리" });
+        talkdata.Add(700, new string[] { "123", "2단계", "마무리" });
+        talkdata.Add(800, new string[] { "아 집에서 딸이나 치면서 있는것도 지치다", "방구석에서 아무것도 안하는데 지치네..." });
     }
 
     public string GetText(int id, int talkindex) // 대화 진행도에 따라 대사, null을 리턴함
