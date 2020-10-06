@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class 실험용버튼 : MonoBehaviour
+public class ButtonTest : MonoBehaviour
 {
     public GameObject 시작창;
     public GameObject 타이틀;

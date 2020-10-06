@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class 실험용이벤트 : MonoBehaviour
+public class EventTest : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
