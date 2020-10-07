@@ -15,8 +15,6 @@ public class Gamemanager : MonoBehaviour
     public int CutNumber;
     public int talkindex; // 대사 진행도
     public int QusetId;
-    
-    //public bool isCut;
 
     public void 오브젝트정보확인(GameObject TalkObjectData)
     {
