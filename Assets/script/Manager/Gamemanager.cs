@@ -12,6 +12,8 @@ public class Gamemanager : MonoBehaviour
     public GameObject talkwindow; // 대화창
     public Text 대사; // 대화창 Text
 
+    public bool isCut;
+    public int CutNumber;
     public int talkindex; // 대사 진행도
     public int QusetId;
 
@@ -29,7 +31,7 @@ public class Gamemanager : MonoBehaviour
         talkwindow.SetActive(playermanager.isaction);
     }
 
-    public void Talk(int id, bool isnpc = false, bool isCut = false)
+    public void Talk(int id, bool isnpc = false, bool Cut = false)
     {
         string talkdata = talkmanager.GetText(id, talkindex); 
         if (talkdata == null) // 대화창 뛰우기에서 null을 리턴받으면 관련 변수를 초기화시킴 return으로 함수 강제종료
@@ -37,7 +39,7 @@ public class Gamemanager : MonoBehaviour
             talkindex = 0;
             playermanager.isaction = false;
             QusetId = 10;
-            if(isCut) playermanager.isCut = false;
+            if(Cut) isCut = false;
             return;
         }
 
@@ -51,9 +53,6 @@ public class Gamemanager : MonoBehaviour
         talkindex++;
         playermanager.isaction = true;
         if (isCut)
-        {
-            playermanager.isCut = true;
-            playermanager.CutNumber = id;
-        }
+            CutNumber = id;
     }
 }
