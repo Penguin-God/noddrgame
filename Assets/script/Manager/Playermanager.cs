@@ -11,9 +11,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
 
     private int xMove;
     private int yMove;
-    private float RayX;
-    private float RayY;
-
+    
     public bool isaction;
     bool Run;
 
@@ -77,8 +75,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
                     MainVector.y = 0;
             }
             // Ray
-            RayX = MainVector.x;
-            RayY = MainVector.y;
+            RayVector = MainVector;
             // Animation
             animator.SetFloat("DirX", MainVector.x); 
             animator.SetFloat("DirY", MainVector.y);
@@ -89,8 +86,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
             animator.SetBool("Walking", false);
             xMove = 0;
             yMove = 0;
-            MainVector.x = 0;
-            MainVector.y = 0;
+            MainVector = Vector2.zero;
         }
         // Move : 위에서 적용한 백터값을 이용해 이동
         Rigidbody.velocity = MainVector * speed * (Run ? 2f : 1f); // velocity(속도) : 리지드바디의 속도 벡터로 Rigidbody 위치의 변화율을 나타냄.
@@ -98,15 +94,6 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
 
     void Ray()
     {
-        if (RayY == 1f)
-            RayVector = Vector2.up;
-        if (RayY == -1f)
-            RayVector = Vector2.down;
-        if (RayX == 1f)
-            RayVector = Vector2.right;
-        if (RayX == -1f)
-            RayVector = Vector2.left;
-
         // ray 생성
         Debug.DrawRay(Rigidbody.position, RayVector * 0.7f, new Color(0, 1, 0));
         RaycastHit2D rayhit = Physics2D.Raycast(Rigidbody.position, RayVector, 0.7f, LayerMask.GetMask("Object")); // 레이어가 Object인 물체만 감지함 
