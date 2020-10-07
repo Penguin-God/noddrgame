@@ -39,8 +39,7 @@ public class Button : MonoBehaviour
     {
         cuthome = true;
         yield return new WaitForSeconds(1f);
-        gamemanager.컷씬대화(600, false);
-        gamemanager.CutNumber = 600;
+        gamemanager.컷씬대화(600);
 
         yield return new WaitUntil(() => !playermanager.isaction);
         HomeCutScene();

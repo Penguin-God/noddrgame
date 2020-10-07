@@ -40,7 +40,7 @@ public class ButtonTest : MonoBehaviour
 
     IEnumerator GameStartCut()
     {
-        gamemanager.컷씬대화(700, false);
+        gamemanager.컷씬대화(700);
         while (stat.CurrentHp < stat.maxHp)
         {
             yield return new WaitUntil(() => Input.GetButtonDown("Jump"));
@@ -49,6 +49,6 @@ public class ButtonTest : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
         yield return new WaitForSeconds(1.5f);
-        gamemanager.컷씬대화(800, false);
+        gamemanager.컷씬대화(800);
     }
 }
