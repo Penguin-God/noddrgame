@@ -7,7 +7,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
 {
     Vector2 RayVector;
     GameObject TalkObject;
-    private Animator animator;
+    Animator animator;
 
     private int xMove;
     private int yMove;
@@ -51,7 +51,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
                 yMove++;
             if (Input.GetAxisRaw("Horizontal") != 0)
                 xMove++;
-            if (xMove == yMove)
+            if (xMove == yMove) // x,y축 동시에 누를 때 대각선 이동 방지
                 return;
 
             // xMove를 오랫동안 눌러서 값을 올라가면 수직이동중에 방향전환이 되지않는 버그때문에 XAni, YAni값이 축적되지 않게 하기위한 코드
@@ -74,8 +74,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
                 else if (xMove < yMove && Input.GetAxisRaw("Horizontal") != 0)
                     MainVector.y = 0;
             }
-            // Ray
-            RayVector = MainVector;
+            RayVector = MainVector; // Ray
             // Animation
             animator.SetFloat("DirX", MainVector.x); 
             animator.SetFloat("DirY", MainVector.y);
@@ -94,7 +93,6 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
 
     void Ray()
     {
-        // ray 생성
         Debug.DrawRay(Rigidbody.position, RayVector * 0.7f, new Color(0, 1, 0));
         RaycastHit2D rayhit = Physics2D.Raycast(Rigidbody.position, RayVector, 0.7f, LayerMask.GetMask("Object")); // 레이어가 Object인 물체만 감지함 
 
