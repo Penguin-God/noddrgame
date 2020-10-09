@@ -535,6 +535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   "\uC2DC\uC791\uCC3D": {fileID: 847267926}
   "\uD0C0\uC774\uD2C0": {fileID: 1492928398}
+  "\uAC80\uC815\uCC3D": {fileID: 649089785}
   virtualCamera: {fileID: 1819853891}
   Camera: {fileID: 257356635}
   stat: {fileID: 324695933}
