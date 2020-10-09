@@ -8,6 +8,7 @@ public class ButtonTest : MonoBehaviour
 {
     public GameObject 시작창;
     public GameObject 타이틀;
+    public GameObject 검정창;
     public GameObject virtualCamera;
 
     public Camera Camera;
@@ -29,6 +30,7 @@ public class ButtonTest : MonoBehaviour
     {
         타이틀.SetActive(false);
         시작창.SetActive(false);
+        검정창.SetActive(false);
 
         StartCoroutine(GameStartCut());
     }
