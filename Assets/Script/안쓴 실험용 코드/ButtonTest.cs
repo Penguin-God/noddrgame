@@ -2,19 +2,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class ButtonTest : MonoBehaviour
 {
     public GameObject 시작창;
     public GameObject 타이틀;
-    public GameObject 검정창;
     public GameObject virtualCamera;
+
+    public Image BlackImg;
+    private Color color;
+    private WaitForSeconds UIOutTime = new WaitForSeconds(0.02f);
 
     public Camera Camera;
     public PlayerStat stat;
     public Playermanager playermanager;
     public Gamemanager gamemanager;
+
+    private void Awake()
+    {
+
+        color = BlackImg.color;
+    }
 
     public void GameExit() // 게임종료
     {
@@ -30,8 +39,8 @@ public class ButtonTest : MonoBehaviour
     {
         타이틀.SetActive(false);
         시작창.SetActive(false);
-        검정창.SetActive(false);
 
+        StartCoroutine(UIOut(0.005f));
         StartCoroutine(GameStartCut());
     }
 
@@ -52,5 +61,15 @@ public class ButtonTest : MonoBehaviour
         }
         yield return new WaitForSeconds(1.5f);
         gamemanager.컷씬대화(800);
+    }
+
+    IEnumerator UIOut(float Speed)
+    {
+        while (color.a > 0f)
+        {
+            color.a -= Speed;
+            BlackImg.color = color;
+            yield return UIOutTime; 
+        }
     }
 }
