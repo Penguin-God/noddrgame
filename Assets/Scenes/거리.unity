@@ -1000,7 +1000,7 @@ MonoBehaviour:
   gamemanager: {fileID: 1027948}
   speed: 5
   CharactreName: player
-  isaction: 0
+  isaction: 1
   currentmapname: asdasd
 --- !u!212 &324695931
 SpriteRenderer:

@@ -12,7 +12,7 @@ public class ButtonTest : MonoBehaviour
 
     public Image BlackImg;
     private Color color;
-    private WaitForSeconds UIOutTime = new WaitForSeconds(0.02f);
+    private WaitForSeconds UIOutTime = new WaitForSeconds(0.01f);
 
     public Camera Camera;
     public PlayerStat stat;
@@ -65,7 +65,7 @@ public class ButtonTest : MonoBehaviour
             yield return new WaitUntil(() => Input.GetButtonDown("Jump"));
             stat.CurrentHp += 17;
             Camera.transform.position += new Vector3(0, 3, 0);
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.02f);
         }
         yield return new WaitForSeconds(1.5f);
         gamemanager.컷씬대화(800);
