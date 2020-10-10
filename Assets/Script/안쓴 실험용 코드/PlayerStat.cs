@@ -7,14 +7,31 @@ public class PlayerStat : MonoBehaviour
 {
     public int maxHp;
     public int CurrentHp;
-   
+
+    public bool PlayerSurvival = true;
+
     public Slider hpSilder;
 
     void Update()
     {
         hpSilder.maxValue = maxHp; 
         hpSilder.value = CurrentHp;
-        //if (CurrentHp > maxHp)
-        //    Destroy(gameObject, 1);
+        PlayerDie();
+    }
+
+    void PlayerDie()
+    {
+        if (CurrentHp >= maxHp)
+            StartCoroutine(HpSubtract());
+    }
+
+    IEnumerator HpSubtract()
+    {
+        PlayerSurvival = false;
+        while (CurrentHp > 0)
+        {
+            CurrentHp -= 3;
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 }

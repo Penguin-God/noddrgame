@@ -60,14 +60,15 @@ public class ButtonTest : MonoBehaviour
         
         // 대사 시작
         gamemanager.컷씬대화(700);
-        while (stat.CurrentHp < stat.maxHp)
+        while(stat.PlayerSurvival)
         {
             yield return new WaitUntil(() => Input.GetButtonDown("Jump"));
             stat.CurrentHp += 17;
             Camera.transform.position += new Vector3(0, 3, 0);
             yield return new WaitForSeconds(0.02f);
         }
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitUntil(()=> stat.CurrentHp == 0);
+        stat.PlayerSurvival = true;
         gamemanager.컷씬대화(800);
     }
 }
