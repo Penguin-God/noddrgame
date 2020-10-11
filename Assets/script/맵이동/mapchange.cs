@@ -6,19 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class Mapchange : MonoBehaviour
 {
+    public Fademanager fademanager;
+    public Playermanager playermanager;
+
     public PolygonCollider2D polygon;
     public Cameramanager cameramanager;
     public Transform MapChangePoint;
-    //private 변수저장소 Theplayer;
-    private Fademanager fademanager;
-    private Playermanager playermanager;
-
-    private void Start()
-    {
-        //FindObjectOfType : 유니티 계층에 있는 모든 객체를 참조해서 가져옴 Getcomponent와 검색 범위가 다름
-        fademanager = FindObjectOfType<Fademanager>();
-        playermanager = FindObjectOfType<Playermanager>();
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -28,13 +21,12 @@ public class Mapchange : MonoBehaviour
         }
     }
 
-    //컷씬 시 캐릭터가 이동해야 할 경우 사용
-    public void CutMapChange()
+    public void CutMapChange() //컷씬 시 캐릭터가 이동해야 할 경우 사용
     {
         StartCoroutine(MapTransCoroutine());
     }
 
-    IEnumerator MapTransCoroutine() //맵이 어두워지고 이동한 후 다시밝아지는 코루틴
+    IEnumerator MapTransCoroutine() //맵이 어두워지고 맵 이동 후 다시밝아지는 코루틴
     {
         playermanager.isaction = true;
         fademanager.FadeOut();

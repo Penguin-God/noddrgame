@@ -238,6 +238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b29d056fab9e844a9220f7970d7741d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fademanager: {fileID: 2040983548}
+  playermanager: {fileID: 480954423}
   polygon: {fileID: 0}
   cameramanager: {fileID: 728754746}
   MapChangePoint: {fileID: 894174772}
@@ -336,12 +338,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 135249376}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25.55, y: 40.48, z: -86.081505}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 57.96385, y: 40.47863, z: -83.46017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_Father: {fileID: 1963373676}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &327681672
 GameObject:
@@ -798,9 +800,7 @@ MonoBehaviour:
   gamemanager: {fileID: 1325342199}
   speed: 5
   CharactreName: player
-  CutNumber: 0
   isaction: 0
-  isCut: 0
   currentmapname: asdasd
 --- !u!212 &480954424
 SpriteRenderer:
@@ -1210,13 +1210,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.6800003, y: 0, z: -9.204102}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 85.19385, y: -0.0013698582, z: -6.5827637}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2040983547}
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_Father: {fileID: 1963373676}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &519420033
 Animator:
@@ -14154,13 +14154,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 728754742}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.6800003, y: 0, z: -9.204102}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 85.19385, y: -0.0013698582, z: -6.5827637}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2062412561}
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_Father: {fileID: 1963373676}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &728754745
 MonoBehaviour:
@@ -14387,12 +14387,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 811157400}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.49, y: 4.5, z: -6.4085636}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.49, y: 4.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 1684561208}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &835215211
 GameObject:
@@ -14464,6 +14464,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b29d056fab9e844a9220f7970d7741d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fademanager: {fileID: 2040983548}
+  playermanager: {fileID: 480954423}
   polygon: {fileID: 0}
   cameramanager: {fileID: 728754746}
   MapChangePoint: {fileID: 517159958}
@@ -14677,6 +14679,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b29d056fab9e844a9220f7970d7741d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fademanager: {fileID: 2040983548}
+  playermanager: {fileID: 480954423}
   polygon: {fileID: 135249377}
   cameramanager: {fileID: 728754746}
   MapChangePoint: {fileID: 673834860}
@@ -15023,6 +15027,7 @@ MonoBehaviour:
   playermanager: {fileID: 480954423}
   talkwindow: {fileID: 1953387524}
   "\uB300\uC0AC": {fileID: 2057906862}
+  CutNumber: 0
   talkindex: 0
   QusetId: 0
 --- !u!4 &1325342201
@@ -15726,6 +15731,7 @@ Transform:
   - {fileID: 594297654}
   - {fileID: 597305824}
   - {fileID: 514754296}
+  - {fileID: 811157404}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16096,6 +16102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b29d056fab9e844a9220f7970d7741d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fademanager: {fileID: 0}
+  playermanager: {fileID: 0}
   polygon: {fileID: 0}
   cameramanager: {fileID: 0}
   MapChangePoint: {fileID: 1776511866}
@@ -16252,6 +16260,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1953387524}
   m_CullTransparentMesh: 0
+--- !u!1 &1963373675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1963373676}
+  m_Layer: 0
+  m_Name: "\uCE74\uBA54\uB77C"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1963373676
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963373675}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -83.51385, y: 0.0013698582, z: -2.621338}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 519420032}
+  - {fileID: 728754744}
+  - {fileID: 135249378}
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2040983546
 GameObject:
   m_ObjectHideFlags: 0
