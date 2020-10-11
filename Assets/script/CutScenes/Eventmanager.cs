@@ -9,8 +9,7 @@ public class Eventmanager : MonoBehaviour
 
     public void NpcLode()
     {
-        npcmanagers = ToList();
-        //npcmanager에 ToList의 반환값인 templist(모든npc)를 넣음
+        npcmanagers = ToList(); //npcmanager에 ToList의 반환값인 templist(모든npc)를 넣음
     }
 
     public List<Npcmanager> ToList()
@@ -40,8 +39,7 @@ public class Eventmanager : MonoBehaviour
         }
     }
 
-    //원하는 게임 오브젝트를 숨기는 함수
-    public void SetAc(string name)
+    public void SetAc(string name) //원하는 게임 오브젝트를 숨기는 함수
     {
         for (int i = 0; i < npcmanagers.Count; i++)
         {

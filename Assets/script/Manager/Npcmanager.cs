@@ -124,8 +124,7 @@ public class Npcmanager : 변수저장소
                         yield return new WaitForSeconds(1f);
                         break;
                     case 5:
-                        //yield return new WaitForSeconds(); 값이 없을 경우 대기시간없이 무한히 함수가 반복되므로 렉걸려서 튕김
-                        break;
+                        break; //yield return new WaitForSeconds(); 값이 없을 경우 대기시간없이 무한히 함수가 반복되므로 렉걸려서 튕김
                 }
 
                 yield return new WaitUntil(() => queue.Count < 2);
