@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Eventmanager : MonoBehaviour
 {
-    private List<Npcmanager> npcmanagers;
+    public List<Npcmanager> npcmanagers;
     //마을마다 수가 다른 Npc특성상 한번넣으면 값을 바꿀 수 없는 []보다는 값을 유동적으로 바꿀 수 있는 <>가 적절하다.
 
     public void NpcLode()
@@ -22,8 +22,7 @@ public class Eventmanager : MonoBehaviour
         
         for(int i =0; i < temp.Length; i++)
         {
-            templist.Add(temp[i]);
-            //templist안에 모든NPC를 넣음
+            templist.Add(temp[i]); //templist안에 모든NPC를 넣음
         }
         return templist;
     }
