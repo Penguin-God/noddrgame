@@ -109,7 +109,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
         {
             if (TalkObject != null)
                 gamemanager.오브젝트정보확인(TalkObject);
-            else if (isaction)
+            else if (isaction && gamemanager.CutNumber != 0)
                 gamemanager.컷씬대화(gamemanager.CutNumber);
         }
     }
