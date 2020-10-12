@@ -57,18 +57,18 @@ public class ButtonTest : MonoBehaviour
             BlackImg.color = color;
             yield return UIOutTime;
         }
-        
+
         // 대사 시작
         gamemanager.컷씬대화(700);
-        while(stat.PlayerSurvival)
+        while (!stat.PlayerDie)
         {
             yield return new WaitUntil(() => Input.GetButtonDown("Jump"));
             stat.CurrentHp += 17;
             Camera.transform.position += new Vector3(0, 3, 0);
             yield return new WaitForSeconds(0.02f);
         }
+
         yield return new WaitUntil(()=> stat.CurrentHp == 0);
-        stat.PlayerSurvival = true;
         gamemanager.컷씬대화(800);
     }
 }

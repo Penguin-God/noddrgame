@@ -5,10 +5,12 @@ using UnityEngine.UI;
 
 public class PlayerStat : MonoBehaviour
 {
+    public Playermanager playermanager;
+
     public int maxHp;
     public int CurrentHp;
 
-    public bool PlayerSurvival = true;
+    public bool PlayerDie;
 
     public Slider hpSilder;
 
@@ -16,10 +18,10 @@ public class PlayerStat : MonoBehaviour
     {
         hpSilder.maxValue = maxHp; 
         hpSilder.value = CurrentHp;
-        PlayerDie();
+        PlayerDeat();
     }
 
-    void PlayerDie()
+    void PlayerDeat()
     {
         if (CurrentHp >= maxHp)
             StartCoroutine(HpSubtract());
@@ -27,7 +29,8 @@ public class PlayerStat : MonoBehaviour
 
     IEnumerator HpSubtract()
     {
-        PlayerSurvival = false;
+        playermanager.isaction = true;
+        PlayerDie = true;
         while (CurrentHp > 0)
         {
             CurrentHp -= 3;
