@@ -18,17 +18,13 @@ public class Test : MonoBehaviour
     public Eventmanager eventmanager;
     public Npcmanager npcmanager;
 
-    //private void OnTriggerEnter2D(Collider2D collision) // 케이디식 이동
-    //{
-    //    if(collision.gameObject.name == "player")
-    //    {
-    //        eventmanager.NpcLode();
-    //        for(int i = 0; i < testmove.Length; i++)
-    //        {
-    //            eventmanager.EventMove(testmove[i].name, testmove[i].direction);
-    //        }
-    //    }
-    //}
+    public void TestMove(string name, string dir)
+    {
+        if (name == npcmanager.CharactreName)
+        {
+            npcmanager.Move(dir);
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision) // 내가 구현한 이동
     {
@@ -38,14 +34,6 @@ public class Test : MonoBehaviour
             {
                 TestMove(testmove[i].name, testmove[i].direction);
             }
-        }
-    }
-
-    void TestMove(string name, string dir)
-    {
-        if (name == npcmanager.CharactreName)
-        {
-            npcmanager.Move(dir);
         }
     }
 }
