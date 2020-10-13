@@ -30,6 +30,11 @@ public class Npcmanager : 변수저장소
     public int walkcount;
     protected int count;
 
+    //Queue : 선입선출 자료구조(먼저넣은값이 가장 앞에있고 값을 뺄 때 가장 앞에 있는값을 먼저 빼는 자료구조)
+    //Queue자료구조에 a,b,c를 순서대로 넣으면 a,b,c 순서대로 값이 들어가고 값을 뻬려고 하면 a,b,c순서대로 값이 나온다.
+    //Enqueue() : Queue의 끝 부분에 값을 넣는 것, Dequeue : Queue 의 시작 부분에서 개체를 제거하고 반환함. 
+    public Queue<string> queue;
+
     private void Start()
     {
         queue = new Queue<string>();
@@ -37,13 +42,8 @@ public class Npcmanager : 변수저장소
 
     public void NpcMove()
     {
-        StartCoroutine(MoveCoroutine());
+        StartCoroutine(MoveCoroutine());  
     }
-
-    //Queue : 선입선출 자료구조(먼저넣은값이 가장 앞에있고 값을 뺄 때 가장 앞에 있는값을 먼저 빼는 자료구조)
-    //Queue자료구조에 a,b,c를 순서대로 넣으면 a,b,c 순서대로 값이 들어가고 값을 뻬려고 하면 a,b,c순서대로 값이 나온다.
-    //Enqueue() : Queue의 끝 부분에 값을 넣는 것, Dequeue : Queue 의 시작 부분에서 개체를 제거하고 반환함. 
-    public Queue<string> queue;
 
     public void Move(string dir, int frequencey = 5)
     {
@@ -139,9 +139,8 @@ public class Npcmanager : 변수저장소
         }
     }
 
-    private void FixedUpdate()
+    private void FixedUpdate() //Ray에 콜라이더가 걸리면 정지
     {
-        //Ray에 콜라이더가 걸리면 안움직임
         Vector2 start;
         Vector2 end;
         start = transform.position;

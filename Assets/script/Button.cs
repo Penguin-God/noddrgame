@@ -11,8 +11,9 @@ public class Button : MonoBehaviour
 
     public Playermanager playermanager;
     public Gamemanager gamemanager;
-    public Eventmanager eventmanager;
-    public Testmove[] testmove;
+    public Test test;
+    //public Eventmanager eventmanager;
+    //public Testmove[] testmove;
 
     public bool cuthome;
     public int cutnumber;
@@ -42,21 +43,21 @@ public class Button : MonoBehaviour
         gamemanager.컷씬대화(600);
 
         yield return new WaitUntil(() => !playermanager.isaction);
-        HomeCutScene();
+        //HomeCutScene();
         playermanager.isaction = true;
         cuthome = false;
         yield return new WaitUntil(() => !playermanager.isaction);
         mapchange.CutMapChange();
     }
 
-    public void HomeCutScene()
-    {
-        eventmanager.NpcLode();
-        for (int i = 0; i < testmove.Length; i++)
-        {
-            eventmanager.EventMove(testmove[i].name, testmove[i].direction);
-        }
-    }
+    //public void HomeCutScene()
+    //{
+    //    eventmanager.NpcLode();
+    //    for (int i = 0; i < testmove.Length; i++)
+    //    {
+    //        eventmanager.EventMove(testmove[i].name, testmove[i].direction);
+    //    }
+    //}
 
     public void StartCancel()
     {
