@@ -14190,7 +14190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaa5643bb82f26245a9df1d1aca531c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  polygon: {fileID: 0}
+  polygon: {fileID: 135249377}
 --- !u!1 &768778478
 GameObject:
   m_ObjectHideFlags: 0
@@ -15860,6 +15860,8 @@ MonoBehaviour:
     direction: LEFT
   - name: "\uC544\uBE60"
     direction: LEFT
+  - name: "\uC544\uBE60"
+    direction: LEFT
   npcmanager:
   - {fileID: 1811733114}
 --- !u!1 &1792989092
@@ -16159,10 +16161,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b29d056fab9e844a9220f7970d7741d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fademanager: {fileID: 0}
-  playermanager: {fileID: 0}
+  fademanager: {fileID: 2040983548}
+  playermanager: {fileID: 480954423}
   polygon: {fileID: 0}
-  cameramanager: {fileID: 0}
+  cameramanager: {fileID: 728754746}
   MapChangePoint: {fileID: 1776511866}
 --- !u!1 &1883224060
 GameObject:
