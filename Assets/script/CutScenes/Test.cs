@@ -15,14 +15,16 @@ public class Test : MonoBehaviour
     [SerializeField]
     public Testmove[] testmove;
 
-    //public Eventmanager eventmanager;
-    public Npcmanager npcmanager;
+    public Npcmanager[] npcmanager;
 
     public void TestMove(string name, string dir)
     {
-        if (name == npcmanager.CharactreName)
+        for(int i = 0; i < npcmanager.Length; i++)
         {
-            npcmanager.Move(dir);
+            if (name == npcmanager[i].CharactreName)
+            {
+                npcmanager[i].Move(dir);
+            }
         }
     }
 
@@ -39,9 +41,12 @@ public class Test : MonoBehaviour
 
     public void ObjectSetFalse(string name) //원하는 게임 오브젝트를 숨기는 함수
     {
-        if (name == npcmanager.CharactreName)
+        for(int i = 0; i < npcmanager.Length; i++)
         {
-            npcmanager.gameObject.SetActive(false);
+            if (name == npcmanager[i].CharactreName)
+            {
+                npcmanager[i].gameObject.SetActive(false);
+            }
         }
     }
 }
