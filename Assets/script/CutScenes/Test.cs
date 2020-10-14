@@ -39,6 +39,14 @@ public class Test : MonoBehaviour
         }
     }
 
+    public void NpcMove()
+    {
+        for (int i = 0; i < testmove.Length; i++)
+        {
+            TestMove(testmove[i].name, testmove[i].direction);
+        }
+    }
+
     public void ObjectSetFalse(string name) //원하는 게임 오브젝트를 숨기는 함수
     {
         for(int i = 0; i < npcmanager.Length; i++)
