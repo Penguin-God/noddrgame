@@ -15,7 +15,7 @@ public class Test : MonoBehaviour
     [SerializeField]
     public Testmove[] testmove;
 
-    public Eventmanager eventmanager;
+    //public Eventmanager eventmanager;
     public Npcmanager npcmanager;
 
     public void TestMove(string name, string dir)
