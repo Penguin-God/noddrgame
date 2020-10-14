@@ -15838,7 +15838,7 @@ MonoBehaviour:
   "\uD0C0\uC774\uD2C0": {fileID: 1179704614}
   playermanager: {fileID: 480954423}
   gamemanager: {fileID: 1325342199}
-  test: {fileID: 0}
+  test: {fileID: 1779485845}
   cuthome: 0
   cutnumber: 600
 --- !u!114 &1779485845
@@ -15855,14 +15855,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   testmove:
   - name: "\uC544\uBE60"
-    direction: UP
-  - name: "\uC544\uBE60"
-    direction: UP
-  - name: "\uC544\uBE60"
     direction: DOWN
   - name: "\uC544\uBE60"
-    direction: DOWN
-  npcmanager: []
+    direction: LEFT
+  - name: "\uC544\uBE60"
+    direction: LEFT
+  npcmanager:
+  - {fileID: 1811733114}
 --- !u!1 &1792989092
 GameObject:
   m_ObjectHideFlags: 0
