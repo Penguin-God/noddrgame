@@ -36,4 +36,12 @@ public class Test : MonoBehaviour
             }
         }
     }
+
+    public void ObjectSetFalse(string name) //원하는 게임 오브젝트를 숨기는 함수
+    {
+        if (name == npcmanager.CharactreName)
+        {
+            npcmanager.gameObject.SetActive(false);
+        }
+    }
 }
