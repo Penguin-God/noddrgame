@@ -33,11 +33,13 @@ public class Npcmanager : 변수저장소
     //Queue : 선입선출 자료구조(먼저넣은값이 가장 앞에있고 값을 뺄 때 가장 앞에 있는값을 먼저 빼는 자료구조)
     //Queue자료구조에 a,b,c를 순서대로 넣으면 a,b,c 순서대로 값이 들어가고 값을 뻬려고 하면 a,b,c순서대로 값이 나온다.
     //Enqueue() : Queue의 끝 부분에 값을 넣는 것, Dequeue : Queue 의 시작 부분에서 개체를 제거하고 반환함. 
-    public Queue<string> queue;
+    public Queue<string> NpcDirSave;
+
+    Vector2 NpcVec;
 
     private void Start()
     {
-        queue = new Queue<string>();
+        NpcDirSave = new Queue<string>();
     }
 
     public void NpcMove()
@@ -47,7 +49,7 @@ public class Npcmanager : 변수저장소
 
     public void Move(string dir, int frequencey = 5)
     {
-        queue.Enqueue(dir); //queue에 dir을 넣음
+        NpcDirSave.Enqueue(dir); // NpcDirSave dir을 넣음
         if (!NotCortoutine)
         {
             //지정한 방향값이 다수일 경우 코루틴이 다중반복실행되어 오브젝트가 개빨리 움직이는 에러가 나서 코루틴 시작 조건을 만듬
@@ -58,28 +60,28 @@ public class Npcmanager : 변수저장소
 
     IEnumerator MoveCoroutine(string dir, int frequencey)
     {
-        while (queue.Count != 0) //queue의 값이 모두 제거되면 멈춤
+        while (NpcDirSave.Count != 0) // NpcDirSave의 값이 모두 제거되면 멈춤
         {
-            string direction = queue.Dequeue(); //queue에서 제거되는 값이 switch문의 값이됨
-            MainVector.Set(0, 0);//코루틴을 한번 돌고나면 백터값을 초기화(x,y가 동시에 1을가지면 안되기 때문)
+            string direction = NpcDirSave.Dequeue(); //queue에서 제거되는 값이 switch문의 값이됨
+            NpcVec.Set(0, 0); //코루틴을 한번 돌고나면 백터값을 초기화(x,y가 동시에 1을가지면 안되기 때문)
 
             switch (direction) //switch 문에는 string값이 와도 상관이 없음
             {
                 case ("UP"):
-                    MainVector.y = 1f;
+                    NpcVec.y = 1f;
                     break;
                 case ("DOWN"):
-                    MainVector.y = -1f;
+                    NpcVec.y = -1f;
                     break;
                 case ("RIGHT"):
-                    MainVector.x = 1f;
+                    NpcVec.x = 1f;
                     break;
                 case ("LEFT"):
-                    MainVector.x = -1f;
+                    NpcVec.x = -1f;
                     break;
                 case ("NONE"):
-                    MainVector.x = 0;
-                    MainVector.y = 0;
+                    NpcVec.x = 0;
+                    NpcVec.y = 0;
                     break;
             }
 
@@ -93,7 +95,7 @@ public class Npcmanager : 변수저장소
 
             while (count < walkcount)
             {
-                transform.Translate(MainVector.x * speed, MainVector.y * speed, 0);
+                transform.Translate(NpcVec.x * speed, NpcVec.y * speed, 0);
                 //코루틴에서 백터값을 초기화하기 때문에 x,y를 동시에 움직여도 대각선 이동은 일어나지 않음
                 count++;
                 yield return new WaitForSeconds(0.01f);
@@ -127,7 +129,7 @@ public class Npcmanager : 변수저장소
                         break; //yield return new WaitForSeconds(); 값이 없을 경우 대기시간없이 무한히 함수가 반복되므로 렉걸려서 튕김
                 }
 
-                yield return new WaitUntil(() => queue.Count < 2);
+                yield return new WaitUntil(() => NpcDirSave.Count < 2);
                 //NpcCanMove가 true가 될 때까지 무한대기
                 //case5의 경우 대기시간이 없어 무한반복되어 렉걸리는데 코르틴이 끝날때마다 NpcCanMove를 true로 만들고 끝날때마다 실행시키기 때문에 캐릭터는 딜레이없이 움직이면서 유니티도 안튕김
                 Move(npc.direction[i], npc.frequency);
@@ -144,7 +146,7 @@ public class Npcmanager : 변수저장소
         Vector2 start;
         Vector2 end;
         start = transform.position;
-        end = start + new Vector2(MainVector.x * speed * walkcount , MainVector.y * speed * walkcount);
+        end = start + new Vector2(NpcVec.x * speed * walkcount , NpcVec.y * speed * walkcount);
 
         RaycastHit2D rayhit = Physics2D.Linecast(start, end, layermask);
         if (rayhit.transform != null)
