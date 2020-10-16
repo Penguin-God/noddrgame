@@ -5,6 +5,7 @@ using UnityEngine;
 //MonoBehaviour 대신에 상속받고 싶은 script의 이름을 쓰면 상속이 됨
 public class Playermanager : 변수저장소 //변수저장소 script를 상속받고 있음
 {
+    Vector2 PlayerVector;
     Vector2 RayVector;
     GameObject TalkObject;
     Animator animator;
@@ -40,13 +41,13 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
     {
         if (isaction)
         {
-            MainVector.x = 0;
-            MainVector.y = 0;
+            PlayerVector.x = 0;
+            PlayerVector.y = 0;
             animator.SetBool("Walking", false);
         }
         else if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
         {
-            MainVector.Set(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")); // Vector에 따라 각각 -1,1을리턴
+            PlayerVector.Set(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")); // Vector에 따라 각각 -1,1을리턴
             if (Input.GetAxisRaw("Vertical") != 0)
                 yMove++;
             if (Input.GetAxisRaw("Horizontal") != 0)
@@ -70,14 +71,14 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
                 }
 
                 if (xMove > yMove && Input.GetAxisRaw("Vertical") != 0) // X축으로 움직이고 있다가 Y축 버튼을 누르면 방향.x값은 0 즉 수평이동중에 수직으로 방향전환 
-                    MainVector.x = 0;
+                    PlayerVector.x = 0;
                 else if (xMove < yMove && Input.GetAxisRaw("Horizontal") != 0)
-                    MainVector.y = 0;
+                    PlayerVector.y = 0;
             }
-            RayVector = MainVector; // Ray
+            RayVector = PlayerVector; // Ray
             // Animation
-            animator.SetFloat("DirX", MainVector.x); 
-            animator.SetFloat("DirY", MainVector.y);
+            animator.SetFloat("DirX", PlayerVector.x); 
+            animator.SetFloat("DirY", PlayerVector.y);
             animator.SetBool("Walking", true);
         }
         else // 가만히 있을 때 
@@ -85,10 +86,10 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
             animator.SetBool("Walking", false);
             xMove = 0;
             yMove = 0;
-            MainVector = Vector2.zero;
+            PlayerVector = Vector2.zero;
         }
         // Move : 위에서 적용한 백터값을 이용해 이동
-        Rigidbody.velocity = MainVector * speed * (Run ? 2f : 1f); // velocity(속도) : 리지드바디의 속도 벡터로 Rigidbody 위치의 변화율을 나타냄.
+        Rigidbody.velocity = PlayerVector * speed * (Run ? 2f : 1f); // velocity(속도) : 리지드바디의 속도 벡터로 Rigidbody 위치의 변화율을 나타냄.
     }
 
     void Ray()
