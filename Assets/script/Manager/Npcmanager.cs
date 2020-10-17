@@ -37,28 +37,23 @@ public class Npcmanager : 변수저장소
 
     Vector2 NpcVec;
 
-    private void Start()
+    private void Awake()
     {
         NpcDirSave = new Queue<string>();
+        
     }
 
-    public void NpcMove()
-    {
-        StartCoroutine(MoveCoroutine());  
-    }
-
-    public void Move(string dir, int frequencey = 5)
+    public void Move(string dir)
     {
         NpcDirSave.Enqueue(dir); // NpcDirSave dir을 넣음
-        if (!NotCortoutine)
+        if (!NotCortoutine) //지정한 방향값이 다수일 경우 코루틴이 다중반복실행되어 오브젝트가 개빨리 움직이는 에러가 나서 코루틴 시작 조건을 만듬
         {
-            //지정한 방향값이 다수일 경우 코루틴이 다중반복실행되어 오브젝트가 개빨리 움직이는 에러가 나서 코루틴 시작 조건을 만듬
-            StartCoroutine(MoveCoroutine(dir, frequencey));
+            StartCoroutine(NpcOtherMove());
             NotCortoutine = true;
         }
     }
 
-    IEnumerator MoveCoroutine(string dir, int frequencey)
+    IEnumerator NpcOtherMove()
     {
         while (NpcDirSave.Count != 0) // NpcDirSave의 값이 모두 제거되면 멈춤
         {
@@ -105,7 +100,7 @@ public class Npcmanager : 변수저장소
         NotCortoutine = false;//while문이 끝난후 다시 false로 바꿔 코루틴이 돌아가게함
     }
 
-    IEnumerator MoveCoroutine()
+    IEnumerator NpcMoveCoroutine()
     {
         if (npc.direction.Length != 0) //지정한 방향값이 있는지 확인
         {
@@ -132,7 +127,7 @@ public class Npcmanager : 변수저장소
                 yield return new WaitUntil(() => NpcDirSave.Count < 2);
                 //NpcCanMove가 true가 될 때까지 무한대기
                 //case5의 경우 대기시간이 없어 무한반복되어 렉걸리는데 코르틴이 끝날때마다 NpcCanMove를 true로 만들고 끝날때마다 실행시키기 때문에 캐릭터는 딜레이없이 움직이면서 유니티도 안튕김
-                Move(npc.direction[i], npc.frequency);
+                Move(npc.direction[i]);
 
                 //NPC가 무한반복하여 움직이게 하는 code
                 if (i == npc.direction.Length - 1 && gameObject.name == "실험체") // i는 0부터 시작하므로 배열의 크기에 -1을 함
