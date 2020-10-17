@@ -7,7 +7,8 @@ using UnityEngine;
 public class NPCMove
 {
     public string[] direction; // npc가 움직일 방향 설정
-    [Range(1, 5)] [Tooltip("1 = 천천히, 2 = 조금천천히, 3 = 보통, 4 = 빠르게, 5 = 연속적으로")]
+
+    [Range(1, 5)] [Tooltip("1 = 천천히, 2 = 조금천천히, 3 = 보통, 4 = 빠르게, 5 = 연속적으로")] // Tooltip : 인스펙터 창에 마우스오버 시 설명이 나옴
     //[Range(1, 5)] : frequency가 인스펙터 창에 1~5까지 조절할 수 있는 스크롤바가 나옴
     public int frequency; //npc가 얼마나 지정된 방향으로 빈번하게 움직일 것인가
 }
@@ -36,7 +37,6 @@ public class Npcmanager : 변수저장소
     private void Awake()
     {
         NpcDirSave = new Queue<string>();
-        StartCoroutine(NpcMoveCoroutine());
     }
 
     public void Move(string dir)
