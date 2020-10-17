@@ -6,11 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public class NPCMove
 {
-    //Tooltip은 인스펙터 창에서 마우스오버 시 나오는 부가설명
-    //[Tooltip("NPCmove가 true일시 NPC가 움직임")]
-    //public bool Npcmove;
     public string[] direction; // npc가 움직일 방향 설정
-
     [Range(1, 5)] [Tooltip("1 = 천천히, 2 = 조금천천히, 3 = 보통, 4 = 빠르게, 5 = 연속적으로")]
     //[Range(1, 5)] : frequency가 인스펙터 창에 1~5까지 조절할 수 있는 스크롤바가 나옴
     public int frequency; //npc가 얼마나 지정된 방향으로 빈번하게 움직일 것인가
@@ -40,7 +36,7 @@ public class Npcmanager : 변수저장소
     private void Awake()
     {
         NpcDirSave = new Queue<string>();
-        
+        StartCoroutine(NpcMoveCoroutine());
     }
 
     public void Move(string dir)
@@ -97,7 +93,7 @@ public class Npcmanager : 변수저장소
             }
             count = 0;
         }
-        NotCortoutine = false;//while문이 끝난후 다시 false로 바꿔 코루틴이 돌아가게함
+        NotCortoutine = false; //while문이 끝난후 다시 false로 바꿔 코루틴이 돌아가게함
     }
 
     IEnumerator NpcMoveCoroutine()
@@ -121,17 +117,15 @@ public class Npcmanager : 변수저장소
                         yield return new WaitForSeconds(1f);
                         break;
                     case 5:
-                        break; //yield return new WaitForSeconds(); 값이 없을 경우 대기시간없이 무한히 함수가 반복되므로 렉걸려서 튕김
+                        break;
                 }
 
                 yield return new WaitUntil(() => NpcDirSave.Count < 2);
-                //NpcCanMove가 true가 될 때까지 무한대기
-                //case5의 경우 대기시간이 없어 무한반복되어 렉걸리는데 코르틴이 끝날때마다 NpcCanMove를 true로 만들고 끝날때마다 실행시키기 때문에 캐릭터는 딜레이없이 움직이면서 유니티도 안튕김
                 Move(npc.direction[i]);
 
                 //NPC가 무한반복하여 움직이게 하는 code
-                if (i == npc.direction.Length - 1 && gameObject.name == "실험체") // i는 0부터 시작하므로 배열의 크기에 -1을 함
-                    i = -1;
+                if (i == npc.direction.Length - 1) 
+                    i = -1; // 반복문이 배열의 크기만큼 다 돌았으면 i에 -1을 대입해 다시0부터 시작하게함
             }
         }
     }
