@@ -8,9 +8,9 @@ public class Gamemanager : MonoBehaviour
     public GameObject TalkObject;
     public Talkmanager talkmanager;
     public Playermanager playermanager;
+    public TypeEffect typeEffect;
 
     public GameObject talkwindow; // 대화창
-    public Text 대사; // 대화창 Text
 
     public int CutNumber;
     public int talkindex; // 대사 진행도
@@ -43,11 +43,11 @@ public class Gamemanager : MonoBehaviour
 
         if (isnpc)
         {
-            대사.text = talkdata;
+            typeEffect.GetText(talkdata);
         }
         else
-            대사.text = talkdata;  // 대화창의 Text에 GetText의 return을 넣음 
-        
+            typeEffect.GetText(talkdata);  // 대화창의 Text에 GetText의 return을 넣음 
+
         talkindex++;
         playermanager.isaction = true;
         if (isCut) CutNumber = id;

@@ -15098,8 +15098,8 @@ MonoBehaviour:
   TalkObject: {fileID: 0}
   talkmanager: {fileID: 34894808}
   playermanager: {fileID: 480954423}
+  typeEffect: {fileID: 2057906864}
   talkwindow: {fileID: 1953387524}
-  "\uB300\uC0AC": {fileID: 2057906862}
   CutNumber: 0
   talkindex: 0
   QusetId: 0
@@ -16593,8 +16593,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2057906861}
   - component: {fileID: 2057906863}
-  - component: {fileID: 2057906862}
   - component: {fileID: 2057906864}
+  - component: {fileID: 2057906862}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -16674,6 +16674,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64077dfab82e6048a8e82c80f7e0a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Windowtext: {fileID: 2057906862}
+  TextSpeed: 0.07
 --- !u!1 &2062412560
 GameObject:
   m_ObjectHideFlags: 3
