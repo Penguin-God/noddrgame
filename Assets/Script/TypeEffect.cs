@@ -41,9 +41,12 @@ public class TypeEffect : MonoBehaviour // 대화창 텍스트 효과주는 scri
         }
 
         Windowtext.text += TalkText[TextIndex]; // 공백이 된 Text창에 TextIndex번째 문자열을 더함
-        audioSource.Play();
-        TextIndex++;
 
+        if(TalkText[TextIndex] != ' ' && TalkText[TextIndex] != '.')
+            audioSource.Play();
+            
+
+        TextIndex++;
         Invoke("Effecting", 1 * TextSpeed); // 대사 다 출력할 때까지 재귀
     }
 
