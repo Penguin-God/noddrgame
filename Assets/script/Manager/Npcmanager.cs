@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//커스텀class가 인스펙터 창에 나오게 하기위한 명령어
-[System.Serializable]
+
+[System.Serializable] //커스텀class가 인스펙터 창에 나오게 하기위한 명령어
 public class NPCMove
 {
     public string[] direction; // npc가 움직일 방향 설정
