@@ -5,6 +5,8 @@ using UnityEngine;
 //MonoBehaviour 대신에 상속받고 싶은 script의 이름을 쓰면 상속이 됨
 public class Playermanager : 변수저장소 //변수저장소 script를 상속받고 있음
 {
+    public AudioManager audioManager;
+
     Vector2 PlayerVector;
     Vector2 RayVector;
     GameObject TalkObject;
@@ -14,7 +16,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
     private int yMove;
     
     public bool isaction;
-    bool Run;
+    bool isRun;
 
     public string currentmapname; //Scenechange script에 있는 mapname변수를 저장
 
@@ -34,7 +36,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
 
     void GetInput()
     {
-        Run = Input.GetButton("Run");
+        isRun = Input.GetButton("Run");
     }
 
     void Move()
@@ -80,6 +82,8 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
             animator.SetFloat("DirX", PlayerVector.x); 
             animator.SetFloat("DirY", PlayerVector.y);
             animator.SetBool("Walking", true);
+
+            audioManager.WalkAudioPlay(isRun);
         }
         else // 가만히 있을 때 
         {
@@ -89,7 +93,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
             PlayerVector = Vector2.zero;
         }
         // Move : 위에서 적용한 백터값을 이용해 이동
-        Rigidbody.velocity = PlayerVector * speed * (Run ? 2f : 1f); // velocity(속도) : 리지드바디의 속도 벡터로 Rigidbody 위치의 변화율을 나타냄.
+        Rigidbody.velocity = PlayerVector * speed * (isRun ? 2f : 1f); // velocity(속도) : 리지드바디의 속도 벡터로 Rigidbody 위치의 변화율을 나타냄.
     }
 
     void Ray()
