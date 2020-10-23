@@ -8,6 +8,8 @@ public class TypeEffect : MonoBehaviour // 대화창 텍스트 효과주는 scri
     public Text Windowtext;
 
     public float TextSpeed;
+    public bool isTyping;
+
     string TalkText;
     int TextIndex;
 
@@ -18,16 +20,26 @@ public class TypeEffect : MonoBehaviour // 대화창 텍스트 효과주는 scri
         audioSource = GetComponent<AudioSource>();
     }
 
-    public void GetText(string text)
+    public void GetText(string text) // text = TalkManager에 있는 대사
     {
-        TalkText = text;
-        EffectStart();
+        if (isTyping) // 타이핑 애니메이션중에 대화 넘기기를 시도할 때
+        {
+            CancelInvoke(); // 현재 실행되고있는 Invoke를 취소시킴
+            Windowtext.text = TalkText; // 기존에 받은 talkText값을 text창에 넣음
+            EffectEnd();
+        }
+        else
+        {
+            TalkText = text;
+            EffectStart();
+        }
     }
 
     void EffectStart() 
     {
         Windowtext.text = ""; // Text창을 공백으로 만듬
         TextIndex = 0;
+        isTyping = true;
 
         Invoke("Effecting", 1 * TextSpeed); // 1 * TextSpeed : 1글자가 나오는 딜레이
     }
@@ -36,7 +48,7 @@ public class TypeEffect : MonoBehaviour // 대화창 텍스트 효과주는 scri
     {
         if(TextIndex == TalkText.Length) // 대사를 다 출력하면 EffectEnd() 실행 후 return
         {
-            //EffectEnd();
+            EffectEnd();
             return;
         }
 
@@ -52,6 +64,6 @@ public class TypeEffect : MonoBehaviour // 대화창 텍스트 효과주는 scri
 
     void EffectEnd()
     {
-
+        isTyping = false;
     }
 }
