@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class TypeEffect : MonoBehaviour // 대화창 텍스트 효과주는 script
 {
     public Text Windowtext;
+    public GameObject EndCursor;
 
     public float TextSpeed;
     public bool isTyping;
@@ -37,6 +38,7 @@ public class TypeEffect : MonoBehaviour // 대화창 텍스트 효과주는 scri
 
     void EffectStart() 
     {
+        EndCursor.SetActive(false);
         Windowtext.text = ""; // Text창을 공백으로 만듬
         TextIndex = 0;
         isTyping = true;
@@ -65,5 +67,6 @@ public class TypeEffect : MonoBehaviour // 대화창 텍스트 효과주는 scri
     void EffectEnd()
     {
         isTyping = false;
+        EndCursor.SetActive(true);
     }
 }

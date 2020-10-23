@@ -15736,7 +15736,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1671482141
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16771,6 +16771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Windowtext: {fileID: 2057906862}
+  EndCursor: {fileID: 1671482140}
   TextSpeed: 0.07
   isTyping: 0
 --- !u!82 &2057906865
