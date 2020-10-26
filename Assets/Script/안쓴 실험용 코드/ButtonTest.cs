@@ -21,7 +21,6 @@ public class ButtonTest : MonoBehaviour
 
     private void Awake()
     {
-
         color = BlackImg.color;
     }
 
