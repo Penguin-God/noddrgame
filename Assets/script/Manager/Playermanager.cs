@@ -5,7 +5,12 @@ using UnityEngine;
 //MonoBehaviour 대신에 상속받고 싶은 script의 이름을 쓰면 상속이 됨
 public class Playermanager : 변수저장소 //변수저장소 script를 상속받고 있음
 {
+    static public Playermanager playermanager; // static : 이 script를 보유한 모든 오브젝트가 static으로 선언된 변수값을 공유함
+
     public AudioManager audioManager;
+
+    public GameObject ManagerParents;
+    public GameObject CameraParents;
 
     Vector2 PlayerVector;
     Vector2 RayVector;
@@ -19,6 +24,26 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
     bool isRun;
 
     public string currentMapname; // SceneChange script에 있는 sceneName 변수값을 할당받음
+
+    private void Start()
+    {
+        Debug.Log(playermanager + "1");
+        if (playermanager == null)
+        {
+            DontDestroyOnLoad(CameraParents);
+            DontDestroyOnLoad(ManagerParents);
+            DontDestroyOnLoad(this.gameObject);
+            playermanager = this;
+            Debug.Log(playermanager + "2");
+        }
+        else
+        {
+            Destroy(CameraParents);
+            Destroy(this.gameObject);
+            Destroy(ManagerParents);
+            Debug.Log(playermanager + "3");
+        }
+    }
 
     private void Awake() // Awake() : Start()함수와 다르게 script가 비활성화 상태여도 실해됨 즉 Start()함수는 비활성화 상태일시 script가 활성화되어야 실행됨
     {

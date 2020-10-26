@@ -207,8 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5023d0bb3c340b34ab7510a67e1306e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapStartPoint: 
-  playermanager: {fileID: 480954423}
+  mapStartPoint: Start
 --- !u!1 &98480768
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,9 +327,9 @@ PolygonCollider2D:
     m_Paths:
     - - {x: 1.952652, y: 17.491741}
       - {x: -19.305822, y: 15.019505}
-      - {x: -17.916832, y: -9.338158}
-      - {x: -15.564165, y: -9.657959}
-      - {x: 18.084553, y: -9.959425}
+      - {x: -20.893326, y: -13.769819}
+      - {x: -15.2334385, y: -13.9573345}
+      - {x: 22.251637, y: -13.465067}
       - {x: 20.64172, y: 16.327633}
 --- !u!4 &135249378
 Transform:
@@ -344,7 +343,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1963373676}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &327681672
 GameObject:
@@ -504,7 +503,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: "\uC5B8\uC820\uAC04\uC4F0\uACA0\uC9C0"
-  playermanager: {fileID: 480954423}
 --- !u!61 &365526209
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -803,6 +801,8 @@ MonoBehaviour:
   speed: 5
   CharactreName: player
   audioManager: {fileID: 2009781496}
+  ManagerParents: {fileID: 533157042}
+  CameraParents: {fileID: 1963373675}
   isaction: 0
   currentMapname: 
 --- !u!212 &480954424
@@ -1330,6 +1330,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2040983547}
+  - {fileID: 728754744}
   m_Father: {fileID: 1963373676}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14270,11 +14271,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 728754742}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 83.51385, y: -0.0013698582, z: -6.5827637}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2062412561}
-  m_Father: {fileID: 1963373676}
+  m_Father: {fileID: 519420032}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &728754745
@@ -14284,7 +14285,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 728754742}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2fba25a5cd15594e8f050a11e386c80, type: 3}
   m_Name: 
@@ -16562,7 +16563,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 519420032}
-  - {fileID: 728754744}
   - {fileID: 135249378}
   m_Father: {fileID: 0}
   m_RootOrder: 2
