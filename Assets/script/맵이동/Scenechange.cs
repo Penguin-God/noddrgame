@@ -1,25 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement; // SceneManager를 사용하기 위해 라이브러리 가져오기
 
-public class Scenechange : MonoBehaviour
+public class SceneChange : MonoBehaviour
 {
-    public string Scenename; // 이동할 씬의 이름
-    private Playermanager playermanager;
+    public string sceneName; // 이동할 씬의 이름
+    public Playermanager playermanager;
 
-    private void Start()
-    {
-        //FindObjectOfType : 유니티 계층에 있는 모든 객체를 참조해서 가져옴 Getcomponent와 검색 범위가 다름
-        playermanager = FindObjectOfType<Playermanager>();
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "player")
         {
-            playermanager.currentmapname = Scenename; //이동한 씬을 play script에 저장함
-            SceneManager.LoadScene(Scenename);
+            playermanager.currentMapname = sceneName; //이동한 씬을 play script에 저장함
+            SceneManager.LoadScene(sceneName);
         }
     }
 }
