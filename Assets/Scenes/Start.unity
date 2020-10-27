@@ -14285,7 +14285,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 728754742}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2fba25a5cd15594e8f050a11e386c80, type: 3}
   m_Name: 
@@ -14307,7 +14307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaa5643bb82f26245a9df1d1aca531c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  polygon: {fileID: 135249377}
+  Confiner: {fileID: 0}
 --- !u!1 &768778478
 GameObject:
   m_ObjectHideFlags: 0
