@@ -208,6 +208,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapStartPoint: Start
+  cameramanager: {fileID: 728754746}
+  polygon: {fileID: 135249377}
 --- !u!1 &98480768
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,6 +505,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: "\uC5B8\uC820\uAC04\uC4F0\uACA0\uC9C0"
+  cameramanager: {fileID: 728754746}
+  polygon: {fileID: 0}
+  playermanager: {fileID: 0}
 --- !u!61 &365526209
 BoxCollider2D:
   m_ObjectHideFlags: 0

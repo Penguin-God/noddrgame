@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement; // SceneManager를 사용하기 위해 라이
 public class SceneChange : MonoBehaviour
 {
     public string sceneName; // 이동할 씬의 이름
+
+    public Cameramanager cameramanager;
+    public PolygonCollider2D polygon;
+
     private Playermanager playermanager;
 
     private void Start()
@@ -17,6 +21,8 @@ public class SceneChange : MonoBehaviour
     {
         if (collision.gameObject.name == "player")
         {
+            if(cameramanager != null)
+                cameramanager.CollderChange(polygon);
             playermanager.currentMapname = sceneName; // 씬 이동시 출발한 씬을 currentMapname에 저장
             SceneManager.LoadScene(sceneName);
         }

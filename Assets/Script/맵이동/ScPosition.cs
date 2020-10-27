@@ -5,8 +5,9 @@ using UnityEngine;
 public class ScPosition : MonoBehaviour // 씬 이동시 플레이어가 시작할 위치가 가지는 script
 {
     public string mapStartPoint; // 핸재 씬 이름
-    private Playermanager playermanager;
 
+    private Playermanager playermanager;
+    
     private void Start()
     {
         playermanager = FindObjectOfType<Playermanager>();
