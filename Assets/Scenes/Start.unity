@@ -189,7 +189,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 39429290}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.59, y: 34.31, z: 0}
+  m_LocalPosition: {x: -8.59, y: 36.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1169024608}
@@ -207,9 +207,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5023d0bb3c340b34ab7510a67e1306e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapStartPoint: Start
-  cameramanager: {fileID: 728754746}
-  polygon: {fileID: 135249377}
+  mapStartPoint: "\uC5B8\uC820\uAC04\uC4F0\uACA0\uC9C0"
+  playermanager: {fileID: 480954423}
 --- !u!1 &98480768
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,9 +504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: "\uC5B8\uC820\uAC04\uC4F0\uACA0\uC9C0"
-  cameramanager: {fileID: 728754746}
-  polygon: {fileID: 0}
-  playermanager: {fileID: 0}
+  playermanager: {fileID: 480954423}
 --- !u!61 &365526209
 BoxCollider2D:
   m_ObjectHideFlags: 0
