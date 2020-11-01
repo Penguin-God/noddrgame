@@ -31,6 +31,7 @@ public class SceneChange : MonoBehaviour
 
     void SceneLoad()
     {
-        playermanager.currentScene = PlayerPrefs.GetString("currentScene");
+        if(PlayerPrefs.HasKey("currentScene"))
+            playermanager.currentScene = PlayerPrefs.GetString("currentScene");
     }
 }
