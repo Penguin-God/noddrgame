@@ -21,7 +21,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
     public bool isaction;
     bool isRun;
 
-    public string currentMapname; // SceneChange script에 있는 sceneName 변수값을 할당받음
+    public string currentScene; // SceneChange script에 있는 sceneName 변수값을 할당받음
 
     private void Awake() // Awake() : Start()함수와 다르게 script가 비활성화 상태여도 실해됨 즉 Start()함수는 비활성화 상태일시 script가 활성화되어야 실행됨
     {

@@ -9,12 +9,28 @@ public class SceneChange : MonoBehaviour
 
     public Playermanager playermanager;
 
+    private void Start()
+    {
+        SceneLoad();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "player")
         {
-            playermanager.currentMapname = sceneName; // 씬 이동시 출발한 씬을 currentMapname에 저장
+            SenceSave();
             SceneManager.LoadScene(sceneName);
         }
+    }
+
+    void SenceSave()
+    {
+        PlayerPrefs.SetString("currentScene", sceneName);
+        PlayerPrefs.Save();
+    }
+
+    void SceneLoad()
+    {
+        playermanager.currentScene = PlayerPrefs.GetString("currentScene");
     }
 }

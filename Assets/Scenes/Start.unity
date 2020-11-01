@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5023d0bb3c340b34ab7510a67e1306e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapStartPoint: "\uC5B8\uC820\uAC04\uC4F0\uACA0\uC9C0"
+  mapStartPoint: Start
   playermanager: {fileID: 480954423}
 --- !u!1 &98480768
 GameObject:
@@ -806,7 +806,7 @@ MonoBehaviour:
   ManagerParents: {fileID: 533157042}
   CameraParents: {fileID: 1963373675}
   isaction: 0
-  currentMapname: 
+  currentScene: 
 --- !u!212 &480954424
 SpriteRenderer:
   m_ObjectHideFlags: 0
