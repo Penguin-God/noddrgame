@@ -10,19 +10,12 @@ public class ButtonTest : MonoBehaviour
     public GameObject 타이틀;
     public GameObject virtualCamera;
 
-    public Image BlackImg;
-    private Color color;
-    private WaitForSeconds UIOutTime = new WaitForSeconds(0.01f);
-
     public Camera Camera;
     public PlayerStat stat;
     public Playermanager playermanager;
     public Gamemanager gamemanager;
+    public Fademanager fademanager;
 
-    private void Awake()
-    {
-        color = BlackImg.color;
-    }
 
     public void GameExit() // 게임종료
     {
@@ -50,13 +43,8 @@ public class ButtonTest : MonoBehaviour
 
     IEnumerator GameStartCut(float Speed)
     {
-        while (color.a > 0f) // 검은창 천천히 투명하게 하는 코드
-        {
-            color.a -= Speed;
-            BlackImg.color = color;
-            yield return UIOutTime;
-        }
-
+        fademanager.UIFadeIn(Speed);
+        yield return new WaitUntil(() => fademanager.color.a < 0.4f);
         // 대사 시작
         gamemanager.컷씬대화(700);
         while (!stat.PlayerDie)

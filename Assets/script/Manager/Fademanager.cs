@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Fademanager : MonoBehaviour
 {
-    public SpriteRenderer White;
-    public SpriteRenderer Black;
-    private Color color;
+    public SpriteRenderer WhiteWindow;
+    public SpriteRenderer BlackWIndow;
+    public Image Blackimg;
+    public Color color;
 
     private WaitForSeconds FadeoutWaitTime = new WaitForSeconds(0.01f);
     //while문 안에 new연산자를 쓰면 메모리 손해이기 때문에 위쪽에 생성(원래 코루틴 안에 new를 쓰기도 함)
@@ -19,13 +21,12 @@ public class Fademanager : MonoBehaviour
 
     IEnumerator FadeOutCoroutine(float Speed)
     {
-        color = Black.color;
+        color = BlackWIndow.color;
         while(color.a < 1f)// a = 알파(투명도)값
         {
             color.a += Speed;
-            Black.color = color; 
-            yield return FadeoutWaitTime; //알파값에 Speed를 계속 더하고 그값을 Black에 준 후 0.01f만큼의 대기시간을 가짐(약 1초동안 이 과정이 이루어짐)
-            //코루틴의 WaitForSeconds라는 기능의 유용성 때문에 자주 사용
+            BlackWIndow.color = color; 
+            yield return FadeoutWaitTime; //알파값에 Speed를 계속 더하고 그값을 BlackWIndow에 준 후 0.01f만큼의 대기시간을 가짐(약 1초동안 이 과정이 이루어짐)
         }
     }
 
@@ -38,12 +39,28 @@ public class Fademanager : MonoBehaviour
 
     IEnumerator FadeInCoroutine(float Speed)
     {
-        color = Black.color;
+        color = BlackWIndow.color;
         while (color.a > 0f)//a = 0이 되면 검은색화면이 없어졌다는 의미이므로 while문 정지
         {
             color.a -= Speed;
-            Black.color = color;
+            BlackWIndow.color = color;
             yield return FadeoutWaitTime; 
+        }
+    }
+
+    public void UIFadeIn(float Speed = 0.02f)
+    {
+        StartCoroutine(UIFadeinCo(Speed));
+    }
+
+    IEnumerator UIFadeinCo(float Speed)
+    {
+        color = Blackimg.color;
+        while (color.a > 0f) // 검은창 천천히 투명하게 하는 코드
+        {
+            color.a -= Speed;
+            Blackimg.color = color;
+            yield return FadeoutWaitTime;
         }
     }
 }

@@ -458,11 +458,11 @@ MonoBehaviour:
   "\uC2DC\uC791\uCC3D": {fileID: 847267926}
   "\uD0C0\uC774\uD2C0": {fileID: 1492928398}
   virtualCamera: {fileID: 1819853891}
-  BlackImg: {fileID: 649089787}
   Camera: {fileID: 257356635}
   stat: {fileID: 324695933}
   playermanager: {fileID: 324695930}
   gamemanager: {fileID: 1027948}
+  fademanager: {fileID: 1346558014}
 --- !u!1 &237282892
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,8 +923,10 @@ MonoBehaviour:
   speed: 5
   CharactreName: player
   audioManager: {fileID: 1979970484}
+  ManagerParents: {fileID: 0}
+  CameraParents: {fileID: 0}
   isaction: 1
-  currentMapname: 
+  currentScene: 
 --- !u!212 &324695931
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4936,8 +4938,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c29cef6819a82e499f7af8f03d2664f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  White: {fileID: 261045044}
-  Black: {fileID: 566264470}
+  WhiteWindow: {fileID: 261045044}
+  BlackWIndow: {fileID: 566264470}
+  Blackimg: {fileID: 649089787}
 --- !u!1 &1433866163
 GameObject:
   m_ObjectHideFlags: 0
