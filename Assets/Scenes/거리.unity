@@ -458,7 +458,7 @@ MonoBehaviour:
   "\uC2DC\uC791\uCC3D": {fileID: 847267926}
   "\uD0C0\uC774\uD2C0": {fileID: 1492928398}
   virtualCamera: {fileID: 1819853891}
-  Camera: {fileID: 257356635}
+  cameramanager: {fileID: 257356637}
   stat: {fileID: 324695933}
   playermanager: {fileID: 324695930}
   gamemanager: {fileID: 1027948}
@@ -556,6 +556,7 @@ GameObject:
   - component: {fileID: 257356632}
   - component: {fileID: 257356631}
   - component: {fileID: 257356630}
+  - component: {fileID: 257356637}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -724,6 +725,19 @@ Transform:
   m_Father: {fileID: 1699505569}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &257356637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257356629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaa5643bb82f26245a9df1d1aca531c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Confiner: {fileID: 0}
 --- !u!1 &261045042
 GameObject:
   m_ObjectHideFlags: 0
@@ -4941,6 +4955,7 @@ MonoBehaviour:
   WhiteWindow: {fileID: 261045044}
   BlackWIndow: {fileID: 566264470}
   Blackimg: {fileID: 649089787}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1433866163
 GameObject:
   m_ObjectHideFlags: 0

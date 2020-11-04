@@ -17,4 +17,18 @@ public class Cameramanager : MonoBehaviour
         if (Confiner.m_BoundingShape2D != newBox)
             Confiner.m_BoundingShape2D = newBox;
     }
+
+    public void CameraMove(Vector3 MoveVec, float MoveTime, int MoveCount)
+    {
+        StartCoroutine(CameraMoveCo(MoveVec, MoveTime, MoveCount));
+    }
+
+    IEnumerator CameraMoveCo(Vector3 MoveVec, float MoveTime, int MoveCount)
+    {
+        for(int i = 0; MoveCount > i; i++)
+        {
+            this.transform.position += MoveVec;
+            yield return new WaitForSeconds(MoveTime);
+        }
+    }
 }

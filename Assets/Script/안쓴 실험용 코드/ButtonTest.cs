@@ -10,7 +10,7 @@ public class ButtonTest : MonoBehaviour
     public GameObject 타이틀;
     public GameObject virtualCamera;
 
-    public Camera Camera;
+    public Cameramanager cameramanager;
     public PlayerStat stat;
     public Playermanager playermanager;
     public Gamemanager gamemanager;
@@ -47,11 +47,11 @@ public class ButtonTest : MonoBehaviour
         yield return new WaitUntil(() => fademanager.color.a < 0.4f);
         // 대사 시작
         gamemanager.컷씬대화(700);
+        cameramanager.CameraMove(new Vector3(0, 0.2f, 0), 0.1f, 15);
         while (!stat.PlayerDie)
         {
             yield return new WaitUntil(() => Input.GetButtonDown("Jump"));
             stat.CurrentHp += 17;
-            Camera.transform.position += new Vector3(0, 3, 0);
             yield return new WaitForSeconds(0.02f);
         }
 
