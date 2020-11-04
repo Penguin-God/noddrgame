@@ -36,5 +36,6 @@ public class PlayerStat : MonoBehaviour
             CurrentHp -= 3;
             yield return new WaitForSeconds(0.1f);
         }
+        CurrentHp = 0;
     }
 }
