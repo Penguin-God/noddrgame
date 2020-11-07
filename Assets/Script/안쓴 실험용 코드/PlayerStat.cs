@@ -12,12 +12,13 @@ public class PlayerStat : MonoBehaviour
 
     public bool PlayerDie;
 
-    public Slider hpSilder;
+    public Slider hpBar;
+    public UiMove UiMove;
 
     void Update()
     {
-        hpSilder.maxValue = maxHp; 
-        hpSilder.value = CurrentHp;
+        hpBar.maxValue = maxHp; 
+        hpBar.value = CurrentHp;
         PlayerDeat();
     }
 
@@ -29,12 +30,12 @@ public class PlayerStat : MonoBehaviour
 
     IEnumerator HpSubtract()
     {
-        playermanager.isaction = true;
+        UiMove.ValueRotation(new Vector3(0, 0, 180));
         PlayerDie = true;
         while (CurrentHp > 0)
         {
-            CurrentHp -= 3;
-            yield return new WaitForSeconds(0.1f);
+            CurrentHp -= 5;
+            yield return new WaitForSeconds(0.05f);
         }
         CurrentHp = 0;
     }
