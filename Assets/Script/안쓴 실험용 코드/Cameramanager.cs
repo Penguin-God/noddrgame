@@ -27,7 +27,7 @@ public class Cameramanager : MonoBehaviour
     {
         for(int i = 0; MoveCount > i; i++)
         {
-            this.transform.position += MoveVec;
+            this.transform.position += MoveVec / MoveCount;
             yield return new WaitForSeconds(MoveTime);
         }
     }

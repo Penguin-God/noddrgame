@@ -40,22 +40,19 @@ public class ButtonTest : MonoBehaviour
         시작창.SetActive(false);
     }
 
-
     IEnumerator GameStartCut(float Speed)
     {
         fademanager.UIFadeIn(Speed);
         yield return new WaitUntil(() => fademanager.color.a < 0.4f);
         // 대사 시작
         gamemanager.컷씬대화(700);
-        cameramanager.CameraMove(new Vector3(0, 0.2f, 0), 0.1f, 15);
         while (!stat.PlayerDie)
         {
+            cameramanager.CameraMove(new Vector3(0, 4.5f, 0), 0.1f, 15);
             yield return new WaitUntil(() => Input.GetButtonDown("Jump"));
-            stat.CurrentHp += 17;
+            stat.CurrentHp += 25;
             yield return new WaitForSeconds(0.02f);
         }
-
-        yield return new WaitUntil(()=> stat.CurrentHp == 0);
         gamemanager.컷씬대화(800);
     }
 }
