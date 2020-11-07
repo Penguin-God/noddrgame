@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    AudioSource audioSource;
+    AudioSource WalkAudioSouce;
 
     bool SetAudio;
 
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
+        WalkAudioSouce = GetComponent<AudioSource>();
     }
 
     public void WalkAudioPlay(bool isRun)
@@ -22,7 +22,7 @@ public class AudioManager : MonoBehaviour
     IEnumerator WalkAudio(bool Run)
     {
         SetAudio = true;
-        audioSource.Play();
+        WalkAudioSouce.Play();
         yield return new WaitForSeconds(Run ? 0.15f : 0.3f);
         SetAudio = false;
     }

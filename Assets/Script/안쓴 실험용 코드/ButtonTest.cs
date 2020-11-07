@@ -15,6 +15,7 @@ public class ButtonTest : MonoBehaviour
     public Playermanager playermanager;
     public Gamemanager gamemanager;
     public Fademanager fademanager;
+    public AudioManager audioManager;
 
 
     public void GameExit() // 게임종료
@@ -25,18 +26,21 @@ public class ButtonTest : MonoBehaviour
     public void 시작창뛰우기()
     {
         시작창.SetActive(true);
+        audioManager.WalkAudioPlay(false);
     }
 
     public void GameStart()
     {
         타이틀.SetActive(false);
         시작창.SetActive(false);
+        audioManager.WalkAudioPlay(false);
 
         StartCoroutine(GameStartCut(0.005f));
     }
 
     public void StartCancel()
     {
+        audioManager.WalkAudioPlay(false);
         시작창.SetActive(false);
     }
 
@@ -51,7 +55,7 @@ public class ButtonTest : MonoBehaviour
             cameramanager.CameraMove(new Vector3(0, 4.5f, 0), 0.1f, 15);
             yield return new WaitUntil(() => Input.GetButtonDown("Jump"));
             stat.CurrentHp += 25;
-            yield return new WaitForSeconds(0.02f);
+            yield return new WaitForSeconds(1.5f);
         }
         gamemanager.컷씬대화(800);
     }
