@@ -17,7 +17,6 @@ public class ButtonTest : MonoBehaviour
     public Fademanager fademanager;
     public AudioManager audioManager;
 
-
     public void GameExit() // 게임종료
     {
         Application.Quit();
@@ -50,13 +49,15 @@ public class ButtonTest : MonoBehaviour
         yield return new WaitUntil(() => fademanager.color.a < 0.4f);
         // 대사 시작
         gamemanager.컷씬대화(700);
-        while (!stat.PlayerDie)
+        for(int i = 0; i < 2; i++)
         {
+            int index = gamemanager.talkindex; 
             cameramanager.CameraMove(new Vector3(0, 4.5f, 0), 0.1f, 15);
-            yield return new WaitUntil(() => Input.GetButtonDown("Jump"));
-            stat.CurrentHp += 25;
-            yield return new WaitForSeconds(1.5f);
+            stat.CurrentHp += 24;
+            yield return new WaitUntil(() => !cameramanager.isCameraMove && index != gamemanager.talkindex);
         }
+        stat.CurrentHp += 2;
+        yield return new WaitForSeconds(1.4f);
         gamemanager.컷씬대화(800);
     }
 }

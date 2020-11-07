@@ -32,6 +32,7 @@ public class PlayerStat : MonoBehaviour
     {
         UiMove.ValueRotation(new Vector3(0, 0, 180));
         PlayerDie = true;
+        playermanager.isaction = true;
         while (CurrentHp > 0)
         {
             CurrentHp -= 5;

@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TalkObject: {fileID: 0}
+  cameramanager: {fileID: 257356637}
   talkmanager: {fileID: 1069951207}
   playermanager: {fileID: 324695930}
   typeEffect: {fileID: 678983923}
@@ -752,6 +753,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Confiner: {fileID: 0}
+  isCameraMove: 0
 --- !u!1 &261045042
 GameObject:
   m_ObjectHideFlags: 0
@@ -3520,7 +3522,7 @@ MonoBehaviour:
   m_UnlimitedSoftZone: 0
   m_SoftZoneWidth: 1
   m_SoftZoneHeight: 1
-  m_BiasX: 0
+  m_BiasX: 0.12600002
   m_BiasY: 0
   m_CenterOnActivate: 1
   m_GroupFramingMode: 2

@@ -6,6 +6,7 @@ using UnityEngine;
 public class Cameramanager : MonoBehaviour
 {
     public CinemachineConfiner Confiner;
+    public bool isCameraMove;
 
     private void Awake()
     {
@@ -25,10 +26,12 @@ public class Cameramanager : MonoBehaviour
 
     IEnumerator CameraMoveCo(Vector3 MoveVec, float MoveTime, int MoveCount)
     {
-        for(int i = 0; MoveCount > i; i++)
+        isCameraMove = true;
+        for (int i = 0; MoveCount > i; i++)
         {
             this.transform.position += MoveVec / MoveCount;
             yield return new WaitForSeconds(MoveTime);
         }
+        isCameraMove = false;
     }
 }
