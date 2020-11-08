@@ -11,8 +11,8 @@ public class UiMove : MonoBehaviour
         rect = GetComponent<RectTransform>();
     }
 
-    public void ValueRotation(Vector3 vec)
+    public void ValueRotation(Vector3 MoveVec)
     {
-        rect.Rotate(vec);
+        rect.Rotate(MoveVec);
     }
 }
