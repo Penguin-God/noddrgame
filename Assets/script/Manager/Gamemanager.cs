@@ -33,7 +33,7 @@ public class Gamemanager : MonoBehaviour
 
     public void Talk(int id, bool isnpc, bool isCut = false)
     {
-        if (cameramanager.isCameraMove)
+        if (cameramanager.isCameraMove && cameramanager != null)
             return;
 
         if (typeEffect.isTyping) // text창에 대사 채울때는 변수 값 변경 없게하기 위해 return

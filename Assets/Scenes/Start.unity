@@ -14310,6 +14310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Confiner: {fileID: 0}
+  isCameraMove: 0
 --- !u!1 &768778478
 GameObject:
   m_ObjectHideFlags: 0
@@ -15213,6 +15214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TalkObject: {fileID: 0}
+  cameramanager: {fileID: 728754746}
   talkmanager: {fileID: 34894808}
   playermanager: {fileID: 480954423}
   typeEffect: {fileID: 2057906864}
@@ -16759,8 +16761,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c29cef6819a82e499f7af8f03d2664f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  White: {fileID: 2086133296}
-  Black: {fileID: 364506560}
+  WhiteWindow: {fileID: 0}
+  BlackWIndow: {fileID: 0}
+  Blackimg: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &2051154277
 GameObject:
   m_ObjectHideFlags: 0
