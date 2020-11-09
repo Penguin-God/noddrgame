@@ -21,10 +21,10 @@ public class Cameramanager : MonoBehaviour
 
     public void CameraMove(Vector3 MoveVec, float MoveTime, int MoveCount)
     {
-        StartCoroutine(CameraMoveCo(MoveVec, MoveTime, MoveCount));
+        StartCoroutine(CameraMoveCoroutine(MoveVec, MoveTime, MoveCount));
     }
 
-    IEnumerator CameraMoveCo(Vector3 MoveVec, float MoveTime, int MoveCount)
+    IEnumerator CameraMoveCoroutine(Vector3 MoveVec, float MoveTime, int MoveCount)
     {
         isCameraMove = true;
         for (int i = 0; MoveCount > i; i++)
