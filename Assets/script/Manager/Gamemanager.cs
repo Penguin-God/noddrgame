@@ -33,16 +33,15 @@ public class Gamemanager : MonoBehaviour
 
     public void Talk(int id, bool isnpc, bool isCut = false)
     {
-        if (cameramanager.isCameraMove && cameramanager != null)
+        if (cameramanager.isCameraMove)
             return;
-
-        if (typeEffect.isTyping) // text창에 대사 채울때는 변수 값 변경 없게하기 위해 return
+        if (typeEffect.isTyping) // 타이핑 애니메이션중에 대화 넘기기를 시도할 때
         {
-            typeEffect.GetText(""); // 어차피 text창 채우는 거라서 의미없음
+            typeEffect.FillText(); 
             return;
         }
 
-        string talkdata = talkmanager.GetTalkText(id, talkindex); 
+        string talkdata = talkmanager.GetTalkData(id, talkindex); 
 
         if (talkdata == null) // 대화창 뛰우기에서 null을 리턴받으면 관련 변수를 초기화시킴 return으로 함수 강제종료
         {   
@@ -55,10 +54,10 @@ public class Gamemanager : MonoBehaviour
 
         if (isnpc)
         {
-            typeEffect.GetText(talkdata);
+            typeEffect.EffectStart(talkdata);
         }
         else
-            typeEffect.GetText(talkdata);  // 대화창의 Text에 GetText의 return을 넣음 
+            typeEffect.EffectStart(talkdata);  // 대화창의 Text에 GetText의 return을 넣음 
 
         talkindex++;
         playermanager.isaction = true;

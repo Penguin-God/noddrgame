@@ -60,7 +60,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
             if (xMove == yMove) // x,y축 동시에 누를 때 대각선 이동 방지
                 return;
 
-            // xMove를 오랫동안 눌러서 값을 올라가면 수직이동중에 방향전환이 되지않는 버그때문에 XAni, YAni값이 축적되지 않게 하기위한 코드
+            // x, y축 키 동시 입력 시 애니메이션과 이동방향이 매칭되지 않는 버그를 막는 코드
             if (Input.GetAxisRaw("Vertical") != 0 && Input.GetAxisRaw("Horizontal") != 0)
             {
                 // X축과 Y축을 동시에 이동 시 전에 이동하던 방향의 ani변수가 더 높도록 조정하여 방향전환이 일어나게 함
