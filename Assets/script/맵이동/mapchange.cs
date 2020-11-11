@@ -9,8 +9,8 @@ public class Mapchange : MonoBehaviour
     public Fademanager fademanager;
     public Playermanager playermanager;
 
-    public PolygonCollider2D polygon;
-    public Cameramanager cameramanager;
+    //public Cameramanager cameramanager;
+    public new Camera camera;
     public Transform MapChangePoint;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -33,7 +33,8 @@ public class Mapchange : MonoBehaviour
         yield return new WaitForSeconds(1f);
         playermanager.transform.position = MapChangePoint.transform.position;  // Transform 변수에 게임 오브젝트를 넣어 충돌 시 그 오브젝트 위치로 이동하게 함 
         yield return new WaitForSeconds(0.5f);
-        cameramanager.CollderChange(polygon); // 위치변경 후 카메라 제한구역 여부 확인 및 적용
+        camera.transform.position = new Vector3(playermanager.transform.position.x, playermanager.transform.position.y, -10);
+        // cameramanager.CollderChange(); // 위치변경 후 카메라 제한구역 여부 확인 및 적용
         fademanager.FadeIn();
         yield return new WaitForSeconds(0.5f);
         playermanager.isaction = false;
