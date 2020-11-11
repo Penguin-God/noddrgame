@@ -5,16 +5,15 @@ using UnityEngine;
 
 public class Button : MonoBehaviour
 {
-    public Mapchange mapchange;
     public GameObject 시작창;
     public GameObject 타이틀;
 
-    public Playermanager playermanager;
-    public Gamemanager gamemanager;
-    public Test test;
-
-    public bool cuthome;
-    public int cutnumber;
+    //public Mapchange mapchange;
+    //public Playermanager playermanager;
+    //public Gamemanager gamemanager;
+    //public Test test;
+    //public bool cuthome;
+    //public int cutnumber;
     
     public void GameExit()
     {
@@ -31,22 +30,22 @@ public class Button : MonoBehaviour
         타이틀.SetActive(false);
         시작창.SetActive(false);
 
-        StartCoroutine(HomeCoroutine());
+        //StartCoroutine(HomeCoroutine());
     }
 
-    IEnumerator HomeCoroutine()
-    {
-        cuthome = true;
-        yield return new WaitForSeconds(1f);
-        gamemanager.CutSceneTalk(600);
+    //IEnumerator HomeCoroutine()
+    //{
+    //    cuthome = true;
+    //    yield return new WaitForSeconds(1f);
+    //    gamemanager.CutSceneTalk(600);
 
-        yield return new WaitUntil(() => !playermanager.isaction);
-        test.NpcMove();
-        playermanager.isaction = true;
-        cuthome = false;
-        yield return new WaitUntil(() => !playermanager.isaction);
-        mapchange.CutMapChange();
-    }
+    //    yield return new WaitUntil(() => !playermanager.isaction);
+    //    test.NpcMove();
+    //    playermanager.isaction = true;
+    //    cuthome = false;
+    //    yield return new WaitUntil(() => !playermanager.isaction);
+    //    mapchange.CutMapChange();
+    //}
 
     public void StartCancel()
     {

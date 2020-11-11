@@ -7,9 +7,6 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
 {
     public AudioManager audioManager;
 
-    public GameObject ManagerParents;
-    public GameObject CameraParents;
-
     Vector2 PlayerVector;
     Vector2 RayVector;
     GameObject TalkObject;

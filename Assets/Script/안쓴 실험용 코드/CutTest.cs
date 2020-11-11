@@ -24,7 +24,7 @@ public class CutTest : MonoBehaviour
     IEnumerator GameStartCut(float Speed)
     {
         fademanager.UIFadeIn(Speed);
-        yield return new WaitUntil(() => fademanager.color.a < 0.4f);
+        yield return new WaitUntil(() => fademanager.color.a < 0.5f);
         // 대사 시작
         gamemanager.CutSceneTalk(700);
         for (int i = 0; i < 2; i++)

@@ -49,7 +49,7 @@ public class TypeEffect : MonoBehaviour // 대화창 텍스트 효과주는 scri
 
         Windowtext.text += TalkText[TextIndex]; // EffectStart 함수에서 공백이 된 Text창에 TextIndex번째 문자열을 더함
 
-        if(TalkText[TextIndex] != ' ' && TalkText[TextIndex] != '.') // ' ', '.'은 오디오 play 안함
+        if(TalkText[TextIndex] != ' ' && TalkText[TextIndex] != '.') // Text audio
             audioSource.Play();
             
         TextIndex++;

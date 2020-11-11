@@ -27,11 +27,12 @@ public class Gamemanager : MonoBehaviour
 
     public void CutSceneTalk(int id)
     {
-        Talk(id, false, true);
+        CutNumber = id;
+        Talk(id, false);
         talkwindow.SetActive(playermanager.isaction);
     }
 
-    public void Talk(int id, bool isnpc, bool isCut = false)
+    public void Talk(int id, bool isnpc)
     {
         if (cameramanager.isCameraMove)
             return;
@@ -41,7 +42,7 @@ public class Gamemanager : MonoBehaviour
             return;
         }
 
-        string talkdata = talkmanager.GetTalkData(id, talkindex); 
+        string talkdata = talkmanager.GetTalkData(id, talkindex);  // get talkText
 
         if (talkdata == null) // 대화창 뛰우기에서 null을 리턴받으면 관련 변수를 초기화시킴 return으로 함수 강제종료
         {   
@@ -61,6 +62,5 @@ public class Gamemanager : MonoBehaviour
 
         talkindex++;
         playermanager.isaction = true;
-        if (isCut) CutNumber = id;
     }
 }
