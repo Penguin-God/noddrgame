@@ -17,7 +17,7 @@ public class Gamemanager : MonoBehaviour
     public int talkindex; // 대사 진행도
     public int QusetId;
 
-    public void 오브젝트정보확인(GameObject TalkObjectData)
+    public void GetObjectData(GameObject TalkObjectData)
     {
         TalkObject = TalkObjectData;
         Objectdata obdata = TalkObject.GetComponent<Objectdata>(); // obdata에 오브젝트에 있는 Objectdata Script를 담음
@@ -25,7 +25,7 @@ public class Gamemanager : MonoBehaviour
         talkwindow.SetActive(playermanager.isaction);
     }
 
-    public void 컷씬대화(int id)
+    public void CutSceneTalk(int id)
     {
         Talk(id, false, true);
         talkwindow.SetActive(playermanager.isaction);
@@ -42,7 +42,7 @@ public class Gamemanager : MonoBehaviour
             return;
         }
 
-        string talkdata = talkmanager.GetText(id, talkindex); 
+        string talkdata = talkmanager.GetTalkText(id, talkindex); 
 
         if (talkdata == null) // 대화창 뛰우기에서 null을 리턴받으면 관련 변수를 초기화시킴 return으로 함수 강제종료
         {   

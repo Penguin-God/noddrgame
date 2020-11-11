@@ -38,7 +38,7 @@ public class Button : MonoBehaviour
     {
         cuthome = true;
         yield return new WaitForSeconds(1f);
-        gamemanager.컷씬대화(600);
+        gamemanager.CutSceneTalk(600);
 
         yield return new WaitUntil(() => !playermanager.isaction);
         test.NpcMove();

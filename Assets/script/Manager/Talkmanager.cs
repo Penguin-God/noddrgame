@@ -26,7 +26,7 @@ public class Talkmanager : MonoBehaviour
         talkdata.Add(800, new string[] { "...........", "현타오네", "다 했으니 잠이나 자야겠다."});
     }
 
-    public string GetText(int id, int talkindex) // 대화 진행도에 따라 대사, null을 리턴함
+    public string GetTalkText(int id, int talkindex) // 대화 진행도에 따라 대사, null을 리턴함
     {
         if (talkindex == talkdata[id].Length) // 모든 대사를 보여주면 null을 리턴함 
             return null;
