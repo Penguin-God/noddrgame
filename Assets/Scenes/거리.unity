@@ -473,10 +473,7 @@ MonoBehaviour:
   "\uD0C0\uC774\uD2C0": {fileID: 1492928398}
   virtualCamera: {fileID: 1819853891}
   cameramanager: {fileID: 257356637}
-  stat: {fileID: 324695933}
-  playermanager: {fileID: 324695930}
-  gamemanager: {fileID: 1027948}
-  fademanager: {fileID: 1346558014}
+  cutTest: {fileID: 413810128}
   audioManager: {fileID: 1979970484}
 --- !u!1 &237282892
 GameObject:
@@ -733,7 +730,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 257356629}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -9, z: -8.086914}
+  m_LocalPosition: {x: -3, y: -9, z: -8.086914}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1346558013}
@@ -2626,6 +2623,53 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &413810126
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 413810127}
+  - component: {fileID: 413810128}
+  m_Layer: 0
+  m_Name: Curmanager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &413810127
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413810126}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1272937105}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &413810128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413810126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85d88030ee7fd454a9f6bfa9c8b78f98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameramanager: {fileID: 257356637}
+  stat: {fileID: 324695933}
+  gamemanager: {fileID: 1027948}
+  fademanager: {fileID: 1346558014}
 --- !u!1 &566264468
 GameObject:
   m_ObjectHideFlags: 0
@@ -4243,6 +4287,7 @@ Transform:
   - {fileID: 1069951208}
   - {fileID: 221566085}
   - {fileID: 1979970483}
+  - {fileID: 413810127}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
