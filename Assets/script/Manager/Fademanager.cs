@@ -13,7 +13,7 @@ public class Fademanager : MonoBehaviour
     private WaitForSeconds FadeoutWaitTime = new WaitForSeconds(0.01f);
     //while문 안에 new연산자를 쓰면 메모리 손해이기 때문에 위쪽에 생성(원래 코루틴 안에 new를 쓰기도 함)
 
-    public void FadeOut(float Speed = 0.02f) //아무값도 넣지 않으면 Speed는 0.02f임
+    public void FadeOut(float Speed = 0.03f) //아무값도 넣지 않으면 Speed는 0.02f임
     {
         StopAllCoroutines();//코루틴이 겹치면서 혼선이 일어날 수 있으니 함수 시작 시 전에 돌아가던 모든 코루틴을 멈춤
         StartCoroutine(FadeOutCoroutine(Speed));
@@ -31,7 +31,7 @@ public class Fademanager : MonoBehaviour
     }
 
     //위쪽의 코드를 거의 그대로 갖고옴
-    public void FadeIn(float Speed = 0.02f) //아무값도 넣지 않으면 Speed는 0.02f임
+    public void FadeIn(float Speed = 0.03f) //아무값도 넣지 않으면 Speed는 0.02f임
     {
         StopAllCoroutines();
         StartCoroutine(FadeInCoroutine(Speed));
@@ -50,6 +50,7 @@ public class Fademanager : MonoBehaviour
 
     public void UIFadeIn(float Speed = 0.02f)
     {
+        StopAllCoroutines();
         StartCoroutine(UIFadeinCo(Speed));
     }
 
