@@ -5104,7 +5104,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uB300\uD654\uCC3D\uC785\uB2C8\uB2E4."
+  m_Text: "\u3147\u3147"
 --- !u!114 &1125292872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5616,7 +5616,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uB300\uD654\uCC3D\uC785\uB2C8\uB2E4."
+  m_Text: "\u3134\u3134"
 --- !u!114 &1307915020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5755,6 +5755,7 @@ MonoBehaviour:
   choiceCursor:
   - {fileID: 181621873}
   - {fileID: 1661023832}
+  gamemanager: {fileID: 1027948}
   keyInput: 0
 --- !u!1 &1433866163
 GameObject:

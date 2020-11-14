@@ -35,7 +35,7 @@ public class Gamemanager : MonoBehaviour
 
     public void Talk(int id, bool isnpc, bool isQuestion)
     {
-        if (cameramanager.isCameraMove || choiecUI.keyInput)
+        if (cameramanager.isCameraMove || choiecUI.keyInput) 
             return;
         if (typeEffect.isTyping) // 타이핑 애니메이션중에 대화 넘기기를 시도할 때
         {
@@ -44,13 +44,11 @@ public class Gamemanager : MonoBehaviour
         }
 
         string talkdata = talkmanager.GetTalkData(id, talkindex);  // get talkText
-        if (talkdata == null) // 대사 다 출력 시
-        {
-            TalkEnd();
-            return;
-        }
 
-        TalkType(isnpc, isQuestion, talkdata);
+        if (talkdata == null) // 대사 다 출력 시
+            TalkEnd();
+        else
+            TalkType(isnpc, isQuestion, talkdata);
     }
 
     void TalkEnd() // 변수 초기화 및 함수 종료
@@ -61,8 +59,9 @@ public class Gamemanager : MonoBehaviour
         CutNumber = 0;
     }
 
-    void TalkType(bool isnpc, bool isQuestion, string talkdata)
+    void TalkType(bool isnpc, bool isQuestion, string talkdata) // 대화하는 대상에 따라 다른 방식으로 talk함
     {
+        //Debug.Log("a");
         if (isnpc)
         {
             typeEffect.EffectStart(talkdata);

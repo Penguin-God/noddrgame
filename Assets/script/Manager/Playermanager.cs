@@ -118,10 +118,14 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
     {
         if (Space)
         {
-            if (TalkObject != null)
+            if (TalkObject != null && gamemanager.CutNumber == 0)
+            {
                 gamemanager.GetObjectData(TalkObject);
-            else if (isaction && gamemanager.CutNumber != 0)
+            }
+            else if (isaction)
+            {
                 gamemanager.CutSceneTalk(gamemanager.CutNumber);
+            }
         }
     }
 

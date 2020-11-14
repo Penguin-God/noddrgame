@@ -9,6 +9,7 @@ public class ChoiecUI : MonoBehaviour
     public GameObject[] choicePanel;
     public Text[] choiceText;
     public GameObject[] choiceCursor;
+    public Gamemanager gamemanager;
 
     public bool keyInput;
     private int count; // 배열의 크기
@@ -16,6 +17,7 @@ public class ChoiecUI : MonoBehaviour
 
     public void Question()
     {
+        result = 0;
         count = choicePanel.Length - 1;
         choiceObject.SetActive(true);
         choiceCursor[0].SetActive(true);
@@ -46,6 +48,7 @@ public class ChoiecUI : MonoBehaviour
             {
                 keyInput = false;
                 ExitChoice();
+                QuestionTalk(result, new int[] { 300, 400 });
             }
         }
     }
@@ -64,6 +67,17 @@ public class ChoiecUI : MonoBehaviour
         count = -1;
         choiceObject.SetActive(false);
         choiceCursor[0].SetActive(false);
+        choiceCursor[1].SetActive(false);
         keyInput = false;
+    }
+
+    void QuestionTalk(int result, int[] cutNumber)
+    {
+        gamemanager.talkindex = 0;
+        for(int i = 0; i < result + 1; i++)
+        {
+            if (result == i)
+                gamemanager.CutSceneTalk(cutNumber[i]);
+        }
     }
 }
