@@ -17,6 +17,9 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
     
     public bool isaction;
     bool isRun;
+    bool Space;
+    float Horizontal;
+    float Vertical;
 
     public string currentScene; // SceneChange script에 있는 sceneName 변수값을 할당받음
 
@@ -37,6 +40,9 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
     void GetInput()
     {
         isRun = Input.GetButton("Run");
+        Space = Input.GetButtonDown("Jump");
+        Vertical = Input.GetAxisRaw("Vertical");
+        Horizontal = Input.GetAxisRaw("Horizontal");
     }
 
     void Move()
@@ -47,18 +53,18 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
             PlayerVector.y = 0;
             animator.SetBool("Walking", false);
         }
-        else if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+        else if (Horizontal != 0 || Vertical != 0)
         {
-            PlayerVector.Set(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")); // Vector에 따라 각각 -1,1을리턴
-            if (Input.GetAxisRaw("Vertical") != 0)
+            PlayerVector.Set(Horizontal, Vertical); // Vector에 따라 각각 -1,1을리턴
+            if (Vertical != 0)
                 yMove++;
-            if (Input.GetAxisRaw("Horizontal") != 0)
+            if (Horizontal != 0)
                 xMove++;
             if (xMove == yMove) // x,y축 동시에 누를 때 대각선 이동 방지
                 return;
 
             // x, y축 키 동시 입력 시 애니메이션과 이동방향이 매칭되지 않는 버그를 막는 코드
-            if (Input.GetAxisRaw("Vertical") != 0 && Input.GetAxisRaw("Horizontal") != 0)
+            if (Vertical != 0 && Horizontal != 0)
             {
                 // X축과 Y축을 동시에 이동 시 전에 이동하던 방향의 ani변수가 더 높도록 조정하여 방향전환이 일어나게 함
                 if (xMove > yMove)
@@ -72,9 +78,9 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
                     xMove = 0;
                 }
 
-                if (xMove > yMove && Input.GetAxisRaw("Vertical") != 0) // X축으로 움직이고 있다가 Y축 버튼을 누르면 방향.x값은 0 즉 수평이동중에 수직으로 방향전환 
+                if (xMove > yMove && Vertical != 0) // X축으로 움직이고 있다가 Y축 버튼을 누르면 방향.x값은 0 즉 수평이동중에 수직으로 방향전환 
                     PlayerVector.x = 0;
-                else if (xMove < yMove && Input.GetAxisRaw("Horizontal") != 0)
+                else if (xMove < yMove && Horizontal != 0)
                     PlayerVector.y = 0;
             }
             RayVector = PlayerVector; // Ray
@@ -110,7 +116,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
 
     void 대화()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Space)
         {
             if (TalkObject != null)
                 gamemanager.GetObjectData(TalkObject);
