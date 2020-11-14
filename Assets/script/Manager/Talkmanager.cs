@@ -17,7 +17,7 @@ public class Talkmanager : MonoBehaviour
     {
         //대화 내용
         talkdata.Add(100, new string[] { "공부할 때 쓰는 책상이다.", "여기에 앉은지는 꽤 오래 된 것 갔다." });
-        talkdata.Add(200, new string[] { "12355555"});
+        talkdata.Add(200, new string[] { "you sleep?"});
         talkdata.Add(300, new string[] { "지금은 집에 들어갈 수 없다." });
         talkdata.Add(400, new string[] { "아니씨발 실험하는데.", "대사를 같게 쳐 적으면.", "그게 실험이냐 씨빨?"});
         talkdata.Add(500, new string[] { "ggg" });
