@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UiMove : MonoBehaviour
+public class UIRotate : MonoBehaviour
 {
     RectTransform rect;
 

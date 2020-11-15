@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CutTest : MonoBehaviour
+public class CutScenes : MonoBehaviour
 {
     public Cameramanager cameramanager;
     public PlayerStat stat;

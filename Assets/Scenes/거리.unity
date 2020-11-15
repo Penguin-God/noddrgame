@@ -154,8 +154,8 @@ MonoBehaviour:
   cameramanager: {fileID: 257356637}
   talkmanager: {fileID: 1069951207}
   playermanager: {fileID: 324695930}
-  typeEffect: {fileID: 678983923}
-  choiecUI: {fileID: 1410129585}
+  typingEffect: {fileID: 678983923}
+  choiecTalk: {fileID: 1410129585}
   talkwindow: {fileID: 1897621548}
   CutNumber: 0
   talkindex: 0
@@ -546,7 +546,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   "\uC2DC\uC791\uCC3D": {fileID: 847267926}
   "\uD0C0\uC774\uD2C0": {fileID: 1492928398}
-  cutTest: {fileID: 413810128}
+  cutScenes: {fileID: 413810128}
   audioManager: {fileID: 1979970484}
 --- !u!1 &237282892
 GameObject:
@@ -1106,7 +1106,7 @@ MonoBehaviour:
   CurrentHp: 0
   PlayerDie: 0
   hpBar: {fileID: 1459813777}
-  UiMove: {fileID: 22075761}
+  UIrotate: {fileID: 22075761}
 --- !u!1 &344378723
 GameObject:
   m_ObjectHideFlags: 0
@@ -8851,7 +8851,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2131696322
 RectTransform:
   m_ObjectHideFlags: 0

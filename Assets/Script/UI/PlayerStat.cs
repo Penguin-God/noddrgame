@@ -13,7 +13,7 @@ public class PlayerStat : MonoBehaviour
     public bool PlayerDie;
 
     public Slider hpBar;
-    public UiMove UiMove;
+    public UIRotate UIrotate;
 
     void Update()
     {
@@ -30,7 +30,7 @@ public class PlayerStat : MonoBehaviour
 
     IEnumerator HpSubtract()
     {
-        UiMove.ValueRotation(new Vector3(0, 0, 180));
+        UIrotate.ValueRotation(new Vector3(0, 0, 180));
         PlayerDie = true;
         playermanager.isaction = true;
         while (CurrentHp > 0)

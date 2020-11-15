@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ChoiecUI : MonoBehaviour
+public class ChoiecTalk : MonoBehaviour
 { 
     public GameObject choiceObject;
     public GameObject[] choicePanel;

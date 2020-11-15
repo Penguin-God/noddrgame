@@ -9,8 +9,8 @@ public class Gamemanager : MonoBehaviour
     public Cameramanager cameramanager;
     public Talkmanager talkmanager;
     public Playermanager playermanager;
-    public TypeEffect typeEffect;
-    public ChoiecUI choiecUI;
+    public TypingEffect typingEffect;
+    public ChoiecTalk choiecTalk;
 
     public GameObject talkwindow; // 대화창
 
@@ -35,11 +35,11 @@ public class Gamemanager : MonoBehaviour
 
     public void Talk(int id, bool isnpc, bool isQuestion)
     {
-        if (cameramanager.isCameraMove || choiecUI.keyInput) 
+        if (cameramanager.isCameraMove || choiecTalk.keyInput) 
             return;
-        if (typeEffect.isTyping) // 타이핑 애니메이션중에 대화 넘기기를 시도할 때
+        if (typingEffect.isTyping) // 타이핑 애니메이션중에 대화 넘기기를 시도할 때
         {
-            typeEffect.FillText(); 
+            typingEffect.FillText(); 
             return;
         }
 
@@ -64,15 +64,15 @@ public class Gamemanager : MonoBehaviour
         //Debug.Log("a");
         if (isnpc)
         {
-            typeEffect.EffectStart(talkdata);
+            typingEffect.EffectStart(talkdata);
         }
         else if (isQuestion)
         {
-            typeEffect.EffectStart(talkdata);
+            typingEffect.EffectStart(talkdata);
             StartCoroutine(QuestionCoroutine());
         }
         else
-            typeEffect.EffectStart(talkdata);  // 대화창의 Text에 GetText의 return을 넣음 
+            typingEffect.EffectStart(talkdata);  // 대화창의 Text에 GetText의 return을 넣음 
 
         talkindex++;
         playermanager.isaction = true;
@@ -80,8 +80,8 @@ public class Gamemanager : MonoBehaviour
 
     IEnumerator QuestionCoroutine()
     {
-        yield return new WaitUntil(() => !typeEffect.isTyping);
-        typeEffect.EndCursor.SetActive(false);
-        choiecUI.Question();
+        yield return new WaitUntil(() => !typingEffect.isTyping);
+        typingEffect.EndCursor.SetActive(false);
+        choiecTalk.Question();
     }
 }

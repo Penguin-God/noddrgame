@@ -4,18 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ButtonTest : MonoBehaviour
+public class GameStartUI : MonoBehaviour
 {
     public GameObject 시작창;
     public GameObject 타이틀;
 
-    public CutTest cutTest;
+    public CutScenes cutScenes;
     public AudioManager audioManager;
 
     public void GameExit() // 게임종료
     {
         Application.Quit();
-    }
+    } 
 
     public void 시작창뛰우기()
     {
@@ -29,7 +29,7 @@ public class ButtonTest : MonoBehaviour
         시작창.SetActive(false);
         audioManager.WalkAudioPlay(false);
 
-        cutTest.StartCut(0.007f);
+        cutScenes.StartCut(0.007f);
     }
 
     public void StartCancel()

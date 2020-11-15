@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TypeEffect : MonoBehaviour // 대화창 텍스트 효과주는 script
+public class TypingEffect : MonoBehaviour // 대화창 텍스트 효과주는 script
 {
     public Text Windowtext;
     public GameObject EndCursor;
