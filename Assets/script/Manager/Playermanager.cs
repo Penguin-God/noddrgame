@@ -120,9 +120,9 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
         {
             if (TalkObject != null && gamemanager.CutNumber == 0)
             {
-                gamemanager.GetObjectData(TalkObject);
+                gamemanager.FiledTalk(TalkObject);
             }
-            else if (isaction)
+            else if (isaction && gamemanager.CutNumber != 0)
             {
                 gamemanager.CutSceneTalk(gamemanager.CutNumber);
             }
@@ -134,7 +134,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
         if (collision.gameObject.tag == "NpcTalk")
         {
             TalkObject = collision.gameObject;
-            gamemanager.GetObjectData(TalkObject);
+            gamemanager.FiledTalk(TalkObject);
         }
         else
             TalkObject = null;

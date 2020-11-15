@@ -18,13 +18,25 @@ public class Gamemanager : MonoBehaviour
     public int talkindex; // 대사 진행도
     public int QusetId;
 
-    public void GetObjectData(GameObject TalkObjectData)
+    private Objectdata obdata;
+
+    public void FiledTalk(GameObject TalkObjectData)
+    {
+        GetObjectData(TalkObjectData);
+        TalkAction();
+    }
+
+    void GetObjectData(GameObject TalkObjectData)
     {
         TalkObject = TalkObjectData;
-        Objectdata obdata = TalkObject.GetComponent<Objectdata>(); // obdata에 오브젝트에 있는 Objectdata Script를 담음
+        obdata = TalkObject.GetComponent<Objectdata>(); // obdata에 오브젝트에 있는 Objectdata Script를 담음
+    }
+
+    void TalkAction()
+    {
         Talk(obdata.id, obdata.isnpc, obdata.isQuestion);
         talkwindow.SetActive(playermanager.isaction);
-    }
+    } 
 
     public void CutSceneTalk(int id)
     {
@@ -32,6 +44,13 @@ public class Gamemanager : MonoBehaviour
         Talk(id, false, false);
         talkwindow.SetActive(playermanager.isaction);
     }
+
+    public void QuestionTalk(string talkdata)
+    {
+        typingEffect.EffectStart(talkdata);
+        StartCoroutine(QuestionCoroutine());
+    }
+
 
     public void Talk(int id, bool isnpc, bool isQuestion)
     {
@@ -42,7 +61,7 @@ public class Gamemanager : MonoBehaviour
             typingEffect.FillText(); 
             return;
         }
-
+        // 정상적인 대화시작
         string talkdata = talkmanager.GetTalkData(id, talkindex);  // get talkText
 
         if (talkdata == null) // 대사 다 출력 시
