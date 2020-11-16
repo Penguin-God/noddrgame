@@ -15,7 +15,7 @@ public class ChoiecTalk : MonoBehaviour
     private int count; // 배열의 크기
     private int result; // 선택한 선택창.
 
-    public void Question()
+    public void Question() // 질문창 띄움
     {
         result = 0;
         count = choicePanel.Length - 1;

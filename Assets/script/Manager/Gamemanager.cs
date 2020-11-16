@@ -61,13 +61,17 @@ public class Gamemanager : MonoBehaviour
             typingEffect.FillText(); 
             return;
         }
-        // 정상적인 대화시작
+        // 대화시작
         string talkdata = talkmanager.GetTalkData(id, talkindex);  // get talkText
 
         if (talkdata == null) // 대사 다 출력 시
+        {
             TalkEnd();
+        }
+        else if (talkmanager.talkdata[id].Length == talkindex + 1 && isQuestion)
+            QuestionTalk(talkdata);
         else
-            TalkType(isnpc, isQuestion, talkdata);
+            TalkType(isnpc, talkdata);
     }
 
     void TalkEnd() // 변수 초기화 및 함수 종료
@@ -78,17 +82,12 @@ public class Gamemanager : MonoBehaviour
         CutNumber = 0;
     }
 
-    void TalkType(bool isnpc, bool isQuestion, string talkdata) // 대화하는 대상에 따라 다른 방식으로 talk함
+    void TalkType(bool isnpc, string talkdata) // 대화하는 대상에 따라 다른 방식으로 talk함
     {
         //Debug.Log("a");
         if (isnpc)
         {
             typingEffect.EffectStart(talkdata);
-        }
-        else if (isQuestion)
-        {
-            typingEffect.EffectStart(talkdata);
-            StartCoroutine(QuestionCoroutine());
         }
         else
             typingEffect.EffectStart(talkdata);  // 대화창의 Text에 GetText의 return을 넣음 
