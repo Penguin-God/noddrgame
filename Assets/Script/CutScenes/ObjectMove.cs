@@ -4,16 +4,16 @@ using UnityEngine;
 
 
 [System.Serializable]
-public class NpcInformation
+public class ObjectInformation
 {
     public string name;
     public string direction;
 }
 
-public class NpcMove : MonoBehaviour
+public class ObjectMove : MonoBehaviour
 {
     [SerializeField]
-    public NpcInformation[] npcMove;
+    public ObjectInformation[] objectMove;
     public Npcmanager[] npcmanager;
 
     public void OneMove(string name, string dir) // 한번 이동하는 함수
@@ -28,9 +28,9 @@ public class NpcMove : MonoBehaviour
     }
     public void MoveNpc() // NpcInformation를 배열수만큼 돌리는 함수
     {
-        for (int i = 0; i < npcMove.Length; i++)
+        for (int i = 0; i < objectMove.Length; i++)
         {
-            OneMove(npcMove[i].name, npcMove[i].direction);
+            OneMove(objectMove[i].name, objectMove[i].direction);
         }
     }
 
