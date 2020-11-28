@@ -14,7 +14,14 @@ public class ObjectMove : MonoBehaviour
 {
     [SerializeField]
     public ObjectInformation[] objectMove;
+
     public Npcmanager[] npcmanager;
+    public Playermanager playermanager;
+
+    private void Start()
+    {
+        PlayerMove("UP");
+    }
 
     public void OneMove(string name, string dir) // 한번 이동하는 함수
     {
@@ -26,7 +33,13 @@ public class ObjectMove : MonoBehaviour
             }
         }
     }
-    public void MoveNpc() // NpcInformation를 배열수만큼 돌리는 함수
+
+    public void PlayerMove(string dir) 
+    {
+        //Move(dir);
+    }
+
+    public void MoveObject() // NpcInformation를 배열수만큼 돌리는 함수
     {
         for (int i = 0; i < objectMove.Length; i++)
         {
@@ -49,6 +62,6 @@ public class ObjectMove : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) // 콜라이더에 플레이어 닿을 시 이동
     {
         if (collision.gameObject.name == "player")
-            MoveNpc();
+            MoveObject();
     }
 }

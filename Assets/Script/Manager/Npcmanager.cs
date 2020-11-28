@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 [System.Serializable] //커스텀class가 인스펙터 창에 나오게 하기위한 명령어
 public class NPCMove
 {
     public string[] direction; // npc가 움직일 방향 설정
 
-    [Range(1, 5)] [Tooltip("1 = 천천히, 2 = 조금천천히, 3 = 보통, 4 = 빠르게, 5 = 연속적으로")] // Tooltip : 인스펙터 창에 마우스오버 시 설명이 나옴
+    [Range(1, 5)]
+    [Tooltip("1 = 천천히, 2 = 조금천천히, 3 = 보통, 4 = 빠르게, 5 = 연속적으로")] // Tooltip : 인스펙터 창에 마우스오버 시 설명이 나옴
     //[Range(1, 5)] : frequency가 인스펙터 창에 1~5까지 조절할 수 있는 스크롤바가 나옴
     public int frequency; //npc가 얼마나 지정된 방향으로 빈번하게 움직일 것인가
 }
@@ -21,9 +21,11 @@ public class Npcmanager : 변수저장소
     public LayerMask layermask;
     public RaycastHit2D raycasthit;
 
+    protected Vector2 NpcVec;
+
     public bool NPCdontmove;
     private bool NotCortoutine;
-    
+
     public int walkcount;
     protected int count;
 
@@ -31,8 +33,6 @@ public class Npcmanager : 변수저장소
     //Queue자료구조에 a,b,c를 순서대로 넣으면 a,b,c 순서대로 값이 들어가고 값을 뻬려고 하면 a,b,c순서대로 값이 나온다.
     //Enqueue() : Queue의 끝 부분에 값을 넣는 것, Dequeue : Queue 의 시작 부분에서 개체를 제거하고 반환함. 
     public Queue<string> NpcDirSave;
-
-    Vector2 NpcVec;
 
     private void Awake()
     {
@@ -124,7 +124,7 @@ public class Npcmanager : 변수저장소
                 Move(npc.direction[i]);
 
                 //NPC가 무한반복하여 움직이게 하는 code
-                if (i == npc.direction.Length - 1) 
+                if (i == npc.direction.Length - 1)
                     i = -1; // 반복문이 배열의 크기만큼 다 돌았으면 i에 -1을 대입해 다시0부터 시작하게함
             }
         }
