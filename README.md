@@ -3,7 +3,7 @@
 
 unity버전은 2019.4.9f1입니다.
 
-계속해서 커밋중인 프로젝트입니다.
+계속해서 커밋하고있는 프로젝트입니다.
 
 # 참고한 강의 링크
 - 골드메탈님 강의 : https://www.youtube.com/watch?v=JY-KFx3OsJo&list=PLO-mt5Iu5TeYfyXsi6kzHK8kfjPvadC5u
