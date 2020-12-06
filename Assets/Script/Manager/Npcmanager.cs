@@ -21,7 +21,7 @@ public class Npcmanager : 변수저장소
     public LayerMask layermask;
     public RaycastHit2D raycasthit;
 
-    protected Vector2 NpcVec;
+    Vector2 NpcVec;
 
     public bool NPCdontmove;
     private bool NotCortoutine;

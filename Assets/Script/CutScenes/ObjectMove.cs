@@ -16,11 +16,10 @@ public class ObjectMove : MonoBehaviour
     public ObjectInformation[] objectMove;
 
     public Npcmanager[] npcmanager;
-    public Playermanager playermanager;
 
     private void Start()
     {
-        PlayerMove("UP");
+     //   PlayerMove("UP");
     }
 
     public void OneMove(string name, string dir) // 한번 이동하는 함수
@@ -32,11 +31,6 @@ public class ObjectMove : MonoBehaviour
                 npcmanager[i].Move(dir);
             }
         }
-    }
-
-    public void PlayerMove(string dir) 
-    {
-        //Move(dir);
     }
 
     public void MoveObject() // NpcInformation를 배열수만큼 돌리는 함수
