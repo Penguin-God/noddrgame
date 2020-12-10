@@ -1197,8 +1197,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a7c1145a31b5444a5c0e5a19f38b75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
-  walkcount: 3
+  walkcount: 10
+  directions:
+  - UP
+  - DOWN
+  - NONE
+  frequency: 0
 --- !u!1 &344378723
 GameObject:
   m_ObjectHideFlags: 0

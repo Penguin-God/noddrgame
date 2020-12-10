@@ -7,20 +7,21 @@ public class MoveOther : MonoBehaviour
     Vector2 NpcVec;
     public Queue<string> DirSave;
     bool NotCoroutine;
-    bool NPCdontmove;
-    public int count;
+    bool NPCdontmove = true;
+    int count;
     public int walkcount;
-    int speed = 5;
+    float speed = 0.1f;
+
+    public string[] directions;
+    public int frequency;
 
     private void Awake()
     {
         DirSave = new Queue<string>();
-        Move("UP");
-    }
-
-    private void Update()
-    {
-        
+        for(int i = 0; i < directions.Length; i++)
+        {
+            Move(directions[i]);
+        }
     }
 
     public void Move(string dir)
@@ -60,24 +61,52 @@ public class MoveOther : MonoBehaviour
                     break;
             }
 
-            while (true)
-            {
-                if (NPCdontmove)
-                    yield return new WaitForSeconds(1f);
-                else
-                    break;
-            }
-
             while (count < walkcount)
             {
                 transform.Translate(NpcVec.x * speed, NpcVec.y * speed, 0);
-                Debug.Log("Asd");
+                //Debug.Log("Asd");
                 //코루틴에서 백터값을 초기화하기 때문에 x,y를 동시에 움직여도 대각선 이동은 일어나지 않음
                 count++;
                 yield return new WaitForSeconds(0.01f);
             }
             count = 0;
+            if (NPCdontmove)
+                yield return new WaitForSeconds(1f);
         }
         NotCoroutine = false; //while문이 끝난후 다시 false로 바꿔 코루틴이 돌아가게함
+    }
+
+    IEnumerator NpcMoveCoroutine()
+    {
+        if (directions.Length != 0) //지정한 방향값이 있는지 확인
+        {
+            for (int i = 0; i < directions.Length; i++) //지정한 방향값의 크기만큼 움직임
+            {
+                switch (frequency)
+                {
+                    case 1:
+                        yield return new WaitForSeconds(4f);
+                        break;
+                    case 2:
+                        yield return new WaitForSeconds(3f);
+                        break;
+                    case 3:
+                        yield return new WaitForSeconds(2f);
+                        break;
+                    case 4:
+                        yield return new WaitForSeconds(1f);
+                        break;
+                    case 5:
+                        break;
+                }
+
+                yield return new WaitUntil(() => DirSave.Count < 2);
+                Move(directions[i]);
+
+                //NPC가 무한반복하여 움직이게 하는 code
+                if (i == directions.Length - 1)
+                    i = -1; // 반복문이 배열의 크기만큼 다 돌았으면 i에 -1을 대입해 다시0부터 시작하게함
+            }
+        }
     }
 }

@@ -49,7 +49,7 @@ public class Npcmanager : 변수저장소
         }
     }
 
-    IEnumerator NpcOtherMove()
+    IEnumerator NpcOtherMove() // NPC가 무한히 움직이는 코루틴
     {
         while (NpcDirSave.Count != 0) // NpcDirSave의 값이 모두 제거되면 멈춤
         {
