@@ -155,7 +155,7 @@ MonoBehaviour:
   talkmanager: {fileID: 1069951207}
   playermanager: {fileID: 324695930}
   typingEffect: {fileID: 678983923}
-  choiecTalk: {fileID: 1410129585}
+  choiecTalk: {fileID: 1821423844}
   talkwindow: {fileID: 1897621548}
   CutNumber: 0
   talkindex: 0
@@ -1200,8 +1200,7 @@ MonoBehaviour:
   walkcount: 10
   directions:
   - UP
-  - DOWN
-  - NONE
+  - RIGHT
   frequency: 0
 --- !u!1 &344378723
 GameObject:
@@ -5549,6 +5548,7 @@ Transform:
   - {fileID: 221566085}
   - {fileID: 1979970483}
   - {fileID: 413810127}
+  - {fileID: 1821423843}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5881,7 +5881,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1410129584}
-  - component: {fileID: 1410129585}
   m_Layer: 5
   m_Name: Choice_Text
   m_TagString: Untagged
@@ -5896,7 +5895,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410129583}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5910,30 +5909,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1410129585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1410129583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1438f4778232b5646808098b5ba1bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  choiceObject: {fileID: 1410129583}
-  choicePanel:
-  - {fileID: 2021475968}
-  - {fileID: 1800990592}
-  choiceText:
-  - {fileID: 1125292871}
-  - {fileID: 1307915019}
-  choiceCursor:
-  - {fileID: 181621873}
-  - {fileID: 1661023832}
-  gamemanager: {fileID: 1027948}
-  keyInput: 0
 --- !u!1 &1433866163
 GameObject:
   m_ObjectHideFlags: 0
@@ -7125,6 +7100,63 @@ Transform:
   m_Father: {fileID: 1699505569}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1821423842
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1821423843}
+  - component: {fileID: 1821423844}
+  m_Layer: 0
+  m_Name: ChoiceManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1821423843
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821423842}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1272937105}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1821423844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821423842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1438f4778232b5646808098b5ba1bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  choiceObject: {fileID: 1410129583}
+  choicePanel:
+  - {fileID: 2021475968}
+  - {fileID: 1800990592}
+  choiceText:
+  - {fileID: 1125292871}
+  - {fileID: 1307915019}
+  choiceCursor:
+  - {fileID: 181621873}
+  - {fileID: 1661023832}
+  gamemanager: {fileID: 1027948}
+  moveOther: {fileID: 324695934}
+  playermanager: {fileID: 324695930}
+  keyInput: 0
 --- !u!1 &1873635383
 GameObject:
   m_ObjectHideFlags: 0

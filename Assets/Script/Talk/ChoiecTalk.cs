@@ -10,11 +10,13 @@ public class ChoiecTalk : MonoBehaviour
     public Text[] choiceText;
     public GameObject[] choiceCursor;
     public Gamemanager gamemanager;
+    public MoveOther moveOther;
+    public Playermanager playermanager;
 
     public bool keyInput;
     private int count; // 배열의 크기
     private int result; // 선택한 선택창.
-
+    private int Action;
     public void Question() // 질문창 띄움
     {
         result = 0;
@@ -47,8 +49,8 @@ public class ChoiecTalk : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.Return))
             {
                 keyInput = false;
+                StartCoroutine(QuestionTalk(result, new int[] { 300, 400 }));
                 ExitChoice();
-                QuestionTalk(result, new int[] { 300, 400 });
             }
         }
     }
@@ -71,13 +73,20 @@ public class ChoiecTalk : MonoBehaviour
         keyInput = false;
     }
 
-    void QuestionTalk(int result, int[] cutNumber)
+    IEnumerator QuestionTalk(int result, int[] cutNumber)
     {
         gamemanager.talkindex = 0;
         for(int i = 0; i < result + 1; i++)
         {
             if (result == i)
                 gamemanager.CutSceneTalk(cutNumber[i]);
+            Action = cutNumber[i];
+        }
+        yield return new WaitUntil(() => !playermanager.isaction);
+        //Debug.Log(playermanager.isaction);
+        if (Action == 300)
+        {
+            moveOther.PlayerMove();
         }
     }
 }

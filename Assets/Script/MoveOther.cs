@@ -18,7 +18,11 @@ public class MoveOther : MonoBehaviour
     private void Awake()
     {
         DirSave = new Queue<string>();
-        for(int i = 0; i < directions.Length; i++)
+    }
+
+    public void PlayerMove()
+    {
+        for (int i = 0; i < directions.Length; i++)
         {
             Move(directions[i]);
         }
