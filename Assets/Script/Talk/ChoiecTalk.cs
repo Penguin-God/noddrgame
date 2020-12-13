@@ -12,11 +12,19 @@ public class ChoiecTalk : MonoBehaviour
     public Gamemanager gamemanager;
     public MoveOther moveOther;
     public Playermanager playermanager;
+    public GameObject colliderObject;
+    private Collider2D objectCollider;
 
     public bool keyInput;
     private int count; // 배열의 크기
     private int result; // 선택한 선택창.
     private int Action;
+
+    private void Awake()
+    {
+        objectCollider = colliderObject.GetComponent<Collider2D>();
+    }
+
     public void Question() // 질문창 띄움
     {
         result = 0;
@@ -87,6 +95,12 @@ public class ChoiecTalk : MonoBehaviour
         if (Action == 300)
         {
             moveOther.PlayerMove();
+            OffCollider();
         }
+    }
+
+    void OffCollider()
+    {
+        objectCollider.enabled = false;
     }
 }

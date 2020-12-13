@@ -7156,6 +7156,7 @@ MonoBehaviour:
   gamemanager: {fileID: 1027948}
   moveOther: {fileID: 324695934}
   playermanager: {fileID: 324695930}
+  colliderObject: {fileID: 761734356}
   keyInput: 0
 --- !u!1 &1873635383
 GameObject:
