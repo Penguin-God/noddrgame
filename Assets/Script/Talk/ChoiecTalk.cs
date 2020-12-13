@@ -34,9 +34,9 @@ public class ChoiecTalk : MonoBehaviour
         keyInput = true;
     }
 
-    private void Update()
+    private void Update() 
     {
-        if (keyInput)
+        if (keyInput) // 질문창이 뛰어지면 버튼 입력을 받음에 따라 다른 코드가 실행됨
         {
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
@@ -63,7 +63,7 @@ public class ChoiecTalk : MonoBehaviour
         }
     }
 
-    public void Selection()
+    public void Selection() // 현재 선택되어있는 커서 빼고 다 지우는 함수
     {
         for(int i = 0; i < choicePanel.Length; i++)
         {
@@ -72,7 +72,7 @@ public class ChoiecTalk : MonoBehaviour
         choiceCursor[result].SetActive(true);
     }
 
-    void ExitChoice()
+    void ExitChoice() // 질문 끝난 후 오브젝트 및 변수 정리
     {
         count = -1;
         choiceObject.SetActive(false);
@@ -81,7 +81,7 @@ public class ChoiecTalk : MonoBehaviour
         keyInput = false;
     }
 
-    IEnumerator QuestionTalk(int result, int[] cutNumber)
+    IEnumerator QuestionTalk(int result, int[] cutNumber) // 질문 선택에 따른 액션
     {
         gamemanager.talkindex = 0;
         for(int i = 0; i < result + 1; i++)
@@ -99,7 +99,7 @@ public class ChoiecTalk : MonoBehaviour
         }
     }
 
-    void OffCollider()
+    void OffCollider() 
     {
         objectCollider.enabled = false;
     }
