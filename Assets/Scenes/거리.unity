@@ -1197,6 +1197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a7c1145a31b5444a5c0e5a19f38b75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoveObject: {fileID: 324695925}
   walkcount: 10
   directions:
   - UP
