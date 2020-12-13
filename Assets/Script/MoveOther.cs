@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MoveOther : MonoBehaviour
 {
+    public GameObject MoveObject;
     Vector2 NpcVec;
     public Queue<string> DirSave;
     bool NotCoroutine;
@@ -15,8 +16,11 @@ public class MoveOther : MonoBehaviour
     public string[] directions;
     public int frequency;
 
+    private Animator animator;
+
     private void Awake()
     {
+        animator = MoveObject.GetComponent<Animator>();
         DirSave = new Queue<string>();
     }
 
@@ -64,20 +68,24 @@ public class MoveOther : MonoBehaviour
                     NpcVec.y = 0;
                     break;
             }
+            OtherAinmation(); // 애니메이션 시작
 
             while (count < walkcount)
             {
                 transform.Translate(NpcVec.x * speed, NpcVec.y * speed, 0);
-                //Debug.Log("Asd");
                 //코루틴에서 백터값을 초기화하기 때문에 x,y를 동시에 움직여도 대각선 이동은 일어나지 않음
                 count++;
                 yield return new WaitForSeconds(0.01f);
             }
+            
             count = 0;
             if (NPCdontmove)
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.3f);
         }
         NotCoroutine = false; //while문이 끝난후 다시 false로 바꿔 코루틴이 돌아가게함
+        // 애니메이션 끝후 방향전환
+        animator.SetBool("Walking", false);
+        OtherLook(0, -1);
     }
 
     IEnumerator NpcMoveCoroutine()
@@ -112,5 +120,18 @@ public class MoveOther : MonoBehaviour
                     i = -1; // 반복문이 배열의 크기만큼 다 돌았으면 i에 -1을 대입해 다시0부터 시작하게함
             }
         }
+    }
+
+    void OtherAinmation()
+    {
+        animator.SetBool("Walking", true);
+        animator.SetFloat("DirX", NpcVec.x);
+        animator.SetFloat("DirY", NpcVec.y);
+    }
+
+    void OtherLook(int dirX, int dirY)
+    {
+        animator.SetFloat("DirX", dirX);
+        animator.SetFloat("DirY", dirY);
     }
 }
