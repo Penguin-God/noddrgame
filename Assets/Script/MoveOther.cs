@@ -68,7 +68,7 @@ public class MoveOther : MonoBehaviour
                     NpcVec.y = 0;
                     break;
             }
-            OtherAinmation(); // 애니메이션 시작
+            OtherAinmation(); // 이동 방향에 따른 애니메이션 
 
             while (count < walkcount)
             {
@@ -83,8 +83,8 @@ public class MoveOther : MonoBehaviour
                 yield return new WaitForSeconds(0.3f);
         }
         NotCoroutine = false; //while문이 끝난후 다시 false로 바꿔 코루틴이 돌아가게함
-        // 애니메이션 끝후 방향전환
-        animator.SetBool("Walking", false);
+        animator.SetBool("Walking", false); // 애니메이션 끝후 방향전환
+
         OtherLook(0, -1);
     }
 

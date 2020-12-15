@@ -12,6 +12,8 @@ public class ChoiecTalk : MonoBehaviour
     public Gamemanager gamemanager;
     public MoveOther moveOther;
     public Playermanager playermanager;
+
+    public GameObject Player;
     public GameObject colliderObject;
     private Collider2D objectCollider;
 
@@ -94,13 +96,20 @@ public class ChoiecTalk : MonoBehaviour
         //Debug.Log(playermanager.isaction);
         if (Action == 300)
         {
-            moveOther.PlayerMove();
-            OffCollider();
+            StartCoroutine(Sleep());
         }
     }
 
-    void OffCollider() 
+    void OffCollider() // 침대 콜라이더 끄고 침대 가운데 쪽으로 이동
     {
         objectCollider.enabled = false;
+        Player.transform.position = new Vector2(-0.5f, 4.2f);
+    }
+
+    IEnumerator Sleep()
+    {
+        OffCollider();
+        yield return new WaitForSeconds(1f);
+        moveOther.PlayerMove();
     }
 }
