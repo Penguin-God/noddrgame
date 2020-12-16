@@ -16,6 +16,7 @@ public class ChoiecTalk : MonoBehaviour
     public GameObject Player;
     public GameObject colliderObject;
     private Collider2D objectCollider;
+    private Vector2 BedVec;
 
     public bool keyInput;
     private int count; // 배열의 크기
@@ -96,20 +97,28 @@ public class ChoiecTalk : MonoBehaviour
         //Debug.Log(playermanager.isaction);
         if (Action == 300)
         {
-            StartCoroutine(Sleep());
+            StartCoroutine(Sleep(5));
         }
     }
 
     void OffCollider() // 침대 콜라이더 끄고 침대 가운데 쪽으로 이동
     {
         objectCollider.enabled = false;
-        Player.transform.position = new Vector2(-0.5f, 4.2f);
     }
 
-    IEnumerator Sleep()
+    IEnumerator Sleep(int walkcount)
     {
         OffCollider();
-        yield return new WaitForSeconds(1f);
+        int count = walkcount;
+        BedVec = new Vector2(Player.transform.position.x, colliderObject.transform.position.y - Player.transform.position.y);
+        yield return new WaitForSeconds(0.5f);
+        while (count > 0)
+        {
+            Player.transform.Translate(0, BedVec.y / walkcount, 0);
+            yield return new WaitForSeconds(0.01f);
+            count--;
+        }
+        yield return new WaitForSeconds(0.5f);
         moveOther.PlayerMove();
     }
 }
