@@ -7,11 +7,13 @@ public class ChoiecTalk : MonoBehaviour
 { 
     public GameObject choiceObject;
     public GameObject[] choicePanel;
-    public Text[] choiceText;
+    //public Text[] choiceText;
     public GameObject[] choiceCursor;
     public Gamemanager gamemanager;
     public MoveOther moveOther;
     public Playermanager playermanager;
+    private Animator animator;
+    //public MoveOther moveOther;
 
     public GameObject Player;
     public GameObject colliderObject;
@@ -26,6 +28,7 @@ public class ChoiecTalk : MonoBehaviour
     private void Awake()
     {
         objectCollider = colliderObject.GetComponent<Collider2D>();
+        animator = playermanager.GetComponent<Animator>();
     }
 
     public void Question() // 질문창 띄움
@@ -106,19 +109,31 @@ public class ChoiecTalk : MonoBehaviour
         objectCollider.enabled = false;
     }
 
-    IEnumerator Sleep(int walkcount)
+    IEnumerator Sleep(int walkcount) // 잠잘 때 코드
     {
         OffCollider();
         int count = walkcount;
-        BedVec = new Vector2(Player.transform.position.x, colliderObject.transform.position.y - Player.transform.position.y);
+        BedVec = new Vector3(Player.transform.position.x, colliderObject.transform.position.y - Player.transform.position.y, Player.transform.position.x);
         yield return new WaitForSeconds(0.5f);
+        Y_Move_Animation(BedVec);
+        //OtherAinmation(); // 이동 방향에 따른 애니메이션 
         while (count > 0)
         {
             Player.transform.Translate(0, BedVec.y / walkcount, 0);
             yield return new WaitForSeconds(0.01f);
             count--;
         }
-        yield return new WaitForSeconds(0.5f);
+        //yield return new WaitForSeconds(0.5f);
         moveOther.PlayerMove();
+    }
+
+    void Y_Move_Animation(Vector3 DirY)
+    {
+        animator.SetBool("Walking", true);
+        animator.SetFloat("DirX", 0);
+        if (DirY.y > 0)
+            animator.SetFloat("DirY", 1);
+        else
+            animator.SetFloat("DirY", -1);
     }
 }

@@ -80,7 +80,7 @@ public class MoveOther : MonoBehaviour
             
             count = 0;
             if (NPCdontmove)
-                yield return new WaitForSeconds(0.3f);
+                yield return new WaitForSeconds(0.1f);
         }
         NotCoroutine = false; //while문이 끝난후 다시 false로 바꿔 코루틴이 돌아가게함
         animator.SetBool("Walking", false); // 애니메이션 끝후 방향전환
