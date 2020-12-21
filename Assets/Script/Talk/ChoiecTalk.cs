@@ -13,7 +13,6 @@ public class ChoiecTalk : MonoBehaviour
     public MoveOther moveOther;
     public Playermanager playermanager;
     private Animator animator;
-    //public MoveOther moveOther;
 
     public GameObject Player;
     public GameObject colliderObject;
@@ -97,33 +96,30 @@ public class ChoiecTalk : MonoBehaviour
             Action = cutNumber[i];
         }
         yield return new WaitUntil(() => !playermanager.isaction);
-        //Debug.Log(playermanager.isaction);
         if (Action == 300)
         {
             StartCoroutine(Sleep(5));
         }
     }
 
-    void OffCollider() // 침대 콜라이더 끄고 침대 가운데 쪽으로 이동
+    void OffCollider() 
     {
         objectCollider.enabled = false;
     }
 
-    IEnumerator Sleep(int walkcount) // 잠잘 때 코드
+    IEnumerator Sleep(int walkcount) // 잠자는 코루틴
     {
         OffCollider();
         int count = walkcount;
         BedVec = new Vector3(Player.transform.position.x, colliderObject.transform.position.y - Player.transform.position.y, Player.transform.position.x);
         yield return new WaitForSeconds(0.5f);
         Y_Move_Animation(BedVec);
-        //OtherAinmation(); // 이동 방향에 따른 애니메이션 
         while (count > 0)
         {
             Player.transform.Translate(0, BedVec.y / walkcount, 0);
             yield return new WaitForSeconds(0.01f);
             count--;
         }
-        //yield return new WaitForSeconds(0.5f);
         moveOther.PlayerMove();
     }
 
