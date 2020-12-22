@@ -11,7 +11,7 @@ public class UIRotate : MonoBehaviour
         rect = GetComponent<RectTransform>();
     }
 
-    public void ValueRotation(Vector3 MoveVec)
+    public void ValueRotation(Vector3 MoveVec) // MoveVec만큼 UI를 회전시키는 함수
     {
         rect.Rotate(MoveVec);
     }
