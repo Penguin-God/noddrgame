@@ -1100,7 +1100,7 @@ MonoBehaviour:
   speed: 5
   CharactreName: player
   audioManager: {fileID: 1979970484}
-  isaction: 0
+  isaction: 1
   currentScene: 
 --- !u!212 &324695931
 SpriteRenderer:
@@ -3401,9 +3401,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameramanager: {fileID: 257356637}
-  stat: {fileID: 324695933}
+  playerStat: {fileID: 324695933}
   gamemanager: {fileID: 1027948}
   fademanager: {fileID: 1346558014}
+  playermanager: {fileID: 324695930}
 --- !u!1 &566264468
 GameObject:
   m_ObjectHideFlags: 0
