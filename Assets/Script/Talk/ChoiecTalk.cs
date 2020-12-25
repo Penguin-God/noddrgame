@@ -107,7 +107,7 @@ public class ChoiecTalk : MonoBehaviour
         objectCollider.enabled = false;
     }
 
-    IEnumerator Sleep(int walkcount) // 잠자는 코루틴
+    IEnumerator Sleep(int walkcount) // 잠자는 컷씬 코루틴
     {
         OffCollider();
         int count = walkcount;
@@ -123,7 +123,7 @@ public class ChoiecTalk : MonoBehaviour
         moveOther.PlayerMove();
     }
 
-    void Y_Move_Animation(Vector3 DirY)
+    void Y_Move_Animation(Vector3 DirY) // 이동할 위치에 따른 애니메이션 
     {
         animator.SetBool("Walking", true);
         animator.SetFloat("DirX", 0);

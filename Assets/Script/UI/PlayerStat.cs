@@ -28,18 +28,12 @@ public class PlayerStat : MonoBehaviour
     void PlayerDeat()
     {
         if (CurrentHp >= maxHp && !hpAdding)
-            HpSubtract();
-    }
-
-    void HpSubtract()
-    {
-        UIrotate.ValueRotation(new Vector3(0, 0, 180)); // HpBar 180도 회전
-        playermanager.isaction = true;
-        StartCoroutine(SubHp(5, 0.07f));
+            StartCoroutine(SubHp(5, 0.07f));
     }
 
     public IEnumerator AddHp(int AddHp, float WaitTime) 
     {
+        playermanager.isaction = true;
         hpAdding = true;
         while (CurrentHp <= 50)
         {
@@ -52,6 +46,8 @@ public class PlayerStat : MonoBehaviour
 
     IEnumerator SubHp(int SubHp, float WaitTime) 
     {
+        UIrotate.ValueRotation(new Vector3(0, 0, 180)); // HpBar 180도 회전
+        playermanager.isaction = true;
         while (CurrentHp > 0)
         {
             CurrentHp -= SubHp;
