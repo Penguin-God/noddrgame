@@ -17,7 +17,7 @@ public class ChoiecTalk : MonoBehaviour
     public GameObject Player;
     public GameObject colliderObject;
     private Collider2D objectCollider;
-    private Vector2 BedVec;
+    //private Vector2 BedVec;
 
     public bool keyInput;
     private int count; // 배열의 크기
@@ -98,7 +98,7 @@ public class ChoiecTalk : MonoBehaviour
         yield return new WaitUntil(() => !playermanager.isaction);
         if (Action == 300)
         {
-            StartCoroutine(Sleep(5));
+            StartCoroutine(Sleep(6));
         }
     }
 
@@ -109,16 +109,17 @@ public class ChoiecTalk : MonoBehaviour
 
     IEnumerator Sleep(int walkcount) // 잠자는 컷씬 코루틴
     {
+        int moveCount = walkcount; // walkcount가 while문에서 --되면서 나누는 값이 작아져서 다른 변수 생성
         OffCollider();
-        int count = walkcount;
-        BedVec = new Vector3(Player.transform.position.x, colliderObject.transform.position.y - Player.transform.position.y, Player.transform.position.x);
+        Vector3 BedVec = Return_Move_Position(Player, colliderObject);
+        BedVec.y += 0.15f;
         yield return new WaitForSeconds(0.5f);
         Y_Move_Animation(BedVec);
-        while (count > 0)
+        while (moveCount > 0)
         {
             Player.transform.Translate(0, BedVec.y / walkcount, 0);
-            yield return new WaitForSeconds(0.01f);
-            count--;
+            yield return new WaitForSeconds(0.03f);
+            moveCount--;
         }
         moveOther.PlayerMove();
     }
@@ -131,5 +132,11 @@ public class ChoiecTalk : MonoBehaviour
             animator.SetFloat("DirY", 1);
         else
             animator.SetFloat("DirY", -1);
+    }
+
+    Vector3 Return_Move_Position(GameObject moveObject, GameObject ReachObject)
+    {
+        Vector3 MoveVec = new Vector3(moveObject.transform.position.x, ReachObject.transform.position.y - moveObject.transform.position.y, moveObject.transform.position.z);
+        return MoveVec;
     }
 }
