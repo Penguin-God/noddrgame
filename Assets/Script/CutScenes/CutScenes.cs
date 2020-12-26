@@ -25,10 +25,10 @@ public class CutScenes : MonoBehaviour
     IEnumerator GameStartCut(float Speed)
     {
         fademanager.UIFadeIn(Speed);
-        yield return new WaitUntil(() => fademanager.color.a < 0.5f);
+        animator.SetBool("testDDR", true);
+        yield return new WaitUntil(() => fademanager.color.a < 0.6f);
         // 대사 시작
         gamemanager.CutSceneTalk(700);
-        animator.SetBool("testDDR", true);
         yield return new WaitUntil(() => !playermanager.isaction);
         StartCoroutine(playerStat.AddHp(4, 0.15f));
         yield return new WaitUntil(() => playerStat.PlayerDie);

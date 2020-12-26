@@ -114,7 +114,7 @@ public class ChoiecTalk : MonoBehaviour
         Vector3 BedVec = Return_Move_Position(Player, colliderObject);
         BedVec.y += 0.15f;
         yield return new WaitForSeconds(0.5f);
-        Y_Move_Animation(BedVec);
+        if(BedVec.y > 0.25f) Y_Move_Animation(BedVec);
         while (moveCount > 0)
         {
             Player.transform.Translate(0, BedVec.y / walkcount, 0);

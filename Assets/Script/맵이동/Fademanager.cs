@@ -51,10 +51,10 @@ public class Fademanager : MonoBehaviour
     public void UIFadeIn(float Speed = 0.02f)
     {
         StopAllCoroutines();
-        StartCoroutine(UIFadeinCo(Speed));
+        StartCoroutine(UIFadeiInCoroutine(Speed));
     }
 
-    IEnumerator UIFadeinCo(float Speed)
+    IEnumerator UIFadeiInCoroutine(float Speed)
     {
         color = Blackimg.color;
         while (color.a > 0f) // 검은창 천천히 투명하게 하는 코드

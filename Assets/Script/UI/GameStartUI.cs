@@ -29,7 +29,7 @@ public class GameStartUI : MonoBehaviour
         시작창.SetActive(false);
         audioManager.WalkAudioPlay(false);
 
-        cutScenes.StartCut(0.007f);
+        cutScenes.StartCut(0.002f);
     }
 
     public void StartCancel()
