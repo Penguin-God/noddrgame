@@ -34,6 +34,7 @@ public class Gamemanager : MonoBehaviour
 
     void TalkAction()
     {
+        //Debug.Log(obdata);
         Talk(obdata.id, obdata.isnpc, obdata.isQuestion);
         talkwindow.SetActive(playermanager.isaction);
     } 

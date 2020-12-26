@@ -17,6 +17,5 @@ public class Questionmanager : MonoBehaviour
     void AddData()
     {
         questionList.Add(10, new QuestionData("잠 여부", 200));
-
     }
 }
