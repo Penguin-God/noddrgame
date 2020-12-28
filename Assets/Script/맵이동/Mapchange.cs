@@ -28,13 +28,14 @@ public class Mapchange : MonoBehaviour
     IEnumerator MapTransCoroutine() //맵이 어두워지고 맵 이동 후 다시밝아지는 코루틴
     {
         playermanager.isaction = true;
-        fademanager.FadeOut();
+        fademanager.BlackIn();
         yield return new WaitUntil(() => fademanager.color.a >= 0.99);
         playermanager.transform.position = MapChangePoint.transform.position;  // Transform 변수에 게임 오브젝트를 넣어 충돌 시 그 오브젝트 위치로 이동하게 함 
         camera.transform.position = new Vector3(playermanager.transform.position.x, playermanager.transform.position.y, -10);
+
         yield return new WaitForSeconds(0.5f);
         // cameramanager.CollderChange(); // 위치변경 후 카메라 제한구역 여부 확인 및 적용
-        fademanager.FadeIn();
+        fademanager.BlackOut();
         yield return new WaitForSeconds(0.5f);
         playermanager.isaction = false;
     }

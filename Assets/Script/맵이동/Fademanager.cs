@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Fademanager : MonoBehaviour
 {
+    public GameObject WhiteWIndowObject;
+    public GameObject BlackWIndowObject;
     public SpriteRenderer WhiteWindow;
     public SpriteRenderer BlackWIndow;
     public Image Blackimg;
@@ -13,14 +15,17 @@ public class Fademanager : MonoBehaviour
     private WaitForSeconds FadeoutWaitTime = new WaitForSeconds(0.01f);
     //while문 안에 new연산자를 쓰면 메모리 손해이기 때문에 위쪽에 생성(원래 코루틴 안에 new를 쓰기도 함)
 
-    public void FadeOut(float Speed = 0.03f) //아무값도 넣지 않으면 Speed는 0.02f임
+
+    // 검은색 화면 서서히 나타나는 코드
+    public void BlackIn(float Speed = 0.03f) //아무값도 넣지 않으면 Speed는 0.02f임
     {
         StopAllCoroutines();//코루틴이 겹치면서 혼선이 일어날 수 있으니 함수 시작 시 전에 돌아가던 모든 코루틴을 멈춤
-        StartCoroutine(FadeOutCoroutine(Speed));
+        StartCoroutine(BlackInCoroutine(Speed));
     }
 
-    IEnumerator FadeOutCoroutine(float Speed)
+    IEnumerator BlackInCoroutine(float Speed)
     {
+        BlackWIndowObject.SetActive(true);
         color = BlackWIndow.color;
         while(color.a < 1f)// a = 알파(투명도)값
         {
@@ -30,14 +35,14 @@ public class Fademanager : MonoBehaviour
         }
     }
 
-    //위쪽의 코드를 거의 그대로 갖고옴
-    public void FadeIn(float Speed = 0.03f) //아무값도 넣지 않으면 Speed는 0.02f임
+    // 검은색 화면 서서히 사라지는 코드
+    public void BlackOut(float Speed = 0.03f) //아무값도 넣지 않으면 Speed는 0.02f임
     {
         StopAllCoroutines();
-        StartCoroutine(FadeInCoroutine(Speed));
+        StartCoroutine(BlackOutCoroutine(Speed));
     }
 
-    IEnumerator FadeInCoroutine(float Speed)
+    IEnumerator BlackOutCoroutine(float Speed)
     {
         color = BlackWIndow.color;
         while (color.a > 0f)//a = 0이 되면 검은색화면이 없어졌다는 의미이므로 while문 정지
@@ -46,8 +51,10 @@ public class Fademanager : MonoBehaviour
             BlackWIndow.color = color;
             yield return FadeoutWaitTime; 
         }
+        BlackWIndowObject.SetActive(false);
     }
 
+    // 검은색UI 창 서서히 사라지는 코드
     public void UIFadeIn(float Speed = 0.02f)
     {
         StopAllCoroutines();
