@@ -10,25 +10,13 @@ public class ChoiecTalk : MonoBehaviour
     //public Text[] choiceText;
     public GameObject[] choiceCursor;
     public Gamemanager gamemanager;
-    public MoveOther moveOther;
     public Playermanager playermanager;
-    private Animator animator;
-
-    public GameObject Player;
-    public GameObject colliderObject;
-    private Collider2D objectCollider;
-    //private Vector2 BedVec;
+    public CutScenes cutScenes;
 
     public bool keyInput;
     private int count; // 배열의 크기
     private int result; // 선택한 선택창.
     private int Action;
-
-    private void Awake()
-    {
-        objectCollider = colliderObject.GetComponent<Collider2D>();
-        animator = playermanager.GetComponent<Animator>();
-    }
 
     public void Question() // 질문창 띄움
     {
@@ -98,45 +86,7 @@ public class ChoiecTalk : MonoBehaviour
         yield return new WaitUntil(() => !playermanager.isaction);
         if (Action == 300)
         {
-            StartCoroutine(Sleep(6));
+            StartCoroutine(cutScenes.Sleep(6));
         }
-    }
-
-    void OffCollider() 
-    {
-        objectCollider.enabled = false;
-    }
-
-    IEnumerator Sleep(int walkcount) // 잠자는 컷씬 코루틴
-    {
-        int moveCount = walkcount; // walkcount가 while문에서 --되면서 나누는 값이 작아져서 다른 변수 생성
-        OffCollider();
-        Vector3 BedVec = Return_Move_Position(Player, colliderObject);
-        BedVec.y += 0.15f;
-        yield return new WaitForSeconds(0.5f);
-        if(BedVec.y > 0.25f) Y_Move_Animation(BedVec);
-        while (moveCount > 0)
-        {
-            Player.transform.Translate(0, BedVec.y / walkcount, 0);
-            yield return new WaitForSeconds(0.03f);
-            moveCount--;
-        }
-        moveOther.PlayerMove();
-    }
-
-    void Y_Move_Animation(Vector3 DirY) // 이동할 위치에 따른 애니메이션 
-    {
-        animator.SetBool("Walking", true);
-        animator.SetFloat("DirX", 0);
-        if (DirY.y > 0)
-            animator.SetFloat("DirY", 1);
-        else
-            animator.SetFloat("DirY", -1);
-    }
-
-    Vector3 Return_Move_Position(GameObject moveObject, GameObject ReachObject)
-    {
-        Vector3 MoveVec = new Vector3(moveObject.transform.position.x, ReachObject.transform.position.y - moveObject.transform.position.y, moveObject.transform.position.z);
-        return MoveVec;
     }
 }
