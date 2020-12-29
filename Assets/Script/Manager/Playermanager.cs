@@ -123,7 +123,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
                 //Debug.Log(TalkObject);
                 gamemanager.FiledTalk(TalkObject);
             }
-            else if (isaction && gamemanager.CutNumber != 0)
+            else if (isaction)
             {
                 //Debug.Log("CutTalk");
                 gamemanager.CutSceneTalk(gamemanager.CutNumber);

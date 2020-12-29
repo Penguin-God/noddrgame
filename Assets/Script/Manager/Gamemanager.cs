@@ -32,17 +32,10 @@ public class Gamemanager : MonoBehaviour
         obdata = TalkObject.GetComponent<Objectdata>(); // obdata에 오브젝트에 있는 Objectdata Script를 담음
     }
 
-    void TalkAction()
-    {
-        //Debug.Log(obdata);
-        Talk(obdata.id, obdata.isnpc, obdata.isQuestion);
-        talkwindow.SetActive(playermanager.isaction);
-    } 
-
     public void CutSceneTalk(int id)
     {
         CutNumber = id;
-        Talk(id, false, false);
+        Talk(id);
         talkwindow.SetActive(playermanager.isaction);
     }
 
@@ -52,8 +45,13 @@ public class Gamemanager : MonoBehaviour
         StartCoroutine(QuestionCoroutine());
     }
 
+    void TalkAction()
+    {
+        Talk(obdata.id);
+        talkwindow.SetActive(playermanager.isaction);
+    }
 
-    public void Talk(int id, bool isnpc, bool isQuestion)
+    public void Talk(int id)
     {
         if (cameramanager.isCameraMove || choiecTalk.keyInput) 
             return;
@@ -64,15 +62,17 @@ public class Gamemanager : MonoBehaviour
         }
         // 대화시작
         string talkdata = talkmanager.GetTalkData(id, talkindex);  // get talkText
-
         if (talkdata == null) // 대사 다 출력 시
         {
-            TalkEnd();
+            TalkEnd(); 
+            return; 
         }
-        else if (talkmanager.talkdata[id].Length == talkindex + 1 && isQuestion)
-            QuestionTalk(talkdata);
+        if (talkmanager.talkdata[id].Length == talkindex + 1 && obdata.isQuestion)
+        {
+             QuestionTalk(talkdata);
+        }
         else
-            TalkType(isnpc, talkdata);
+            TalkType(talkdata);
     }
 
     void TalkEnd() // 변수 초기화 및 함수 종료
@@ -83,16 +83,9 @@ public class Gamemanager : MonoBehaviour
         CutNumber = 0;
     }
 
-    void TalkType(bool isnpc, string talkdata) // 대화하는 대상에 따라 다른 방식으로 talk함
+    void TalkType( string talkdata) // 대화하는 대상에 따라 다른 방식으로 talk함
     {
-        //Debug.Log("a");
-        if (isnpc)
-        {
-            typingEffect.EffectStart(talkdata);
-        }
-        else
-            typingEffect.EffectStart(talkdata);  // 대화창의 Text에 GetText의 return을 넣음 
-
+        typingEffect.EffectStart(talkdata);  // 대화창의 Text에 GetText의 return을 넣음 
         talkindex++;
         playermanager.isaction = true;
     }
