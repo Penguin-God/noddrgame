@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-public class QuestionData
+public class QuestionObjectData
 {
     public string questionName;
     public int questionId;
 
-    public QuestionData(string name, int id)
+    public QuestionObjectData(string name, int id)
     {
         questionName = name;
         questionId = id;

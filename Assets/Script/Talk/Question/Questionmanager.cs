@@ -6,16 +6,16 @@ public class Questionmanager : MonoBehaviour
 {
     public int questionId;
 
-    Dictionary<int, QuestionData> questionList;
+    Dictionary<int, QuestionObjectData> questionList;
 
     private void Awake()
     {
-        questionList = new Dictionary<int, QuestionData>();
+        questionList = new Dictionary<int, QuestionObjectData>();
         AddData();
     }
 
     void AddData()
     {
-        questionList.Add(10, new QuestionData("잠 여부", 200));
+        questionList.Add(10, new QuestionObjectData("잠 여부", 200));
     }
 }
