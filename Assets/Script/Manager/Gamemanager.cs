@@ -26,10 +26,11 @@ public class Gamemanager : MonoBehaviour
         Talk(obdata.id);
     }
 
-    void GetObjectData(GameObject TalkObjectData)
+    public Objectdata GetObjectData(GameObject TalkObjectData)
     {
         TalkObject = TalkObjectData;
         obdata = TalkObject.GetComponent<Objectdata>(); // obdata에 오브젝트에 있는 Objectdata Script를 담음
+        return obdata;
     }
 
     public void CutSceneTalk(int id)
@@ -39,11 +40,11 @@ public class Gamemanager : MonoBehaviour
         talkwindow.SetActive(playermanager.isaction);
     }
 
-    public void QuestionTalk(string talkdata)
-    {
-        typingEffect.EffectStart(talkdata);
-        StartCoroutine(QuestionCoroutine());
-    }
+    //public void QuestionTalk(string talkdata)
+    //{
+    //    typingEffect.EffectStart(talkdata);
+    //    StartCoroutine(QuestionCoroutine());
+    //}
 
     public void Talk(int id)
     {
@@ -61,11 +62,6 @@ public class Gamemanager : MonoBehaviour
         else // 대화시작
             TalkType(talkdata);
     }
-
-    //void Question()
-    //{
-
-    //}
 
     void TalkEnd() // 변수 초기화 및 함수 종료
     {
@@ -88,9 +84,10 @@ public class Gamemanager : MonoBehaviour
         talkwindow.SetActive(show);
     }
 
-    IEnumerator QuestionCoroutine()
+    public IEnumerator QuestionCoroutine(int id)
     {
-        yield return new WaitUntil(() => !typingEffect.isTyping);
+        Talk(id);
+        yield return new WaitUntil(() => talkmanager.talkdata[id].Length == talkindex && !typingEffect.isTyping);
         typingEffect.EndCursor.SetActive(false);
         choiecTalk.Question();
     }
