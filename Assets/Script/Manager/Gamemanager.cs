@@ -23,7 +23,7 @@ public class Gamemanager : MonoBehaviour
     public void FiledTalk(GameObject TalkObjectData)
     {
         GetObjectData(TalkObjectData);
-        TalkAction();
+        Talk(obdata.id);
     }
 
     void GetObjectData(GameObject TalkObjectData)
@@ -45,12 +45,6 @@ public class Gamemanager : MonoBehaviour
         StartCoroutine(QuestionCoroutine());
     }
 
-    void TalkAction()
-    {
-        Talk(obdata.id);
-        talkwindow.SetActive(playermanager.isaction);
-    }
-
     public void Talk(int id)
     {
         if (cameramanager.isCameraMove || choiecTalk.keyInput) 
@@ -60,34 +54,38 @@ public class Gamemanager : MonoBehaviour
             typingEffect.FillText(); 
             return;
         }
-        // 대화시작
+        
         string talkdata = talkmanager.GetTalkData(id, talkindex);  // get talkText
         if (talkdata == null) // 대사 다 출력 시
-        {
-            TalkEnd(); 
-            return; 
-        }
-        if (talkmanager.talkdata[id].Length == talkindex + 1 && obdata.isQuestion)
-        {
-             QuestionTalk(talkdata);
-        }
-        else
+            TalkEnd();
+        else // 대화시작
             TalkType(talkdata);
     }
+
+    //void Question()
+    //{
+
+    //}
 
     void TalkEnd() // 변수 초기화 및 함수 종료
     {
         talkindex = 0;
-        playermanager.isaction = false;
         QusetId = 10;
         CutNumber = 0;
+        ShowTalkwinow(false);
     }
 
-    void TalkType( string talkdata) // 대화하는 대상에 따라 다른 방식으로 talk함
+    void TalkType(string talkdata) // 대화하는 대상에 따라 다른 방식으로 talk함
     {
         typingEffect.EffectStart(talkdata);  // 대화창의 Text에 GetText의 return을 넣음 
         talkindex++;
-        playermanager.isaction = true;
+        ShowTalkwinow(true);
+    }
+
+    void ShowTalkwinow(bool show)
+    {
+        playermanager.isaction = show;
+        talkwindow.SetActive(show);
     }
 
     IEnumerator QuestionCoroutine()
