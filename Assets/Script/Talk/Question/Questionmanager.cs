@@ -11,11 +11,11 @@ public class Questionmanager : MonoBehaviour
     private void Awake()
     {
         questionList = new Dictionary<int, QuestionObjectData>();
-        AddData();
+        //AddData();
     }
 
-    void AddData()
-    {
-        questionList.Add(10, new QuestionObjectData("잠 여부", 200));
-    }
+    //void AddData()
+    //{
+    //    questionList.Add(10, new QuestionObjectData("잠 여부", 200));
+    //}
 }

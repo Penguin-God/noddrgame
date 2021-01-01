@@ -4,14 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ChoiecTalk : MonoBehaviour
-{ 
-    public GameObject choiceObject;
-    public GameObject[] choicePanel;
-    //public Text[] choiceText;
-    public GameObject[] choiceCursor;
+{    
+    public CutScenes cutScenes;
     public Gamemanager gamemanager;
     public Playermanager playermanager;
-    public CutScenes cutScenes;
+
+    public GameObject choiceObject;
+    public GameObject[] choicePanel;
+    public GameObject[] choiceCursor;
+
 
     public bool keyInput;
     private int count; // 배열의 크기

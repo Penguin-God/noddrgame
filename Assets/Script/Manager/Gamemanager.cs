@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Gamemanager : MonoBehaviour
 {
-    public GameObject TalkObject;
     public Cameramanager cameramanager;
     public Talkmanager talkmanager;
     public Playermanager playermanager;
@@ -16,7 +15,6 @@ public class Gamemanager : MonoBehaviour
 
     public int CutNumber;
     public int talkindex; // 대사 진행도
-    public int QusetId;
 
     private Objectdata obdata;
 
@@ -28,7 +26,7 @@ public class Gamemanager : MonoBehaviour
 
     public Objectdata GetObjectData(GameObject TalkObjectData)
     {
-        TalkObject = TalkObjectData;
+        GameObject TalkObject = TalkObjectData;
         obdata = TalkObject.GetComponent<Objectdata>(); // obdata에 오브젝트에 있는 Objectdata Script를 담음
         return obdata;
     }
@@ -39,12 +37,6 @@ public class Gamemanager : MonoBehaviour
         Talk(id);
         talkwindow.SetActive(playermanager.isaction);
     }
-
-    //public void QuestionTalk(string talkdata)
-    //{
-    //    typingEffect.EffectStart(talkdata);
-    //    StartCoroutine(QuestionCoroutine());
-    //}
 
     public void Talk(int id)
     {
@@ -66,7 +58,6 @@ public class Gamemanager : MonoBehaviour
     void TalkEnd() // 변수 초기화 및 함수 종료
     {
         talkindex = 0;
-        QusetId = 10;
         CutNumber = 0;
         ShowTalkwinow(false);
     }
@@ -78,17 +69,42 @@ public class Gamemanager : MonoBehaviour
         ShowTalkwinow(true);
     }
 
-    void ShowTalkwinow(bool show)
+    void ShowTalkwinow(bool show) // 대화창 뛰우는 함수
     {
         playermanager.isaction = show;
         talkwindow.SetActive(show);
     }
 
-    public IEnumerator QuestionCoroutine(int id)
+    public IEnumerator QuestionCoroutine(int id) // 대화창에 질문을 띄우는 함수
     {
         Talk(id);
         yield return new WaitUntil(() => talkmanager.talkdata[id].Length == talkindex && !typingEffect.isTyping);
         typingEffect.EndCursor.SetActive(false);
         choiecTalk.Question();
     }
+
+    //QuestionObjectData Return_QuestionData(GameObject Object)
+    //{
+    //    GameObject QuestionObject = Object;
+    //    QuestionObjectData questionData = QuestionObject.GetComponent<QuestionObjectData>();
+    //    return questionData;
+    //}
+
+    //void QeustionTalk(GameObject QuestionObject)
+    //{
+    //    QuestionObjectData questionData = Return_QuestionData(QuestionObject);
+    //    if (cameramanager.isCameraMove || choiecTalk.keyInput)
+    //        return;
+    //    if (typingEffect.isTyping) // 타이핑 애니메이션중에 대화 넘기기를 시도할 때
+    //    {
+    //        typingEffect.FillText();
+    //        return;
+    //    }
+
+    //    string talkdata = talkmanager.GetTalkData(questionData.talkId, talkindex);  // get talkText
+    //    if (talkdata == null) // 대사 다 출력 시
+    //        TalkEnd();
+    //    else // 대화시작
+    //        TalkType(talkdata);
+    //}
 }
