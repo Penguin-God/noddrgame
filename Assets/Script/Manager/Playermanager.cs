@@ -135,8 +135,8 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
                     //Debug.Log(TalkObject);
                     gamemanager.FiledTalk(TalkObject);
                 }
-            } 
-        }
+            }
+        } 
     }
 
     private void OnTriggerEnter2D(Collider2D collision) // 트리거와 충돌시 충돌 오브젝트 정보 가져오기 : Npc충돌 시 대화에 사용

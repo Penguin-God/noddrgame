@@ -150,7 +150,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25daa2bfc37d03c47985eca9370c9a09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TalkObject: {fileID: 0}
   cameramanager: {fileID: 257356637}
   talkmanager: {fileID: 1069951207}
   playermanager: {fileID: 324695930}
@@ -159,7 +158,6 @@ MonoBehaviour:
   talkwindow: {fileID: 1897621548}
   CutNumber: 0
   talkindex: 0
-  QusetId: 0
 --- !u!4 &1027950
 Transform:
   m_ObjectHideFlags: 0
@@ -803,7 +801,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 257356629}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.9999998, y: 0.9599998, z: -11}
+  m_LocalPosition: {x: -2.9999995, y: 0.9599998, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1346558013}
@@ -4209,7 +4207,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 576377bcbbe85e04993ab896d39a35b8, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5592,13 +5590,13 @@ GameObject:
   - component: {fileID: 1112277165}
   - component: {fileID: 1112277164}
   - component: {fileID: 1112277163}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: book
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1112277163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7658,7 +7656,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1819853891}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.9999998, y: 0.9599998, z: -11}
+  m_LocalPosition: {x: -2.9999995, y: 0.9599998, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 573734773}
@@ -9568,7 +9566,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1f38038155729244fa479bb8f5611a2d, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
