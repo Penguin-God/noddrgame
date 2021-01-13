@@ -39,4 +39,15 @@ public class Mapchange : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         playermanager.isaction = false;
     }
+
+    public IEnumerator FadeIn_and_Out() //맵이 어두워지고 맵 이동 후 다시밝아지는 코루틴
+    {
+        playermanager.isaction = true;
+        fademanager.BlackIn(0.006f);
+        yield return new WaitUntil(() => fademanager.color.a >= 0.99);
+        yield return new WaitForSeconds(2f);
+        fademanager.BlackOut(0.003f);
+        yield return new WaitForSeconds(1f);
+        playermanager.isaction = false;
+    }
 }

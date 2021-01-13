@@ -10,6 +10,7 @@ public class CutScenes : MonoBehaviour
     public Fademanager fademanager;
     public Playermanager playermanager;
     public MoveOther moveOther;
+    public Mapchange mapchange;
     private Animator animator;
 
     public GameObject Player;
@@ -62,6 +63,8 @@ public class CutScenes : MonoBehaviour
             moveCount--;
         }
         moveOther.PlayerMove();
+        yield return new WaitForSeconds(1.5f);
+        AwakeHome();
     }
 
     void Y_Move_Animation(Vector3 DirY) // 이동할 위치에 따른 애니메이션 
@@ -78,6 +81,13 @@ public class CutScenes : MonoBehaviour
     {
         Vector3 MoveVec = new Vector3(moveObject.transform.position.x, ReachObject.transform.position.y - moveObject.transform.position.y, moveObject.transform.position.z);
         return MoveVec;
+    }
+
+
+    void AwakeHome() // 이동 및 대사 나오는 기능 추가해야 됨
+    {
+        StartCoroutine(mapchange.FadeIn_and_Out());
+        moveOther.PlayerMove();
     }
 
     // 대사 넘어갈 때마다 카메라 이동시키는 코드

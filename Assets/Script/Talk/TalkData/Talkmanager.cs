@@ -25,6 +25,7 @@ public class Talkmanager : MonoBehaviour
         talkdata.Add(700, new string[] { "헉... 헉......"});
         talkdata.Add(800, new string[] { "...........", "현타오네", "다 했으니 잠이나 자야겠다."});
         talkdata.Add(900, new string[] { "새벽 4시까지 했으니 그만하고 자자" });
+        talkdata.Add(1000, new string[] { "화장실 갈까?", "아니 잠이나 자자" });
     }
 
     public string GetTalkData(int id, int talkindex) // 대화 진행도에 따라 대사, null을 리턴함
