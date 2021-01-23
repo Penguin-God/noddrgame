@@ -6,5 +6,4 @@ public class Objectdata : MonoBehaviour
 {
     public int id;
     public bool isnpc;
-    public bool isQuestion;
 }
