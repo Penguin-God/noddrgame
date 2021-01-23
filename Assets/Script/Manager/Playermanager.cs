@@ -105,7 +105,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
     void Ray()
     {
         Debug.DrawRay(Rigidbody.position, RayVector * 0.7f, new Color(0, 1, 0));
-        RaycastHit2D rayhit = Physics2D.Raycast(Rigidbody.position, RayVector, 0.7f, LayerMask.GetMask("Object")); // 레이어가 Object인 물체만 감지함 
+        RaycastHit2D rayhit = Physics2D.Raycast(Rigidbody.position, RayVector, 0.7f, LayerMask.GetMask("Object", "QuestionObject")); // 레이어가 Object인 물체만 감지함 
 
         // GameObject 변수는 null이 되면 인스펙터에서 None표시 안뜨고 그냥 전에 가져온 오브젝트가 빈 껍데기처럼 남아있는듯 함.
         if (rayhit.collider != null && !isaction)// 대화중이 아닐때만 rayhit에 걸린 오브젝트 가져오기(NPC와 대화중에 다른 오브젝트를 가져오는 것을 방지하기 위함) 
@@ -120,19 +120,18 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
         {
             if (gamemanager.CutNumber != 0)
             {
-                //Debug.Log("CutTalk");
                 gamemanager.CutSceneTalk(gamemanager.CutNumber);
+                return;
             }
-            else if (TalkObject != null) 
+
+            if (TalkObject != null) 
             {
-                Objectdata obdata = gamemanager.GetObjectData(TalkObject);
-                if (obdata.isQuestion)
+                if (TalkObject.layer == 10)
                 {
-                    StartCoroutine(gamemanager.QuestionCoroutine(obdata.id));
+                    gamemanager.GetQuestionData(TalkObject);
                 }
                 else
                 {
-                    //Debug.Log(TalkObject);
                     gamemanager.FiledTalk(TalkObject);
                 }
             }

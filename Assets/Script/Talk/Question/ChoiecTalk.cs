@@ -17,15 +17,16 @@ public class ChoiecTalk : MonoBehaviour
     public bool keyInput;
     private int count; // 배열의 크기
     private int result; // 선택한 선택창.
-    private int Action;
+    int[] questionId;
 
-    public void Question() // 질문창 띄움
+    public void Question(int[] questionNumber) // 질문창 띄움
     {
         result = 0;
         count = choicePanel.Length - 1;
         choiceObject.SetActive(true);
         choiceCursor[0].SetActive(true);
         keyInput = true;
+        questionId = questionNumber;
     }
 
     private void Update() 
@@ -48,10 +49,10 @@ public class ChoiecTalk : MonoBehaviour
                     result = 0;
                 Selection();
             }
-            else if (Input.GetKeyDown(KeyCode.Return))
+            else if (Input.GetKeyDown(KeyCode.Return)) // 엔터를 눌러서 질문이 끝날 때
             {
                 keyInput = false;
-                StartCoroutine(QuestionTalk(result, new int[] { 300, 400 }));
+                StartCoroutine(QuestionTalk(result, questionId));
                 ExitChoice();
             }
         }
@@ -77,10 +78,11 @@ public class ChoiecTalk : MonoBehaviour
 
     IEnumerator QuestionTalk(int result, int[] cutNumber) // 질문 선택에 따른 액션
     {
-        gamemanager.talkindex = 0;
-        for(int i = 0; i < result + 1; i++)
+        gamemanager.talkindex = 0; // 새로운 대화를 시작해야 돼서
+        int Action = 0;
+        for (int i = 0; i < result + 1; i++)
         {
-            if (result == i)
+            if (result == i) // 어차피 제일높은때가 선택한 대답임
                 gamemanager.CutSceneTalk(cutNumber[i]);
             Action = cutNumber[i];
         }
