@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CutScenes : MonoBehaviour
 {
-    //public Cameramanager cameramanager;
     public PlayerStat playerStat;
     public Gamemanager gamemanager;
     public Fademanager fademanager;
@@ -50,6 +49,7 @@ public class CutScenes : MonoBehaviour
 
     public IEnumerator Sleep(int walkcount) // 잠자는 컷씬 코루틴
     {
+        moveOther = ReturnMoveOther();
         int moveCount = walkcount; // walkcount가 while문에서 --되면서 나누는 값이 작아져서 다른 변수 생성
         OffCollider();
         Vector3 BedVec = Return_Move_Position(Player, colliderObject);
@@ -64,7 +64,7 @@ public class CutScenes : MonoBehaviour
         }
         moveOther.PlayerMove();
         yield return new WaitForSeconds(1.5f);
-        AwakeHome();
+        StartCoroutine(AwakeHome());
     }
 
     void Y_Move_Animation(Vector3 DirY) // 이동할 위치에 따른 애니메이션 
@@ -84,10 +84,21 @@ public class CutScenes : MonoBehaviour
     }
 
 
-    void AwakeHome() // 이동 및 대사 나오는 기능 추가해야 됨
+    IEnumerator AwakeHome() // 침대에서 나오는 이동 및 대사 나오는 기능 추가해야 됨
     {
         StartCoroutine(mapchange.FadeIn_and_Out());
-        moveOther.PlayerMove();
+        yield return new WaitForSeconds(2f);
+        yield return new WaitUntil(() => mapchange.fademanager.color.a < 0.05);
+        yield return new WaitForSeconds(1f);
+        moveOther.Move("LEFT");
+    }
+
+    MoveOther ReturnMoveOther()
+    {
+        MoveOther moveOther = null;
+        if (playermanager.eventObject != null)
+            moveOther = playermanager.eventObject;
+        return moveOther;
     }
 
     // 대사 넘어갈 때마다 카메라 이동시키는 코드

@@ -914,7 +914,6 @@ GameObject:
   - component: {fileID: 324695931}
   - component: {fileID: 324695930}
   - component: {fileID: 324695933}
-  - component: {fileID: 324695934}
   - component: {fileID: 324695929}
   - component: {fileID: 324695927}
   - component: {fileID: 324695926}
@@ -1021,6 +1020,7 @@ MonoBehaviour:
   speed: 5
   CharactreName: player
   audioManager: {fileID: 1979970484}
+  eventObject: {fileID: 0}
   isaction: 0
   currentScene: 
 --- !u!212 &324695931
@@ -1106,23 +1106,6 @@ MonoBehaviour:
   PlayerDie: 0
   hpBar: {fileID: 1459813777}
   UIrotate: {fileID: 22075761}
---- !u!114 &324695934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 324695925}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89a7c1145a31b5444a5c0e5a19f38b75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MoveObject: {fileID: 324695925}
-  walkcount: 10
-  directions:
-  - RIGHT
-  frequency: 0
 --- !u!1 &344378723
 GameObject:
   m_ObjectHideFlags: 0
@@ -4750,6 +4733,7 @@ GameObject:
   - component: {fileID: 761734358}
   - component: {fileID: 761734357}
   - component: {fileID: 761734360}
+  - component: {fileID: 761734361}
   m_Layer: 10
   m_Name: "\uCE68\uB300"
   m_TagString: Untagged
@@ -4855,6 +4839,23 @@ MonoBehaviour:
   questionName: "\uC7A0"
   talkId: 200
   questionId: 2c01000090010000
+--- !u!114 &761734361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761734356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89a7c1145a31b5444a5c0e5a19f38b75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveObject: {fileID: 324695925}
+  walkcount: 10
+  directions:
+  - RIGHT
+  frequency: 0
 --- !u!1 &762446956
 GameObject:
   m_ObjectHideFlags: 0
@@ -7739,7 +7740,7 @@ MonoBehaviour:
   gamemanager: {fileID: 1027948}
   fademanager: {fileID: 1346558014}
   playermanager: {fileID: 324695930}
-  moveOther: {fileID: 324695934}
+  moveOther: {fileID: 0}
   mapchange: {fileID: 1273539973}
   Player: {fileID: 324695925}
   colliderObject: {fileID: 761734356}

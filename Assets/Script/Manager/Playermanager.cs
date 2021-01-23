@@ -10,11 +10,12 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
     Vector2 PlayerVector;
     Vector2 RayVector;
     GameObject TalkObject;
+    public MoveOther eventObject;
     Animator animator;
 
     private int xMove;
     private int yMove;
-    
+
     public bool isaction;
     bool isRun;
     bool Space;
@@ -112,6 +113,15 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
             TalkObject = rayhit.collider.gameObject;
         else if (!isaction)
             TalkObject = null;
+
+        if (TalkObject != null && TalkObject.GetComponent<MoveOther>() != null)
+        {
+            eventObject = TalkObject.GetComponent<MoveOther>();
+        }
+        else
+        {
+            eventObject = null;
+        }
     }
 
     void 대화()
@@ -149,5 +159,3 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
             TalkObject = null;
     }
 }
-
-
