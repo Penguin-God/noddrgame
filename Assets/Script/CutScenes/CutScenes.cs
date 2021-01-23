@@ -88,7 +88,7 @@ public class CutScenes : MonoBehaviour
     {
         StartCoroutine(mapchange.FadeIn_and_Out());
         yield return new WaitForSeconds(2f);
-        yield return new WaitUntil(() => mapchange.fademanager.color.a < 0.05);
+        yield return new WaitUntil(() => mapchange.color.a < 0.05);
         yield return new WaitForSeconds(1f);
         moveOther.Move("LEFT");
     }
