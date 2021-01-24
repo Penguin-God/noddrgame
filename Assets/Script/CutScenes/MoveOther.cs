@@ -16,7 +16,7 @@ public class MoveOther : MonoBehaviour
     public string[] directions;
     public int frequency;
 
-    private Animator animator;
+    protected Animator animator;
 
     private void Awake()
     {

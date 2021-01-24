@@ -10,7 +10,7 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
     Vector2 PlayerVector;
     Vector2 RayVector;
     GameObject TalkObject;
-    public MoveOther eventObject;
+    public CutScenes eventObject = null;
     Animator animator;
 
     private int xMove;
@@ -114,9 +114,9 @@ public class Playermanager : 변수저장소 //변수저장소 script를 상속�
         else if (!isaction)
             TalkObject = null;
 
-        if (TalkObject != null && TalkObject.GetComponent<MoveOther>() != null)
+        if (TalkObject != null && TalkObject.GetComponent<CutScenes>() != null)
         {
-            eventObject = TalkObject.GetComponent<MoveOther>();
+            eventObject = TalkObject.GetComponent<CutScenes>();
         }
         else
         {

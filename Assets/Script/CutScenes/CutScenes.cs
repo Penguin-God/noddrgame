@@ -2,24 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CutScenes : MonoBehaviour
+public class CutScenes : MoveOther
 {
-    public PlayerStat playerStat;
-    public Gamemanager gamemanager;
-    public Fademanager fademanager;
-    public Playermanager playermanager;
-    public MoveOther moveOther;
-    public Mapchange mapchange;
-    private Animator animator;
+    PlayerStat playerStat;
+    Gamemanager gamemanager;
+    Playermanager playermanager;
+    Mapchange mapchange;
+    CutScenes moveOther;
 
-    public GameObject Player;
-    public GameObject colliderObject;
-    private Collider2D objectCollider;
+    Collider2D objectCollider;
 
     private void Awake()
     {
+        playerStat = FindObjectOfType<PlayerStat>();
         animator = playerStat.GetComponent<Animator>();
-        objectCollider = colliderObject.GetComponent<Collider2D>();
+        gamemanager = FindObjectOfType<Gamemanager>();
+        playermanager = FindObjectOfType<Playermanager>();
+        mapchange = FindObjectOfType<Mapchange>(); // mapchage는 여러개라서 나중에 오류의 원인일수도
+        objectCollider = this.gameObject.GetComponent<Collider2D>();
+        DirSave = new Queue<string>();
     }
 
     public void StartCut(float speed)
@@ -29,9 +30,9 @@ public class CutScenes : MonoBehaviour
 
     IEnumerator GameStartCut(float Speed)
     {
-        fademanager.UIFadeIn(Speed);
+        mapchange.UIFadeIn(Speed);
         animator.SetBool("testDDR", true);
-        yield return new WaitUntil(() => fademanager.color.a < 0.6f);
+        yield return new WaitUntil(() => mapchange.color.a < 0.6f);
         // 대사 시작
         gamemanager.CutSceneTalk(700);
         yield return new WaitUntil(() => !playermanager.isaction);
@@ -52,17 +53,17 @@ public class CutScenes : MonoBehaviour
         moveOther = ReturnMoveOther();
         int moveCount = walkcount; // walkcount가 while문에서 --되면서 나누는 값이 작아져서 다른 변수 생성
         OffCollider();
-        Vector3 BedVec = Return_Move_Position(Player, colliderObject);
+        Vector3 BedVec = Return_Move_Position(MoveObject, this.gameObject);
         BedVec.y += 0.15f;
         yield return new WaitForSeconds(0.5f);
         if (BedVec.y > 0.25f) Y_Move_Animation(BedVec);
         while (moveCount > 0)
         {
-            Player.transform.Translate(0, BedVec.y / walkcount, 0);
+            MoveObject.transform.Translate(0, BedVec.y / walkcount, 0);
             yield return new WaitForSeconds(0.03f);
             moveCount--;
         }
-        moveOther.PlayerMove();
+        PlayerMove();
         yield return new WaitForSeconds(1.5f);
         StartCoroutine(AwakeHome());
     }
@@ -90,12 +91,12 @@ public class CutScenes : MonoBehaviour
         yield return new WaitForSeconds(2f);
         yield return new WaitUntil(() => mapchange.color.a < 0.05);
         yield return new WaitForSeconds(1f);
-        moveOther.Move("LEFT");
+        Move("LEFT");
     }
 
-    MoveOther ReturnMoveOther()
+    CutScenes ReturnMoveOther()
     {
-        MoveOther moveOther = null;
+        CutScenes moveOther = null;
         if (playermanager.eventObject != null)
             moveOther = playermanager.eventObject;
         return moveOther;
