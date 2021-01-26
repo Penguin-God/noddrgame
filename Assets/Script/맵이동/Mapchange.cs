@@ -7,7 +7,6 @@ public class Mapchange : Fademanager
 {
     public Playermanager playermanager;
 
-    //public Cameramanager cameramanager;
     public new Camera camera;
     public Transform MapChangePoint;
 
@@ -33,7 +32,6 @@ public class Mapchange : Fademanager
         camera.transform.position = new Vector3(playermanager.transform.position.x, playermanager.transform.position.y, -10);
 
         yield return new WaitForSeconds(0.5f);
-        // cameramanager.CollderChange(); // 위치변경 후 카메라 제한구역 여부 확인 및 적용
         BlackOut();
         yield return new WaitForSeconds(0.5f);
         playermanager.isaction = false;

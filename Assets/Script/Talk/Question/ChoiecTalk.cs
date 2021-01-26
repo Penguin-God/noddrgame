@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ChoiecTalk : MonoBehaviour
 {    
-    public CutScenes cutScenes;
+    public CutScenes cutScenes; // 이게 상황에 따라 다른 스크립트로 바뀌는게 이벤트 자동화의 핵심
     public Gamemanager gamemanager;
     public Playermanager playermanager;
 

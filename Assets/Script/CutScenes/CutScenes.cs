@@ -8,7 +8,7 @@ public class CutScenes : MoveOther
     Gamemanager gamemanager;
     Playermanager playermanager;
     Mapchange mapchange;
-    CutScenes moveOther;
+    //CutScenes moveOther;
 
     Collider2D objectCollider;
 
@@ -50,7 +50,7 @@ public class CutScenes : MoveOther
 
     public IEnumerator Sleep(int walkcount) // 잠자는 컷씬 코루틴
     {
-        moveOther = ReturnMoveOther();
+        //moveOther = ReturnMoveOther();
         int moveCount = walkcount; // walkcount가 while문에서 --되면서 나누는 값이 작아져서 다른 변수 생성
         OffCollider();
         Vector3 BedVec = Return_Move_Position(MoveObject, this.gameObject);
@@ -64,7 +64,9 @@ public class CutScenes : MoveOther
             moveCount--;
         }
         PlayerMove();
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.5f);
+        OtherLook("DOWN");
+        yield return new WaitForSeconds(1f);
         StartCoroutine(AwakeHome());
     }
 

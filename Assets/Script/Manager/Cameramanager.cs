@@ -5,19 +5,7 @@ using UnityEngine;
 
 public class Cameramanager : MonoBehaviour
 {
-    //public CinemachineConfiner Confiner;
     public bool isCameraMove;
-
-    //private void Awake()
-    //{
-    //    Confiner = GetComponent<CinemachineConfiner>();
-    //}
-
-    //public void CollderChange(PolygonCollider2D newBox) 
-    //{
-    //    if (Confiner.m_BoundingShape2D != newBox)
-    //        Confiner.m_BoundingShape2D = newBox;
-    //}
 
     public void CameraMove(Vector3 MoveVec, float MoveTime, int MoveCount)
     {

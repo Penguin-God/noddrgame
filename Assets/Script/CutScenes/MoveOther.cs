@@ -127,9 +127,26 @@ public class MoveOther : MonoBehaviour
         animator.SetFloat("DirY", objectVector.y);
     }
 
-    void OtherLook(int dirX, int dirY)
+    public void OtherLook(string direction)
     {
-        animator.SetFloat("DirX", dirX);
-        animator.SetFloat("DirY", dirY);
+        switch (direction)
+        {
+            case ("UP"):
+                animator.SetFloat("DirX", 0);
+                animator.SetFloat("DirY", 1);
+                break;
+            case ("DOWN"):
+                animator.SetFloat("DirX", 0);
+                animator.SetFloat("DirY", -1);
+                break;
+            case ("LEFT"):
+                animator.SetFloat("DirX", -1);
+                animator.SetFloat("DirY", 0);
+                break;
+            case ("RIGHT"):
+                animator.SetFloat("DirX", 1);
+                animator.SetFloat("DirY", 0);
+                break;
+        }
     }
 }
