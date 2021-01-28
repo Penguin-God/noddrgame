@@ -36,7 +36,7 @@ public class CutScenes : MoveOther
         GameObject blackImage = GameObject.Find("Black Image");
         blackImage.SetActive(false);
         yield return new WaitForSeconds(1.3f);
-        gamemanager.CutSceneTalk(200);
+        StartCoroutine(gamemanager.QuestionCoroutine(200, new int[] { 300, 400 }));
     }
 
 
