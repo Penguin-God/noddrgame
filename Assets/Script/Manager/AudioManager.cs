@@ -23,7 +23,7 @@ public class AudioManager : MonoBehaviour
     {
         SetAudio = true;
         WalkAudioSouce.Play();
-        yield return new WaitForSeconds(Run ? 0.15f : 0.3f);
+        yield return new WaitForSeconds(Run ? 0.2f : 0.4f);
         SetAudio = false;
     }
 }

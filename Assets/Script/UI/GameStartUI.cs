@@ -8,9 +8,10 @@ public class GameStartUI : MonoBehaviour
 {
     public GameObject 시작창;
     public GameObject 타이틀;
+    public GameObject BackgrounImage;
 
-    public CutScenes cutScenes;
     public AudioManager audioManager;
+    public CutScenes cutScenes;
 
     public void GameExit() // 게임종료
     {
@@ -29,7 +30,7 @@ public class GameStartUI : MonoBehaviour
         시작창.SetActive(false);
         audioManager.WalkAudioPlay(false);
 
-        cutScenes.StartCut(0.002f);
+        StartCoroutine(cutScenes.GameStartCut(0.002f));
     }
 
     public void StartCancel()

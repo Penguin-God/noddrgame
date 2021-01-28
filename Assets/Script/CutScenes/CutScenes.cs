@@ -1,74 +1,71 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CutScenes : MoveOther
 {
-    PlayerStat playerStat;
+    //PlayerStat playerStat;
     Gamemanager gamemanager;
     Playermanager playermanager;
-    Mapchange mapchange;
-    //CutScenes moveOther;
+    Fademanager fademanager;
+    public Image backgroundImage;
+    
 
-    Collider2D objectCollider;
+    //Collider2D objectCollider;
 
     private void Awake()
     {
-        playerStat = FindObjectOfType<PlayerStat>();
-        animator = playerStat.GetComponent<Animator>();
+        //playerStat = FindObjectOfType<PlayerStat>();
         gamemanager = FindObjectOfType<Gamemanager>();
         playermanager = FindObjectOfType<Playermanager>();
-        mapchange = FindObjectOfType<Mapchange>(); // mapchage는 여러개라서 나중에 오류의 원인일수도
-        objectCollider = this.gameObject.GetComponent<Collider2D>();
+        animator = playermanager.GetComponent<Animator>();
+        fademanager = FindObjectOfType<Fademanager>(); // mapchage는 여러개라서 나중에 오류의 원인일수도
+        //objectCollider = this.gameObject.GetComponent<Collider2D>();
         DirSave = new Queue<string>();
     }
 
-    public void StartCut(float speed)
+    public IEnumerator GameStartCut(float Speed)
     {
-        StartCoroutine(GameStartCut(speed));
-    }
-
-    IEnumerator GameStartCut(float Speed)
-    {
-        mapchange.UIFadeIn(Speed);
-        animator.SetBool("testDDR", true);
-        yield return new WaitUntil(() => mapchange.color.a < 0.6f);
-        // 대사 시작
-        gamemanager.CutSceneTalk(700);
+        fademanager.UIFadeIn(Speed);
+        yield return new WaitUntil(() => fademanager.color.a > 0.99f);
+        backgroundImage.gameObject.SetActive(false);
+        yield return new WaitForSeconds(2f);
+        gamemanager.CutSceneTalk(100);
         yield return new WaitUntil(() => !playermanager.isaction);
-        StartCoroutine(playerStat.AddHp(4, 0.15f));
-        yield return new WaitUntil(() => playerStat.PlayerDie);
-        animator.SetBool("testDDR", false);
-        gamemanager.CutSceneTalk(800);
+        GameObject blackImage = GameObject.Find("Black Image");
+        blackImage.SetActive(false);
+        yield return new WaitForSeconds(1.3f);
+        gamemanager.CutSceneTalk(200);
     }
 
 
-    void OffCollider()
-    {
-        objectCollider.enabled = false;
-    }
+    //void OffCollider()
+    //{
+    //    objectCollider.enabled = false;
+    //}
 
-    public IEnumerator Sleep(int walkcount) // 잠자는 컷씬 코루틴
-    {
-        //moveOther = ReturnMoveOther();
-        int moveCount = walkcount; // walkcount가 while문에서 --되면서 나누는 값이 작아져서 다른 변수 생성
-        OffCollider();
-        Vector3 BedVec = Return_Move_Position(MoveObject, this.gameObject);
-        BedVec.y += 0.15f;
-        yield return new WaitForSeconds(0.5f);
-        if (BedVec.y > 0.25f) Y_Move_Animation(BedVec);
-        while (moveCount > 0)
-        {
-            MoveObject.transform.Translate(0, BedVec.y / walkcount, 0);
-            yield return new WaitForSeconds(0.03f);
-            moveCount--;
-        }
-        PlayerMove();
-        yield return new WaitForSeconds(0.5f);
-        OtherLook("DOWN");
-        yield return new WaitForSeconds(1f);
-        StartCoroutine(AwakeHome());
-    }
+    //public IEnumerator Sleep(int walkcount) // 잠자는 컷씬 코루틴
+    //{
+    //    //moveOther = ReturnMoveOther();
+    //    int moveCount = walkcount; // walkcount가 while문에서 --되면서 나누는 값이 작아져서 다른 변수 생성
+    //    OffCollider();
+    //    Vector3 BedVec = Return_Move_Position(MoveObject, this.gameObject);
+    //    BedVec.y += 0.15f;
+    //    yield return new WaitForSeconds(0.5f);
+    //    if (BedVec.y > 0.25f) Y_Move_Animation(BedVec);
+    //    while (moveCount > 0)
+    //    {
+    //        MoveObject.transform.Translate(0, BedVec.y / walkcount, 0);
+    //        yield return new WaitForSeconds(0.03f);
+    //        moveCount--;
+    //    }
+    //    PlayerMove();
+    //    yield return new WaitForSeconds(0.5f);
+    //    OtherLook("DOWN");
+    //    yield return new WaitForSeconds(1f);
+    //    StartCoroutine(AwakeHome());
+    //}
 
     void Y_Move_Animation(Vector3 DirY) // 이동할 위치에 따른 애니메이션 
     {
@@ -87,14 +84,14 @@ public class CutScenes : MoveOther
     }
 
 
-    IEnumerator AwakeHome() // 침대에서 나오는 이동 및 대사 나오는 기능 추가해야 됨
-    {
-        StartCoroutine(mapchange.FadeIn_and_Out());
-        yield return new WaitForSeconds(2f);
-        yield return new WaitUntil(() => mapchange.color.a < 0.05);
-        yield return new WaitForSeconds(1f);
-        Move("LEFT");
-    }
+    //IEnumerator AwakeHome() // 침대에서 나오는 이동 및 대사 나오는 기능 추가해야 됨
+    //{
+    //    StartCoroutine(mapchange.FadeIn_and_Out());
+    //    yield return new WaitForSeconds(2f);
+    //    yield return new WaitUntil(() => mapchange.color.a < 0.05);
+    //    yield return new WaitForSeconds(1f);
+    //    Move("LEFT");
+    //}
 
     CutScenes ReturnMoveOther()
     {

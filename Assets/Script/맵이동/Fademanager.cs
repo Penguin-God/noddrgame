@@ -57,6 +57,7 @@ public class Fademanager : MonoBehaviour
     // 검은색UI 창 서서히 사라지는 코드
     public void UIFadeIn(float Speed = 0.02f)
     {
+        Blackimg.gameObject.SetActive(true);
         StopAllCoroutines();
         StartCoroutine(UIFadeiInCoroutine(Speed));
     }
@@ -64,9 +65,9 @@ public class Fademanager : MonoBehaviour
     IEnumerator UIFadeiInCoroutine(float Speed)
     {
         color = Blackimg.color;
-        while (color.a > 0f) // 검은창 천천히 투명하게 하는 코드
+        while (color.a < 1f) // 검은창 천천히 진하게 하는 코드
         {
-            color.a -= Speed;
+            color.a += Speed;
             Blackimg.color = color;
             yield return FadeoutWaitTime;
         }

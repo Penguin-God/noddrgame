@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ChoiecTalk : MonoBehaviour
 {    
-    public CutScenes cutScenes; // 이게 상황에 따라 다른 스크립트로 바뀌는게 이벤트 자동화의 핵심
+    public CutScenes cutScenes; // 이게 상황에 따라 다른 스크립트로 바뀌는게 이벤트 자동화의 핵심 - event기능을 활용하면 좋을 듯
     public Gamemanager gamemanager;
     public Playermanager playermanager;
 
@@ -87,9 +87,9 @@ public class ChoiecTalk : MonoBehaviour
             Action = cutNumber[i];
         }
         yield return new WaitUntil(() => !playermanager.isaction);
-        if (Action == 300)
-        {
-            StartCoroutine(cutScenes.Sleep(6));
-        }
+        //if (Action == 300)
+        //{
+        //    StartCoroutine(cutScenes.Sleep(6));
+        //}
     }
 }
