@@ -88,9 +88,4 @@ public class Gamemanager : MonoBehaviour
         StartCoroutine(QuestionCoroutine(questionData.talkId, questionData.questionId));
         return questionData;
     }
-
-    bool IsEndTalk()
-    {
-        return true;
-    }
 }

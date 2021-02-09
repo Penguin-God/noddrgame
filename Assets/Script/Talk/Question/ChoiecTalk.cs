@@ -79,17 +79,7 @@ public class ChoiecTalk : MonoBehaviour
     IEnumerator QuestionTalk(int result, int[] cutNumber) // 질문 선택에 따른 액션
     {
         gamemanager.talkindex = 0; // 새로운 대화를 시작해야 돼서
-        int Action = 0;
-        for (int i = 0; i < result + 1; i++)
-        {
-            if (result == i) // 어차피 제일높은때가 선택한 대답임
-                gamemanager.CutSceneTalk(cutNumber[i]);
-            Action = cutNumber[i];
-        }
+        gamemanager.CutSceneTalk(cutNumber[result]);
         yield return new WaitUntil(() => !playermanager.isaction);
-        //if (Action == 300)
-        //{
-        //    StartCoroutine(cutScenes.Sleep(6));
-        //}
     }
 }
