@@ -16,8 +16,9 @@ public class ChoiecTalk : MonoBehaviour
 
     public bool keyInput;
     private int count; // 배열의 크기
-    private int result; // 선택한 선택창.
+    public int result; // 선택한 선택창.
     int[] questionId;
+    public bool doQuestionTalk;
 
     public void Question(int[] questionNumber) // 질문창 띄움
     {
@@ -52,7 +53,7 @@ public class ChoiecTalk : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.Return)) // 엔터를 눌러서 질문이 끝날 때
             {
                 keyInput = false;
-                StartCoroutine(QuestionTalk(result, questionId));
+                StartCoroutine(QuestionTalk(questionId));
                 ExitChoice();
             }
         }
@@ -76,10 +77,12 @@ public class ChoiecTalk : MonoBehaviour
         keyInput = false;
     }
 
-    IEnumerator QuestionTalk(int result, int[] cutNumber) // 질문 선택에 따른 액션
+    IEnumerator QuestionTalk(int[] cutNumber) // 질문 선택에 따른 대화
     {
+        doQuestionTalk = true;
         gamemanager.talkindex = 0; // 새로운 대화를 시작해야 돼서
         gamemanager.CutSceneTalk(cutNumber[result]);
         yield return new WaitUntil(() => !playermanager.isaction);
+        doQuestionTalk = false;
     }
 }

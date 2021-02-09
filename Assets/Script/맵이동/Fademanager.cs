@@ -58,6 +58,8 @@ public class Fademanager : MonoBehaviour
     public void UIFadeIn(float Speed = 0.02f)
     {
         Blackimg.gameObject.SetActive(true);
+        color.a = 0;
+        Blackimg.color = color;
         StopAllCoroutines();
         StartCoroutine(UIFadeiInCoroutine(Speed));
     }

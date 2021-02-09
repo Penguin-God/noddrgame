@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CutScenes : MoveOther
 {
@@ -31,6 +32,22 @@ public class CutScenes : MoveOther
         blackImage.SetActive(false);
         yield return new WaitForSeconds(1.3f);
         StartCoroutine(gamemanager.QuestionCoroutine(200, new int[] { 300, 400 }));
+        yield return new WaitUntil(() => !playermanager.isaction);
+        if (gamemanager.choiecTalk.result == 0)
+            Debug.Log("전에 봄");
+        else
+            StartCoroutine(FirstMeet());
+    }
+
+    IEnumerator FirstMeet()
+    {
+        ParticleSystem particle = FindObjectOfType<ParticleSystem>();
+        particle.Play();
+        fademanager.color.a = 0;
+        fademanager.UIFadeIn(0.002f);
+        yield return new WaitForSeconds(1f);
+        yield return new WaitUntil(() => fademanager.color.a > 0.99f);
+        SceneManager.LoadScene(0);
     }
 
     void Y_Move_Animation(Vector3 DirY) // 이동할 위치에 따른 애니메이션 
