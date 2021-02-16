@@ -31,18 +31,18 @@ public class CutScenes : MoveOther
         GameObject blackImage = GameObject.Find("Black Image");
         blackImage.SetActive(false);
         yield return new WaitForSeconds(1.3f);
-        StartCoroutine(gamemanager.QuestionCoroutine(200, new int[] { 300, 400 }));
+        StartCoroutine(gamemanager.QuestionCoroutine(200, new int[] { 400, 300 }));
         yield return new WaitUntil(() => !playermanager.isaction);
         if (gamemanager.choiecTalk.result == 0)
-            Debug.Log("전에 봄");
-        else
             StartCoroutine(FirstMeet());
+        else
+            Debug.Log("aa");
     }
 
     IEnumerator FirstMeet()
     {
-        ParticleSystem particle = FindObjectOfType<ParticleSystem>();
-        particle.Play();
+        //ParticleSystem particle = FindObjectOfType<ParticleSystem>();
+        //particle.Play();
         fademanager.color.a = 0;
         fademanager.UIFadeIn(0.002f);
         yield return new WaitForSeconds(1f);
