@@ -11,6 +11,10 @@ public class CutScenes : MoveOther
     Fademanager fademanager;
     public Image backgroundImage;
 
+    public GameObject inputField;
+    public Text inputAnswer;
+    string answer = "보자기";
+
     private void Awake()
     {
         gamemanager = FindObjectOfType<Gamemanager>();
@@ -36,7 +40,7 @@ public class CutScenes : MoveOther
         if (gamemanager.choiecTalk.result == 0)
             StartCoroutine(FirstMeet());
         else
-            Debug.Log("aa");
+            StartCoroutine(GetAnswer());
     }
 
     IEnumerator FirstMeet()
@@ -48,6 +52,24 @@ public class CutScenes : MoveOther
         yield return new WaitForSeconds(1f);
         yield return new WaitUntil(() => fademanager.color.a > 0.99f);
         SceneManager.LoadScene(0);
+    }
+
+    IEnumerator GetAnswer()
+    {
+        inputField.SetActive(true);
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+        inputField.SetActive(false);
+        if (answer == inputAnswer.text)
+        {
+            Debug.Log("정답");
+        }
+        else
+        {
+            gamemanager.CutSceneTalk(500);
+            yield return new WaitUntil(() => !playermanager.isaction);
+            playermanager.isaction = true;
+            SceneManager.LoadScene(0);
+        }
     }
 
     void Y_Move_Animation(Vector3 DirY) // 이동할 위치에 따른 애니메이션 
