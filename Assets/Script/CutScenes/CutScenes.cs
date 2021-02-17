@@ -51,7 +51,7 @@ public class CutScenes : MoveOther
         fademanager.UIFadeIn(0.002f);
         yield return new WaitForSeconds(1f);
         yield return new WaitUntil(() => fademanager.color.a > 0.99f);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     IEnumerator GetAnswer()
@@ -68,7 +68,7 @@ public class CutScenes : MoveOther
             gamemanager.CutSceneTalk(500);
             yield return new WaitUntil(() => !playermanager.isaction);
             playermanager.isaction = true;
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
     }
 
